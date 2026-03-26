@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hook Street Services — Your Chaos Organized.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-light: #2a3f68;
+    --red: #C0392B;
+    --gold: #C9A84C;
+    --gold-light: #e8c870;
+    --cream: #FBF8F3;
+    --warm-white: #FFFFFF;
+    --sand: #F0EBE1;
+    --gray: #8a8a8a;
+    --gray-dark: #4a4a4a;
+    --border: #E2DAD0;
+    --text: #1a1a1a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
+
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(27,42,74,0.97); backdrop-filter:blur(12px);
+    padding:0 3rem; display:flex; align-items:center; justify-content:space-between;
+    height:62px; border-bottom:1px solid rgba(201,168,76,0.25);
+  }
+  .nav-brand { font-weight:600; font-size:1rem; letter-spacing:0.18em; color:#fff; text-transform:uppercase; }
+  .nav-brand span { color:var(--gold); }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.65); text-decoration:none; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--gold); }
+
+  .hero {
+    min-height:100vh; background:linear-gradient(135deg,var(--navy) 0%,#243558 50%,#1a3050 100%);
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; padding:8rem 2rem 5rem; position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse at 20% 30%,rgba(201,168,76,0.08) 0%,transparent 50%),
+                radial-gradient(ellipse at 80% 70%,rgba(192,57,43,0.08) 0%,transparent 50%);
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3);
+    color:var(--gold-light); padding:0.4rem 1.2rem;
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:600;
+    margin-bottom:2rem; border-radius:100px; position:relative; z-index:2;
+    animation:fadeUp 0.5s ease both;
+  }
+  .hero-title {
+    font-family:'DM Serif Display',serif; font-size:clamp(3rem,7vw,6.5rem);
+    font-weight:400; line-height:1.0; color:#fff; margin-bottom:0.4rem;
+    position:relative; z-index:2; animation:fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title-accent { color:var(--gold); font-style:italic; display:block; }
+  .hero-tagline {
+    font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic;
+    color:rgba(255,255,255,0.55); margin:1rem 0 2rem; font-weight:300;
+    position:relative; z-index:2; animation:fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-desc {
+    font-size:1rem; line-height:1.85; color:rgba(255,255,255,0.7);
+    max-width:580px; font-weight:300; margin:0 auto 3rem;
+    position:relative; z-index:2; animation:fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-ctas {
+    display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+    position:relative; z-index:2; margin-bottom:3.5rem;
+    animation:fadeUp 0.6s 0.4s ease both;
+  }
+  .btn-gold {
+    background:var(--gold); color:var(--navy); padding:1rem 2.5rem;
+    text-decoration:none; font-size:0.8rem; letter-spacing:0.12em;
+    text-transform:uppercase; font-weight:600; transition:all 0.25s;
+    border:2px solid var(--gold); display:inline-block; border-radius:2px;
+  }
+  .btn-gold:hover { background:var(--gold-light); border-color:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 25px rgba(201,168,76,0.3); }
+  .btn-ghost {
+    background:transparent; color:#fff; padding:1rem 2.5rem;
+    text-decoration:none; font-size:0.8rem; letter-spacing:0.12em;
+    text-transform:uppercase; font-weight:600; transition:all 0.25s;
+    border:2px solid rgba(255,255,255,0.3); display:inline-block; border-radius:2px;
+  }
+  .btn-ghost:hover { border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.06); }
+
+  .hero-cards {
+    display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+    position:relative; z-index:2; max-width:680px; width:100%;
+    animation:fadeUp 0.7s 0.5s ease both;
+  }
+  .hero-listing {
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    padding:1rem 1.5rem; text-decoration:none; transition:all 0.2s;
+    border-top:2px solid var(--gold); flex:1; min-width:260px; border-radius:2px;
+  }
+  .hero-listing:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+  .hero-listing-name { font-size:0.82rem; font-weight:600; color:#fff; letter-spacing:0.05em; }
+  .hero-listing-sub { font-size:0.7rem; color:rgba(255,255,255,0.5); margin-top:0.2rem; }
+  .hero-listing-tag { font-size:0.62rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; font-weight:600; }
+
+  .how-section { background:var(--warm-white); padding:6rem 5rem; }
+  .section-eyebrow { font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:0.8rem; }
+  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:400; line-height:1.15; color:var(--navy); }
+  .section-title em { font-style:italic; color:var(--red); }
+
+  .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:3.5rem; position:relative; }
+  .steps::before { content:''; position:absolute; top:2.2rem; left:12%; right:12%; height:1px; background:var(--border); z-index:0; }
+  .step { text-align:center; padding:0 1.5rem; position:relative; z-index:1; }
+  .step-num {
+    width:44px; height:44px; background:var(--navy); color:#fff; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'DM Serif Display',serif; font-size:1.1rem;
+    margin:0 auto 1.5rem; border:3px solid var(--cream); box-shadow:0 0 0 1px var(--border);
+  }
+  .step h3 { font-size:0.85rem; font-weight:600; color:var(--navy); letter-spacing:0.05em; margin-bottom:0.6rem; text-transform:uppercase; }
+  .step p { font-size:0.82rem; line-height:1.75; color:var(--gray); font-weight:300; }
+
+  .why-section { background:var(--navy); padding:6rem 5rem; }
+  .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; margin-top:3rem; }
+  .why-card { background:rgba(255,255,255,0.04); padding:2.5rem 2rem; border:1px solid rgba(255,255,255,0.07); transition:background 0.2s; }
+  .why-card:hover { background:rgba(255,255,255,0.08); }
+  .why-icon { font-size:2rem; margin-bottom:1.2rem; }
+  .why-card h3 { font-size:0.85rem; font-weight:600; color:#fff; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.8rem; }
+  .why-card p { font-size:0.85rem; line-height:1.8; color:rgba(255,255,255,0.55); font-weight:300; }
+
+  .vs-table { margin-top:3rem; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); }
+  .vs-col { background:rgba(255,255,255,0.03); padding:2rem; }
+  .vs-col.villa { background:rgba(201,168,76,0.07); }
+  .vs-col h4 { font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-weight:600; margin-bottom:1.2rem; padding-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .vs-col.villa h4 { color:var(--gold); border-color:rgba(201,168,76,0.2); }
+  .vs-col ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .vs-col ul li { font-size:0.83rem; color:rgba(255,255,255,0.45); font-weight:300; padding-left:1.3rem; position:relative; line-height:1.4; }
+  .vs-col ul li::before { content:'✕'; position:absolute; left:0; color:rgba(192,57,43,0.6); font-size:0.7rem; }
+  .vs-col.villa ul li { color:rgba(255,255,255,0.8); }
+  .vs-col.villa ul li::before { content:'✓'; color:var(--gold); }
+
+  .calc-section { background:var(--sand); padding:6rem 5rem; }
+  .calc-layout { display:grid; grid-template-columns:1fr 360px; gap:3rem; align-items:start; margin-top:3rem; }
+  .calc-form { background:var(--warm-white); border:1px solid var(--border); padding:2.5rem; box-shadow:0 4px 30px rgba(0,0,0,0.04); }
+  .calc-row { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+  .calc-field { display:flex; flex-direction:column; gap:0.5rem; }
+  .calc-field label { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--navy); }
+  .calc-field input, .calc-field select { border:1.5px solid var(--border); padding:0.8rem 1rem; font-size:0.9rem; font-family:'DM Sans',sans-serif; color:var(--text); background:var(--cream); outline:none; transition:border-color 0.2s; border-radius:3px; }
+  .calc-field input:focus, .calc-field select:focus { border-color:var(--navy); }
+  .nights-display { background:var(--navy); padding:1.2rem 1.5rem; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; border-radius:3px; }
+  .nights-label { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; }
+  .nights-num { font-family:'DM Serif Display',serif; font-size:2rem; color:#fff; line-height:1; }
+  .nights-num span { color:var(--gold); font-size:0.9rem; margin-left:0.3rem; font-family:'DM Sans',sans-serif; font-weight:300; }
+  .addons-title { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--navy); margin-bottom:1rem; }
+  .addon-item { display:flex; align-items:center; justify-content:space-between; padding:0.9rem 1rem; border:1.5px solid var(--border); margin-bottom:0.6rem; cursor:pointer; transition:all 0.15s; background:var(--cream); border-radius:3px; }
+  .addon-item:hover { border-color:var(--navy); }
+  .addon-item.active { border-color:var(--gold); background:rgba(201,168,76,0.06); }
+  .addon-left { display:flex; align-items:center; gap:0.75rem; }
+  .addon-check { width:18px; height:18px; border:2px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.6rem; color:transparent; transition:all 0.15s; flex-shrink:0; border-radius:3px; }
+  .addon-item.active .addon-check { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+  .addon-name { font-size:0.85rem; font-weight:500; color:var(--text); }
+  .addon-price { font-size:0.78rem; color:var(--gray); font-weight:600; }
+  .fee-note { background:rgba(27,42,74,0.05); border-left:3px solid var(--navy); padding:0.9rem 1.2rem; margin-top:1.5rem; border-radius:0 3px 3px 0; }
+  .fee-note p { font-size:0.75rem; color:var(--navy); line-height:1.65; }
+
+  .summary-box { background:var(--navy); padding:2.5rem; position:sticky; top:80px; border-radius:4px; box-shadow:0 8px 40px rgba(27,42,74,0.2); }
+  .summary-title { font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:2rem; }
+  .summary-line { display:flex; justify-content:space-between; align-items:baseline; padding:0.65rem 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+  .summary-line-label { font-size:0.8rem; color:rgba(255,255,255,0.5); font-weight:300; }
+  .summary-line-val { font-size:0.85rem; color:#fff; font-weight:600; }
+  .summary-total { display:flex; justify-content:space-between; align-items:baseline; padding:1.5rem 0 0; margin-top:0.5rem; }
+  .summary-total-label { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-weight:600; }
+  .summary-total-val { font-family:'DM Serif Display',serif; font-size:2.5rem; color:#fff; line-height:1; }
+  .summary-note { font-size:0.72rem; color:rgba(255,255,255,0.35); line-height:1.65; margin-top:1.5rem; font-style:italic; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.07); }
+  .summary-cta { margin-top:2rem; display:flex; flex-direction:column; gap:0.75rem; }
+  .summary-cta a { display:flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.9rem; text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; transition:all 0.2s; border-radius:3px; }
+  .cta-wa { background:#25D366; color:#fff; }
+  .cta-wa:hover { background:#1dbd5a; transform:translateY(-1px); }
+  .cta-form { background:var(--gold); color:var(--navy); }
+  .cta-form:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+  .areas-section { background:var(--warm-white); padding:6rem 5rem; }
+  .areas-layout { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-top:3rem; }
+  .map-wrap { position:sticky; top:80px; }
+  .map-embed { width:100%; height:520px; border:1px solid var(--border); display:block; border-radius:4px; }
+  .map-caption { font-size:0.72rem; color:var(--gray); margin-top:0.75rem; font-style:italic; text-align:center; }
+  .areas-list { display:flex; flex-direction:column; }
+  .area-item { padding:1.4rem 0; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:1.2rem; transition:all 0.15s; }
+  .area-item:hover { padding-left:0.5rem; }
+  .area-item:hover .area-name { color:var(--red); }
+  .area-num { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--border); min-width:2rem; line-height:1.2; }
+  .area-name { font-size:0.95rem; font-weight:600; color:var(--navy); transition:color 0.15s; line-height:1.3; }
+  .area-desc { font-size:0.8rem; color:var(--gray); font-weight:300; margin-top:0.3rem; line-height:1.6; }
+  .area-tag { display:inline-block; background:rgba(27,42,74,0.08); color:var(--navy); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; padding:0.2rem 0.6rem; margin-top:0.4rem; border-radius:100px; }
+
+  .listings-section { background:var(--sand); padding:6rem 5rem; }
+  .listings-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3rem; }
+  .listing-showcase { background:var(--warm-white); border:1px solid var(--border); padding:2.5rem; text-decoration:none; display:block; transition:all 0.25s; border-top:3px solid var(--gold); border-radius:2px; }
+  .listing-showcase:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.08); border-top-color:var(--red); }
+  .listing-badge { font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; color:var(--gold); margin-bottom:0.8rem; display:block; }
+  .listing-showcase h3 { font-family:'DM Serif Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:0.5rem; line-height:1.2; }
+  .listing-showcase p { font-size:0.82rem; color:var(--gray); line-height:1.7; font-weight:300; margin-bottom:1.5rem; }
+  .listing-view { font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:600; color:var(--red); }
+  .inquiry-cta-box { background:var(--navy); padding:2.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; border-radius:2px; grid-column:1/-1; }
+  .inquiry-cta-box h3 { font-family:'DM Serif Display',serif; font-size:1.6rem; color:#fff; line-height:1.2; }
+  .inquiry-cta-box p { font-size:0.85rem; color:rgba(255,255,255,0.55); margin-top:0.4rem; font-weight:300; line-height:1.6; }
+
+  .faq-section { background:var(--cream); padding:6rem 5rem; }
+  .faq-layout { display:grid; grid-template-columns:280px 1fr; gap:5rem; align-items:start; margin-top:3rem; }
+  .faq-sticky { position:sticky; top:80px; }
+  .faq-sticky p { font-size:0.85rem; line-height:1.85; color:var(--gray); font-weight:300; margin-top:1rem; }
+  .faq-list { display:flex; flex-direction:column; }
+  .faq-item { border-bottom:1px solid var(--border); }
+  .faq-q { display:flex; align-items:center; justify-content:space-between; padding:1.5rem 0; cursor:pointer; gap:1rem; }
+  .faq-q h4 { font-size:0.95rem; font-weight:500; color:var(--navy); line-height:1.4; }
+  .faq-toggle { color:var(--gold); flex-shrink:0; transition:transform 0.25s; width:24px; height:24px; display:flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:50%; font-size:1rem; }
+  .faq-item.open .faq-toggle { transform:rotate(45deg); background:var(--gold); color:var(--navy); border-color:var(--gold); }
+  .faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+  .faq-item.open .faq-a { max-height:400px; }
+  .faq-a p { font-size:0.87rem; line-height:1.85; color:var(--gray-dark); font-weight:300; padding-bottom:1.5rem; }
+
+  .contact-section { background:var(--navy); padding:6rem 5rem; text-align:center; }
+  .contact-sub { font-size:1rem; color:rgba(255,255,255,0.6); font-weight:300; max-width:500px; margin:0 auto 3.5rem; line-height:1.75; }
+  .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:720px; margin:0 auto; }
+  .contact-card { border:1px solid rgba(255,255,255,0.1); padding:2.5rem 1.5rem; text-decoration:none; color:#fff; transition:all 0.25s; display:flex; flex-direction:column; align-items:center; gap:0.75rem; border-radius:4px; }
+  .contact-card:hover { border-color:var(--gold); background:rgba(201,168,76,0.08); transform:translateY(-3px); }
+  .contact-card-icon { font-size:2rem; }
+  .contact-card-label { font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-weight:600; }
+  .contact-card-val { font-size:0.85rem; color:rgba(255,255,255,0.85); }
+
+  footer { background:#0f1a2e; padding:2rem 3rem; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(201,168,76,0.15); }
+  .footer-brand { font-size:0.82rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-weight:600; }
+  .footer-brand span { color:var(--gold); }
+  .footer-copy { font-size:0.7rem; color:rgba(255,255,255,0.2); font-weight:300; }
+  .footer-links { display:flex; gap:1.5rem; }
+  .footer-links a { font-size:0.68rem; color:rgba(255,255,255,0.3); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; font-weight:600; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--gold); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+  @media(max-width:900px){
+    nav{padding:0 1.5rem;} .nav-links{display:none;}
+    .how-section,.why-section,.calc-section,.areas-section,.listings-section,.faq-section,.contact-section{padding:4rem 1.5rem;}
+    footer{padding:2rem 1.5rem; flex-direction:column; gap:1rem; text-align:center;}
+    .steps{grid-template-columns:1fr 1fr;} .steps::before{display:none;}
+    .why-grid{grid-template-columns:1fr;} .vs-table{grid-template-columns:1fr;}
+    .calc-layout{grid-template-columns:1fr;} .calc-row{grid-template-columns:1fr;gap:1rem;}
+    .summary-box{position:static;}
+    .areas-layout{grid-template-columns:1fr;} .map-wrap{position:static;} .map-embed{height:300px;}
+    .listings-grid{grid-template-columns:1fr;} .inquiry-cta-box{flex-direction:column;text-align:center;}
+    .faq-layout{grid-template-columns:1fr;gap:2rem;} .faq-sticky{position:static;}
+    .contact-grid{grid-template-columns:1fr;max-width:320px;}
+    .hero-cards{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">HOOK <span>STREET</span> SERVICES</div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#calculator">Estimate</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" style="color:var(--gold);">Start Inquiry ↗</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">✦ Group Rental & Concierge — Orlando Area</div>
+  <h1 class="hero-title">HOOK <span class="hero-title-accent">STREET</span> SERVICES</h1>
+  <p class="hero-tagline">Your Chaos Organized.</p>
+  <p class="hero-desc">You tell us what your group needs — size, location, dates, and budget. We do the rest. Sourcing, negotiating, and coordinating private luxury villa rentals for families and groups across the greater Orlando area.</p>
+  <div class="hero-ctas">
+    <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-gold">Start Your Inquiry</a>
+    <a href="#calculator" class="btn-ghost">Estimate Costs</a>
+  </div>
+  <div class="hero-cards">
+    <a href="https://www.airbnb.com/rooms/797124679730479939" target="_blank" class="hero-listing">
+      <div>
+        <div class="hero-listing-name">9332 Sommereset Hills</div>
+        <div class="hero-listing-sub">Disney Theme · 8BR · Frozen · Game Room</div>
+      </div>
+      <div class="hero-listing-tag">View on Airbnb ↗</div>
+    </a>
+    <a href="https://www.airbnb.com/rooms/888630410488333881" target="_blank" class="hero-listing">
+      <div>
+        <div class="hero-listing-name">9312 Sommereset Hills</div>
+        <div class="hero-listing-sub">Luxury Villa · Private Pool · Game Room</div>
+      </div>
+      <div class="hero-listing-tag">View on Airbnb ↗</div>
+    </a>
+  </div>
+</div>
+
+<section class="how-section" id="how">
+  <div class="section-eyebrow">How It Works</div>
+  <h2 class="section-title">Simple process.<br><em>Exceptional results.</em></h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Tell Us Your Needs</h3><p>Fill out our short inquiry form — dates, group size, bedrooms, location, and any special requirements.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>We Start the Search</h3><p>After your inquiry and deposit, we source the best available properties matching your criteria across our full network.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Review Options</h3><p>We present curated options — you choose. We negotiate the best rate and handle all the details.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Enjoy Your Stay</h3><p>We coordinate check-in, any add-on services, and remain available throughout your stay.</p></div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="section-eyebrow">Why a Private Villa</div>
+  <h2 class="section-title" style="color:#fff;">More space. More value.<br><em style="color:var(--gold);">More memories.</em></h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">🏠</div><h3>Your Entire Home</h3><p>The full home is yours — private pool, full kitchen, multiple living rooms, game room. No shared lobbies or hotel neighbors.</p></div>
+    <div class="why-card"><div class="why-icon">💰</div><h3>Lower Cost Per Person</h3><p>A luxury villa split across your group often comes out far below comparable hotel room rates per person — especially for larger families.</p></div>
+    <div class="why-card"><div class="why-icon">🍽️</div><h3>Kitchen & Kosher Ready</h3><p>Full kitchen for your Yom Tov needs. We arrange kashering, extra appliances, kosher rental items, and catering referrals.</p></div>
+    <div class="why-card"><div class="why-icon">🎡</div><h3>Disney & Attractions Access</h3><p>Properties minutes from Walt Disney World, Universal, and all major attractions — without paying resort hotel prices.</p></div>
+    <div class="why-card"><div class="why-icon">🤝</div><h3>We Handle Everything</h3><p>You don't search, compare, or negotiate. We source options, secure rates, and manage logistics from start to finish.</p></div>
+    <div class="why-card"><div class="why-icon">🕍</div><h3>Yom Tov Friendly</h3><p>We know what matters — minyan proximity, kitchen setup, group seating, and extended-stay logistics for Pesach and Yom Tov.</p></div>
+  </div>
+  <div class="vs-table">
+    <div class="vs-col">
+      <h4>🏨 Hotel Stay</h4>
+      <ul>
+        <li>Separate rooms, no communal space</li>
+        <li>Shared public areas</li>
+        <li>No private kitchen</li>
+        <li>Dining out every meal</li>
+        <li>No private pool</li>
+        <li>Higher per-person cost</li>
+      </ul>
+    </div>
+    <div class="vs-col villa">
+      <h4>🏡 Private Villa with Us</h4>
+      <ul>
+        <li>One home for your whole group</li>
+        <li>Private pool and game room</li>
+        <li>Full kitchen for Yom Tov</li>
+        <li>Cook and gather together</li>
+        <li>Lower cost per person</li>
+        <li>Fully concierge managed</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="calc-section" id="calculator">
+  <div class="section-eyebrow">Trip Estimator</div>
+  <h2 class="section-title">Estimate your<br><em>stay cost</em></h2>
+  <div class="calc-layout">
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="calc-field"><label>Check-In Date</label><input type="date" id="checkin" onchange="calcNights()"></div>
+        <div class="calc-field"><label>Check-Out Date</label><input type="date" id="checkout" onchange="calcNights()"></div>
+      </div>
+      <div class="nights-display">
+        <span class="nights-label">Total Nights</span>
+        <span class="nights-num" id="nights-display">0 <span>nights</span></span>
+      </div>
+      <div class="calc-row">
+        <div class="calc-field">
+          <label>Bedrooms Needed</label>
+          <select id="bedrooms" onchange="updateSummary()">
+            <option value="">Select size</option>
+            <option>4 Bedroom</option><option>5 Bedroom</option><option>6 Bedroom</option>
+            <option>7 Bedroom</option><option>8 Bedroom</option><option>10+ Bedroom</option>
+          </select>
+        </div>
+        <div class="calc-field"><label>Approx. Nightly Rate ($)</label><input type="number" id="nightly" placeholder="e.g. 950" oninput="updateSummary()"></div>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <div class="addons-title">Add-On Services (optional)</div>
+        <div class="addon-item" onclick="toggleAddon(this,'pool',35.48)">
+          <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Pool Heating</div><div style="font-size:0.7rem;color:var(--gray);margin-top:2px;">$33/night + 7.5% tax · not included in base rate</div></div></div>
+          <div class="addon-price">$35.48/night</div>
+        </div>
+        <div class="addon-item" onclick="toggleAddon(this,'kashering',0)">
+          <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Kitchen Kashering</div><div style="font-size:0.7rem;color:var(--gray);margin-top:2px;">Quoted per inquiry</div></div></div>
+          <div class="addon-price">Quoted</div>
+        </div>
+        <div class="addon-item" onclick="toggleAddon(this,'tables',0)">
+          <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Tables & Chairs Rental</div><div style="font-size:0.7rem;color:var(--gray);margin-top:2px;">For Yom Tov seating</div></div></div>
+          <div class="addon-price">Quoted</div>
+        </div>
+        <div class="addon-item" onclick="toggleAddon(this,'fridge',0)">
+          <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Extra Fridge / Freezer</div><div style="font-size:0.7rem;color:var(--gray);margin-top:2px;">Additional refrigeration units</div></div></div>
+          <div class="addon-price">Quoted</div>
+        </div>
+      </div>
+      <div class="fee-note"><p>⚠️ Final pricing includes Airbnb's service fee (~14%) and applicable taxes. This estimate is a guide — actual totals confirmed at booking.</p></div>
+    </div>
+    <div class="summary-box">
+      <div class="summary-title">Estimated Summary</div>
+      <div class="summary-line"><span class="summary-line-label">Base nightly rate</span><span class="summary-line-val" id="sum-base">—</span></div>
+      <div class="summary-line"><span class="summary-line-label">Nights</span><span class="summary-line-val" id="sum-nights">0</span></div>
+      <div class="summary-line"><span class="summary-line-label">Subtotal (nightly)</span><span class="summary-line-val" id="sum-subtotal">$0</span></div>
+      <div class="summary-line" id="pool-line" style="display:none;"><span class="summary-line-label">Pool heating</span><span class="summary-line-val" id="sum-pool">$0</span></div>
+      <div class="summary-line"><span class="summary-line-label">Airbnb service fee (~14%)</span><span class="summary-line-val" id="sum-fee">$0</span></div>
+      <div class="summary-line"><span class="summary-line-label">Est. taxes (~7.5%)</span><span class="summary-line-val" id="sum-tax">$0</span></div>
+      <div class="summary-total"><span class="summary-total-label">Est. Total</span><span class="summary-total-val" id="sum-total">$0</span></div>
+      <p class="summary-note">Estimate only. Actual fees and taxes confirmed at booking. Pool heating not included in base rate.</p>
+      <div class="summary-cta">
+        <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank" class="cta-wa">💬 Message on WhatsApp</a>
+        <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="cta-form">📋 Submit Full Inquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="areas-section" id="areas">
+  <div class="section-eyebrow">Orlando Area Guide</div>
+  <h2 class="section-title">We source across<br><em>10+ communities</em></h2>
+  <div class="areas-layout">
+    <div class="map-wrap">
+      <iframe class="map-embed"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d88567.5!2d-81.59!3d28.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="map-caption">Four Corners / Kissimmee / Davenport corridor — southwest of Walt Disney World</p>
+    </div>
+    <div class="areas-list">
+      <div class="area-item"><div class="area-num">01</div><div><div class="area-name">Sommereset Hills</div><div class="area-desc">Home to our own properties. Quiet residential community near ChampionsGate with easy Disney access.</div><span class="area-tag">Our Properties</span></div></div>
+      <div class="area-item"><div class="area-num">02</div><div><div class="area-name">Reunion Resort</div><div class="area-desc">Gated resort with water park, golf, and world-class amenities. A top choice for extended Pesach stays.</div><span class="area-tag">Most Popular</span></div></div>
+      <div class="area-item"><div class="area-num">03</div><div><div class="area-name">Windsor Island / Windsor Hills</div><div class="area-desc">Established resort communities close to Disney with large villa inventory and communal amenities.</div></div></div>
+      <div class="area-item"><div class="area-num">04</div><div><div class="area-name">Encore Resort</div><div class="area-desc">Upscale gated community with waterpark access. Great for large groups near attractions.</div></div></div>
+      <div class="area-item"><div class="area-num">05</div><div><div class="area-name">Solterra / Solara Resort</div><div class="area-desc">Modern communities in Davenport with clubhouse, resort pools, and newer construction homes.</div></div></div>
+      <div class="area-item"><div class="area-num">06</div><div><div class="area-name">ChampionsGate</div><div class="area-desc">Golf and resort corridor along I-4 — excellent access to all major Orlando attractions.</div></div></div>
+      <div class="area-item"><div class="area-num">07</div><div><div class="area-name">Eden Gardens</div><div class="area-desc">Newer luxury villas at competitive prices. An emerging community with great value.</div></div></div>
+      <div class="area-item"><div class="area-num">08</div><div><div class="area-name">Villatel Village</div><div class="area-desc">Community-style resort designed for groups — adjacent villas can be rented together.</div><span class="area-tag">Groups Favorite</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="listings-section" id="listings">
+  <div class="section-eyebrow">Sample Properties</div>
+  <h2 class="section-title">Browse our<br><em>current listings</em></h2>
+  <div class="listings-grid">
+    <a href="https://www.airbnb.com/rooms/797124679730479939" target="_blank" class="listing-showcase">
+      <span class="listing-badge">✦ Sommereset Hills · Airbnb 4.8★</span>
+      <h3>9332 — Disney Theme<br>8BR Luxury Villa</h3>
+      <p>Frozen-themed interiors, game room, private pool, and everything a large family needs for a memorable Pesach stay near Disney.</p>
+      <span class="listing-view">View on Airbnb →</span>
+    </a>
+    <a href="https://www.airbnb.com/rooms/888630410488333881" target="_blank" class="listing-showcase">
+      <span class="listing-badge">✦ Sommereset Hills · Airbnb 4.8★</span>
+      <h3>9312 — Luxury Villa<br>Private Pool & Game Room</h3>
+      <p>Spacious luxury villa with private pool, game room, and premium finishes. Perfect for extended family gatherings and Yom Tov.</p>
+      <span class="listing-view">View on Airbnb →</span>
+    </a>
+    <div class="inquiry-cta-box">
+      <div>
+        <h3>Don't see exactly what you need?</h3>
+        <p>Tell us your size, area, dates, and budget — we'll source it across our full network of 10+ communities.</p>
+      </div>
+      <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-gold" style="white-space:nowrap;flex-shrink:0;">Start Inquiry →</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Knowledge Base</div>
+  <h2 class="section-title">Common<br><em>questions</em></h2>
+  <div class="faq-layout">
+    <div class="faq-sticky">
+      <p>Everything you need to know before submitting your inquiry. Still have questions? Reach us on WhatsApp.</p>
+      <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank" class="btn-gold" style="display:inline-block;margin-top:2rem;">Ask on WhatsApp</a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>How does your service work?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>You fill out our inquiry form with your dates, group size, and preferences. Once we receive your inquiry and a service deposit, we begin sourcing properties across our full network. We handle the search, negotiation, and coordination — you approve and book.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What is the service deposit for?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>The deposit is a non-refundable fee covering the time and work involved in researching and coordinating your booking. It is paid before we begin your search and is separate from the rental cost. Full deposit details are sent automatically after you submit the form.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Why does the Airbnb total look higher than the nightly rate?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Airbnb automatically adds a guest service fee (~14%) and local taxes on top of the base nightly rate. These are set by Airbnb and outside our control. Use our estimator above to see the full expected total before you inquire.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Is pool heating included?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Pool heating is not included in the base rate. It is available as an add-on at $33/night plus applicable tax (~$35.48/night). For extended Pesach stays the electricity cost is significant and must be covered separately.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What additional services can you arrange?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>We coordinate kitchen kashering, kosher rental items, extra refrigerators or freezers, tables and chairs rental, pack-n-plays, catering referrals, and more. Note your needs in the inquiry form and we'll include pricing.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What is the minimum age to rent?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Most resort communities require the primary renter to be 25 or older. If you are between 21–24, note this in your inquiry and we will advise on available options.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Can you find a home near a minyan or kosher store?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Yes — this is something we actively prioritize for Pesach and Yom Tov groups. Several communities in the Reunion and ChampionsGate corridor have organized minyanim during the holiday season. Specify this in your inquiry and we'll search accordingly.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-eyebrow">Get In Touch</div>
+  <h2 class="section-title" style="color:#fff;">Ready to start?<br><em style="color:var(--gold);">Let's talk.</em></h2>
+  <p class="contact-sub">Fill out the inquiry form to begin, or reach us directly. We respond promptly via WhatsApp.</p>
+  <div class="contact-grid">
+    <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank" class="contact-card"><div class="contact-card-icon">💬</div><div class="contact-card-label">WhatsApp</div><div class="contact-card-val">Message Directly</div></a>
+    <a href="mailto:info@hookstreetcapital.com" class="contact-card"><div class="contact-card-icon">✉️</div><div class="contact-card-label">Email</div><div class="contact-card-val">info@hookstreetcapital.com</div></a>
+    <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="contact-card"><div class="contact-card-icon">📋</div><div class="contact-card-label">Inquiry Form</div><div class="contact-card-val">Start Here</div></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">HOOK <span>STREET</span> SERVICES</div>
+  <div class="footer-copy">© 2026 Hook Street Capital LLC · hookstreetcapital.com</div>
+  <div class="footer-links">
+    <a href="https://www.airbnb.com/rooms/797124679730479939" target="_blank">Listing 9332</a>
+    <a href="https://www.airbnb.com/rooms/888630410488333881" target="_blank">Listing 9312</a>
+    <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">Inquiry Form</a>
+  </div>
+</footer>
+
+<script>
+  let addons={};
+  function calcNights(){
+    const ci=document.getElementById('checkin').value,co=document.getElementById('checkout').value;
+    if(ci&&co){const n=Math.max(0,Math.round((new Date(co)-new Date(ci))/86400000));document.getElementById('nights-display').innerHTML=`${n} <span>nights</span>`;}
+    updateSummary();
+  }
+  function toggleAddon(el,key,price){
+    el.classList.toggle('active');
+    if(el.classList.contains('active'))addons[key]=price; else delete addons[key];
+    updateSummary();
+  }
+  function updateSummary(){
+    const ci=document.getElementById('checkin').value,co=document.getElementById('checkout').value;
+    const nightly=parseFloat(document.getElementById('nightly').value)||0;
+    let nights=0;
+    if(ci&&co)nights=Math.max(0,Math.round((new Date(co)-new Date(ci))/86400000));
+    const subtotal=nightly*nights;
+    const poolActive=addons['pool']!==undefined;
+    const poolCost=poolActive?(35.48*nights):0;
+    const base=subtotal+poolCost;
+    const fee=base*0.14,tax=base*0.075,total=base+fee+tax;
+    const fmt=n=>'$'+n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:0});
+    document.getElementById('sum-base').textContent=nightly?`${fmt(nightly)}/night`:'—';
+    document.getElementById('sum-nights').textContent=nights;
+    document.getElementById('sum-subtotal').textContent=fmt(subtotal);
+    document.getElementById('sum-fee').textContent=fmt(fee);
+    document.getElementById('sum-tax').textContent=fmt(tax);
+    document.getElementById('sum-total').textContent=fmt(total);
+    const pl=document.getElementById('pool-line');
+    pl.style.display=(poolActive&&nights>0)?'flex':'none';
+    document.getElementById('sum-pool').textContent=fmt(poolCost);
+  }
+  function toggleFaq(el){el.parentElement.classList.toggle('open');}
+</script>
+</body>
+</html>

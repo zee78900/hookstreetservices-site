@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hook Street Services — Your Chaos Organized.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root{--gray:#8a8a8a;--gray-light:#b0b0b0;--gray-dark:#3a3a3a;--red:#8B1A1A;--red-light:#a82020;--white:#ffffff;--cream:#faf9f7;--black:#1a1a1a;--border:#d8d4cf;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--black);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,26,26,0.97);backdrop-filter:blur(10px);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid rgba(139,26,26,0.3);}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.15em;color:var(--white);}
+.nav-brand span{color:var(--red);}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{color:var(--gray-light);text-decoration:none;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--red);}
+.hero{min-height:100vh;background:var(--black);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(139,26,26,0.12) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(139,26,26,0.06) 0%,transparent 50%);pointer-events:none;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem 5rem;position:relative;z-index:2;}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;font-weight:600;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;line-height:1.05;color:var(--white);}
+.hero-title-red{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:600;line-height:1.05;color:var(--red);display:block;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gray-light);margin:1.5rem 0 2.5rem;font-weight:300;}
+.hero-desc{font-size:0.9rem;line-height:1.8;color:var(--gray-light);max-width:420px;font-weight:300;margin-bottom:3rem;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--red);color:var(--white);padding:0.85rem 2rem;text-decoration:none;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;font-family:'Barlow Condensed',sans-serif;transition:all 0.2s;border:2px solid var(--red);cursor:pointer;display:inline-block;}
+.btn-primary:hover{background:var(--red-light);transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--white);padding:0.85rem 2rem;text-decoration:none;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;font-family:'Barlow Condensed',sans-serif;transition:all 0.2s;border:2px solid rgba(255,255,255,0.3);cursor:pointer;display:inline-block;}
+.btn-outline:hover{border-color:var(--white);}
+.hero-right{display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 5rem 4rem 2rem;position:relative;z-index:2;}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;}
+.stat-box{border:1px solid rgba(139,26,26,0.3);padding:1.5rem;background:rgba(255,255,255,0.03);}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--white);line-height:1;margin-bottom:0.3rem;}
+.stat-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);font-weight:500;}
+.listing-cards{display:flex;flex-direction:column;gap:1rem;}
+.listing-card{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:1rem 1.5rem;text-decoration:none;transition:all 0.2s;border-left:3px solid var(--red);}
+.listing-card:hover{background:rgba(255,255,255,0.07);transform:translateX(3px);}
+.listing-name{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-weight:600;}
+.listing-sub{font-size:0.72rem;color:var(--gray);margin-top:0.2rem;}
+section{padding:6rem 5rem;}
+.section-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:0.8rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;color:var(--black);margin-bottom:3rem;}
+.section-title em{font-style:italic;}
+.why-section{background:var(--black);}
+.why-section .section-title{color:var(--white);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2rem;}
+.why-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:2.5rem 2rem;}
+.why-card:hover{background:rgba(255,255,255,0.06);}
+.why-icon{font-size:1.8rem;margin-bottom:1.2rem;}
+.why-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);font-weight:600;margin-bottom:0.8rem;}
+.why-card p{font-size:0.85rem;line-height:1.75;color:var(--gray-light);font-weight:300;}
+.vs-banner{border:1px solid rgba(139,26,26,0.3);padding:2rem 3rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem;background:rgba(139,26,26,0.05);}
+.vs-col h4{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;font-weight:600;}
+.vs-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.vs-col ul li{font-size:0.82rem;color:var(--gray-light);font-weight:300;padding-left:1.2rem;position:relative;}
+.vs-col ul li::before{content:'—';position:absolute;left:0;color:#444;}
+.vs-col.villa ul li{color:var(--white);}
+.vs-col.villa ul li::before{content:'✓';color:var(--red);}
+.vs-divider{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--red);text-align:center;}
+.calc-section{background:var(--cream);}
+.calc-layout{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start;}
+.calc-form{background:var(--white);border:1px solid var(--border);padding:2.5rem;}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.field-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--gray-dark);font-family:'Barlow Condensed',sans-serif;display:block;margin-bottom:0.4rem;}
+.field-input{border:1px solid var(--border);padding:0.75rem 1rem;font-size:0.88rem;font-family:'Barlow',sans-serif;color:var(--black);background:var(--cream);outline:none;transition:border-color 0.2s;width:100%;}
+.field-input:focus{border-color:var(--red);}
+.nights-display{background:var(--black);color:var(--white);padding:1rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nights-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-light);font-family:'Barlow Condensed',sans-serif;font-weight:600;}
+.nights-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);}
+.nights-num span{color:var(--red);font-size:1rem;margin-left:0.3rem;}
+.addons-title{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--gray-dark);font-family:'Barlow Condensed',sans-serif;margin-bottom:1rem;}
+.addon-item{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1rem;border:1px solid var(--border);margin-bottom:0.5rem;cursor:pointer;transition:all 0.15s;background:var(--cream);}
+.addon-item:hover,.addon-item.active{border-color:var(--red);}
+.addon-item.active{background:rgba(139,26,26,0.04);}
+.addon-left{display:flex;align-items:center;gap:0.75rem;}
+.addon-check{width:18px;height:18px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:transparent;transition:all 0.15s;flex-shrink:0;}
+.addon-item.active .addon-check{background:var(--red);border-color:var(--red);color:var(--white);}
+.addon-name{font-size:0.85rem;font-weight:400;color:var(--black);}
+.addon-sub{font-size:0.7rem;color:var(--gray);margin-top:2px;}
+.addon-price{font-size:0.78rem;color:var(--gray);font-family:'Barlow Condensed',sans-serif;font-weight:600;}
+.summary-box{background:var(--black);color:var(--white);padding:2.5rem;position:sticky;top:80px;}
+.summary-title{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:2rem;}
+.sum-line{display:flex;justify-content:space-between;align-items:baseline;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.sum-lbl{font-size:0.8rem;color:var(--gray-light);font-weight:300;}
+.sum-val{font-size:0.85rem;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:600;}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;padding:1.5rem 0 0;margin-top:0.5rem;}
+.sum-total-lbl{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);font-weight:600;}
+.sum-total-val{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--white);line-height:1;}
+.sum-note{font-size:0.72rem;color:var(--gray);line-height:1.6;margin-top:1.5rem;font-style:italic;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.07);}
+.sum-ctas{margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem;}
+.sum-ctas a{display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;transition:all 0.2s;}
+.cta-wa{background:#25D366;color:var(--white);}
+.cta-wa:hover{background:#1dbd5a;}
+.cta-red{background:var(--red);color:var(--white);}
+.cta-red:hover{background:var(--red-light);}
+/* INQUIRY */
+.inquiry-section{background:var(--white);}
+.inquiry-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.process-steps{margin-top:2rem;display:flex;flex-direction:column;gap:1.2rem;}
+.process-step{display:flex;gap:1rem;align-items:flex-start;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--border);line-height:1;min-width:2rem;}
+.step-text h4{font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--black);margin-bottom:0.2rem;}
+.step-text p{font-size:0.8rem;color:var(--gray);line-height:1.5;font-weight:300;}
+.contact-info-box{margin-top:2.5rem;padding:1.5rem;background:var(--cream);border:1px solid var(--border);font-size:0.78rem;color:var(--gray-dark);line-height:1.8;font-weight:300;}
+.contact-info-box strong{font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.68rem;font-weight:700;display:block;margin-bottom:0.3rem;}
+.contact-info-box a{color:var(--red);text-decoration:none;}
+.setup-banner{background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.4);padding:1rem 1.5rem;margin-bottom:1.5rem;font-size:0.8rem;line-height:1.6;color:#7a5c00;}
+.setup-banner strong{font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.7rem;font-weight:700;display:block;margin-bottom:0.3rem;}
+.form-card{background:var(--cream);border:1px solid var(--border);padding:2.5rem;}
+.form-title{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-field{margin-bottom:1rem;}
+.form-submit{width:100%;background:var(--red);color:var(--white);border:none;padding:1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:0.5rem;}
+.form-submit:hover{background:var(--red-light);}
+.form-submit:disabled{background:var(--gray);cursor:not-allowed;}
+.form-success{display:none;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.3);padding:2rem;text-align:center;}
+.form-success.show{display:block;}
+.form-success h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;color:#1a8a45;margin-bottom:0.75rem;}
+.form-success p{font-size:0.82rem;color:var(--gray-dark);line-height:1.6;}
+.form-error{display:none;background:rgba(139,26,26,0.08);border:1px solid rgba(139,26,26,0.2);padding:0.75rem 1rem;font-size:0.8rem;color:var(--red);margin-top:0.5rem;}
+.form-error.show{display:block;}
+.warn-box{background:rgba(139,26,26,0.06);border:1px solid rgba(139,26,26,0.15);padding:0.85rem 1rem;font-size:0.75rem;color:var(--red);font-weight:500;line-height:1.6;margin-bottom:1rem;}
+/* AREAS */
+.areas-section{background:var(--cream);}
+.areas-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.map-embed{width:100%;height:500px;border:1px solid var(--border);}
+.area-item{padding:1.3rem 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem;}
+.area-item:hover .area-name{color:var(--red);}
+.area-num{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--border);min-width:2rem;line-height:1.2;}
+.area-name{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--black);transition:color 0.15s;}
+.area-desc{font-size:0.78rem;color:var(--gray);font-weight:300;margin-top:0.25rem;line-height:1.5;}
+.area-tag{display:inline-block;background:rgba(139,26,26,0.08);color:var(--red);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;padding:0.15rem 0.5rem;margin-top:0.4rem;font-family:'Barlow Condensed',sans-serif;}
+/* FAQ */
+.faq-section{background:var(--white);}
+.faq-layout{display:grid;grid-template-columns:300px 1fr;gap:5rem;}
+.faq-sticky{position:sticky;top:80px;}
+.faq-sticky p{font-size:0.85rem;line-height:1.8;color:var(--gray);font-weight:300;margin-top:1rem;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;cursor:pointer;gap:1rem;}
+.faq-q h4{font-size:0.92rem;font-weight:500;color:var(--black);line-height:1.4;}
+.faq-toggle{color:var(--red);font-size:1.2rem;flex-shrink:0;transition:transform 0.2s;line-height:1;}
+.faq-item.open .faq-toggle{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.faq-item.open .faq-a{max-height:400px;}
+.faq-a p{font-size:0.85rem;line-height:1.8;color:var(--gray-dark);font-weight:300;padding-bottom:1.5rem;}
+/* CONTACT */
+.contact-section{background:var(--black);color:var(--white);text-align:center;padding:6rem 5rem;}
+.contact-section .section-title{color:var(--white);}
+.contact-sub{font-size:0.9rem;color:var(--gray-light);font-weight:300;max-width:500px;margin:0 auto 3rem;line-height:1.7;}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:700px;margin:0 auto;}
+.contact-card{border:1px solid rgba(255,255,255,0.1);padding:2rem 1.5rem;text-decoration:none;color:var(--white);transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:0.75rem;}
+.contact-card:hover{border-color:var(--red);background:rgba(139,26,26,0.08);transform:translateY(-2px);}
+.contact-card-icon{font-size:1.8rem;}
+.contact-card-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gray);font-weight:600;}
+.contact-card-val{font-size:0.82rem;color:var(--white);}
+footer{background:#111;padding:2rem 5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(139,26,26,0.2);}
+.footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);font-weight:600;}
+.footer-brand span{color:var(--red);}
+.footer-copy{font-size:0.72rem;color:#555;}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:0.7rem;color:#555;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:600;transition:color 0.2s;}
+.footer-links a:hover{color:var(--red);}
+@media(max-width:900px){
+  nav{padding:0 1.5rem;}.nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}.hero-left{padding:6rem 1.5rem 2rem;}.hero-right{padding:0 1.5rem 3rem;}
+  .hero-stats{grid-template-columns:1fr 1fr;}section{padding:4rem 1.5rem;}
+  .why-grid{grid-template-columns:1fr;gap:1px;}.vs-banner{grid-template-columns:1fr;gap:1.5rem;}.vs-divider{display:none;}
+  .calc-layout{grid-template-columns:1fr;}.calc-row{grid-template-columns:1fr;gap:1rem;}.summary-box{position:static;}
+  .inquiry-layout{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}
+  .areas-layout{grid-template-columns:1fr;}.map-embed{height:300px;}
+  .faq-layout{grid-template-columns:1fr;gap:2rem;}.faq-sticky{position:static;}
+  .contact-grid{grid-template-columns:1fr;max-width:300px;}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.hero-eyebrow{animation:fadeUp 0.6s ease forwards;}
+.hero-title,.hero-tagline,.hero-desc,.hero-ctas{opacity:0;animation:fadeUp 0.6s ease forwards;animation-fill-mode:forwards;}
+.hero-title{animation-delay:0.1s;}.hero-tagline{animation-delay:0.2s;}.hero-desc{animation-delay:0.3s;}.hero-ctas{animation-delay:0.4s;}
+.hero-right{opacity:0;animation:fadeUp 0.8s 0.3s ease forwards;animation-fill-mode:forwards;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">HOOK <span>STREET</span> SERVICES</div>
+  <ul class="nav-links">
+    <li><a href="#calculator">Calculator</a></li>
+    <li><a href="#inquiry">Inquire</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Hook Street Capital LLC — Group Rental &amp; Concierge</div>
+    <h1 class="hero-title">HOOK<br><span class="hero-title-red">STREET</span><br>SERVICES</h1>
+    <p class="hero-tagline">Your Chaos Organized.</p>
+    <p class="hero-desc">We source, negotiate, and coordinate luxury private villa rentals for large groups — so you can focus on the people, not the logistics. Specializing in Pesach, Yom Tov, and extended family stays in the Orlando area.</p>
+    <div class="hero-ctas">
+      <a href="#inquiry" class="btn-primary">Start Your Inquiry</a>
+      <a href="#calculator" class="btn-outline">Estimate Costs</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-box"><div class="stat-number">8+</div><div class="stat-label">Bedrooms Available</div></div>
+      <div class="stat-box"><div class="stat-number">10+</div><div class="stat-label">Resort Communities</div></div>
+      <div class="stat-box"><div class="stat-number">4.8★</div><div class="stat-label">Airbnb Rating</div></div>
+      <div class="stat-box"><div class="stat-number">100%</div><div class="stat-label">Concierge Managed</div></div>
+    </div>
+    <div class="listing-cards">
+      <a href="https://www.airbnb.com/rooms/797124679730479939" target="_blank" class="listing-card">
+        <div><div class="listing-name">9332 Sommereset Hills</div><div class="listing-sub">Disney Theme · 8BR · Frozen · Game Room</div></div>
+        <span style="color:var(--red);font-size:1.2rem;">→</span>
+      </a>
+      <a href="https://www.airbnb.com/rooms/888630410488333881" target="_blank" class="listing-card">
+        <div><div class="listing-name">9312 Sommereset Hills</div><div class="listing-sub">Luxury Villa · Private Pool · Game Room</div></div>
+        <span style="color:var(--red);font-size:1.2rem;">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VILLA -->
+<section class="why-section">
+  <div class="section-eyebrow">Why a Private Villa</div>
+  <h2 class="section-title">More space. <em>More value. More memories.</em></h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">🏠</div><h3>Your Entire Home</h3><p>Private pool, full kitchen, game room — the whole home is yours. No shared lobbies, no hotel neighbors, no restrictions.</p></div>
+    <div class="why-card"><div class="why-icon">💰</div><h3>Lower Cost Per Person</h3><p>A luxury 8BR villa split across 20 guests often costs a fraction of nearby hotel rates, especially over an extended Yom Tov stay.</p></div>
+    <div class="why-card"><div class="why-icon">🍽️</div><h3>Kitchen &amp; Kosher Ready</h3><p>Full kitchen for Yom Tov. We arrange kashering, kosher rental items, extra appliances, catering referrals, and more.</p></div>
+    <div class="why-card"><div class="why-icon">🎡</div><h3>Disney &amp; Attractions Access</h3><p>Our properties sit minutes from Walt Disney World, Universal, and major attractions — without resort prices.</p></div>
+    <div class="why-card"><div class="why-icon">🤝</div><h3>We Handle Everything</h3><p>You don't search, compare, or negotiate. We find options, secure rates, and manage your booking start to finish.</p></div>
+    <div class="why-card"><div class="why-icon">🔑</div><h3>Group-Friendly Setup</h3><p>Multiple master suites, bunk room options, and large gathering spaces designed for how families actually travel together.</p></div>
+  </div>
+  <div class="vs-banner">
+    <div class="vs-col"><h4>🏨 Hotel Stay</h4><ul><li>Multiple separate rooms</li><li>Shared public spaces</li><li>No kitchen access</li><li>Dining out every meal</li><li>No private pool</li><li>Higher per-person cost</li></ul></div>
+    <div class="vs-divider">vs</div>
+    <div class="vs-col villa"><h4>🏡 Private Villa</h4><ul><li>One home — your whole group</li><li>Private pool &amp; game room</li><li>Full kitchen for Yom Tov</li><li>Cook &amp; gather together</li><li>Lower cost per person</li><li>Concierge managed</li></ul></div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-section" id="calculator">
+  <div class="section-eyebrow">Trip Estimator</div>
+  <h2 class="section-title">Estimate your <em>full stay cost</em></h2>
+  <div class="calc-layout">
+    <div class="calc-form">
+      <div class="calc-row">
+        <div><label class="field-label">Check-In Date</label><input type="date" id="checkin" class="field-input" onchange="calcNights()"></div>
+        <div><label class="field-label">Check-Out Date</label><input type="date" id="checkout" class="field-input" onchange="calcNights()"></div>
+      </div>
+      <div class="nights-display">
+        <span class="nights-label">Total Nights</span>
+        <span class="nights-num" id="nights-display">0 <span>nights</span></span>
+      </div>
+      <div class="calc-row">
+        <div><label class="field-label">Bedrooms Needed</label>
+          <select id="bedrooms" class="field-input" onchange="updateSummary()">
+            <option value="">Select size</option><option>4 BR</option><option>5 BR</option>
+            <option>6 BR</option><option>7 BR</option><option>8 BR</option><option>10+ BR</option>
+          </select>
+        </div>
+        <div><label class="field-label">Approx. Nightly Rate ($)</label><input type="number" id="nightly" class="field-input" placeholder="e.g. 950" oninput="updateSummary()"></div>
+      </div>
+      <div class="addons-title" style="margin-top:0.5rem;">Add-On Services</div>
+      <div class="addon-item" onclick="toggleAddon(this,'pool',50)">
+        <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Pool Heating</div><div class="addon-sub">~$33–$75/night depending on home size · not included in base rate</div></div></div>
+        <div class="addon-price">$33–$75/night</div>
+      </div>
+      <div class="addon-item" onclick="toggleAddon(this,'kashering',0)">
+        <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Kitchen Kashering</div><div class="addon-sub">Full prep service — price quoted separately</div></div></div>
+        <div class="addon-price">Quoted</div>
+      </div>
+      <div class="addon-item" onclick="toggleAddon(this,'tables',0)">
+        <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Tables &amp; Chairs Rental</div><div class="addon-sub">Yom Tov seating and event setup</div></div></div>
+        <div class="addon-price">Quoted</div>
+      </div>
+      <div class="addon-item" onclick="toggleAddon(this,'fridge',0)">
+        <div class="addon-left"><div class="addon-check">✓</div><div><div class="addon-name">Extra Fridge / Freezer</div><div class="addon-sub">Additional refrigeration units</div></div></div>
+        <div class="addon-price">Quoted</div>
+      </div>
+      <br>
+      <div class="warn-box">⚠️ Estimates only. Airbnb service fees, Florida state tax, Osceola County Tourist Development Tax, cleaning fees, and other platform charges are added at checkout. Pool heating ($33–$75/night depending on home size) is not included in the base rate.</div>
+    </div>
+    <div class="summary-box">
+      <div class="summary-title">Estimated Cost Breakdown</div>
+      <div class="sum-line"><span class="sum-lbl">Base nightly rate</span><span class="sum-val" id="sum-base">—</span></div>
+      <div class="sum-line"><span class="sum-lbl">Nights</span><span class="sum-val" id="sum-nights">0</span></div>
+      <div class="sum-line"><span class="sum-lbl">Base subtotal</span><span class="sum-val" id="sum-subtotal">$0</span></div>
+      <div class="sum-line" id="pool-line" style="display:none;"><span class="sum-lbl">Pool heating</span><span class="sum-val" id="sum-pool">$0</span></div>
+      <div class="sum-line"><span class="sum-lbl">Airbnb service fee (est. ~14%)</span><span class="sum-val" id="sum-fee">$0</span></div>
+      <div class="sum-line"><span class="sum-lbl">Est. taxes (~13% FL + Osceola Co.)</span><span class="sum-val" id="sum-tax">$0</span></div>
+      <div class="sum-total"><span class="sum-total-lbl">Est. Grand Total</span><span class="sum-total-val" id="sum-total">$0</span></div>
+      <div class="sum-note">Estimate only. Actual fees confirmed at booking. Pool heating ($33–$75/night depending on home size) is not included in the base rate. Tax estimate includes Florida state + Osceola County Tourist Development Tax.</div>
+      <div class="sum-ctas">
+        <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank" class="cta-wa">💬 Message on WhatsApp</a>
+        <a href="#inquiry" class="cta-red">📋 Submit Full Inquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INQUIRY FORM -->
+<section class="inquiry-section" id="inquiry">
+  <div class="section-eyebrow">Get Started</div>
+  <h2 class="section-title">Submit your <em>inquiry</em></h2>
+  <div class="inquiry-layout">
+    <div>
+      <p style="font-size:0.88rem;line-height:1.8;color:var(--gray-dark);font-weight:300;">Fill out the form and we'll respond within 24 hours with pricing details and next steps. A service deposit is required to begin your search.</p>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-text"><h4>Submit Inquiry</h4><p>Tell us your dates, group size, and preferences.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-text"><h4>Receive Pricing + Deposit Info</h4><p>We'll email you our fee structure and payment instructions automatically.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-text"><h4>Pay Service Deposit via Zelle</h4><p>Send payment and reply with a screenshot to activate your search.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-text"><h4>We Source &amp; Secure</h4><p>We find your options, negotiate rates, and manage the booking.</p></div></div>
+      </div>
+      <div class="contact-info-box">
+        <strong>Prefer to message directly?</strong>
+        WhatsApp: <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank">wa.me/message/7BAOGV7WPEEAI1</a><br>
+        Email: <a href="/cdn-cgi/l/email-protection#167f787079567e79797d6562647373627577667f62777a3875797b"><span class="__cf_email__" data-cfemail="4821262e2708202727233b3c3a2d2d3c2b2938213c2924662b2725">[email&#160;protected]</span></a><br>
+        Google Form: <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">forms.gle/oTazMyd14HFsteg9A</a>
+      </div>
+    </div>
+    <div>
+      <div id="setup-notice" class="setup-banner">
+        <strong>⚙️ One-Time Setup Required (5 min)</strong>
+        Email delivery is not yet active. Until setup is complete, submissions open your Google Form. See instructions below the page.
+      </div>
+      <div class="form-card">
+        <div class="form-title">Group Rental Inquiry</div>
+        <div id="form-success" class="form-success">
+          <h3>✅ Inquiry Received!</h3>
+          <p>Thank you! We'll be in touch within 24 hours with pricing and next steps. Check your inbox for a confirmation.</p>
+        </div>
+        <form id="inquiryForm" onsubmit="submitInquiry(event)">
+          <div class="form-row">
+            <div class="form-field"><label class="field-label">Full Name *</label><input type="text" name="name" required placeholder="Primary guest" class="field-input" style="background:var(--white);"></div>
+            <div class="form-field"><label class="field-label">Email *</label><input type="email" name="email" required placeholder="you@email.com" class="field-input" style="background:var(--white);"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label class="field-label">Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+1 (917) 000-0000" class="field-input" style="background:var(--white);"></div>
+            <div class="form-field"><label class="field-label">Bedrooms Needed *</label>
+              <select name="bedrooms" required class="field-input" style="background:var(--white);">
+                <option value="">Select</option><option>4 BR</option><option>5 BR</option><option>6 BR</option><option>7 BR</option><option>8 BR</option><option>10+ BR</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label class="field-label">Check-In Date *</label><input type="date" name="checkin" required class="field-input" style="background:var(--white);"></div>
+            <div class="form-field"><label class="field-label">Check-Out Date *</label><input type="date" name="checkout" required class="field-input" style="background:var(--white);"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label class="field-label">Adults (12+) *</label><input type="number" name="adults" required min="1" placeholder="e.g. 10" class="field-input" style="background:var(--white);"></div>
+            <div class="form-field"><label class="field-label">Children (11 &amp; under)</label><input type="number" name="children" min="0" placeholder="e.g. 4" class="field-input" style="background:var(--white);"></div>
+          </div>
+          <div class="form-field">
+            <label class="field-label">Preferred Area</label>
+            <select name="area" class="field-input" style="background:var(--white);">
+              <option>No preference / open to suggestions</option><option>Reunion Resort</option><option>Windsor Island / Windsor Hills</option><option>Encore Resort</option><option>Solterra / Solara Resort</option><option>ChampionsGate</option><option>Eden Gardens</option><option>Villatel Village</option><option>Sommereset Hills</option>
+            </select>
+          </div>
+          <div class="form-field"><label class="field-label">Nightly Budget (entire home)</label><input type="text" name="budget" placeholder="e.g. $800–$1,200/night" class="field-input" style="background:var(--white);"></div>
+          <div class="form-field"><label class="field-label">Notes / Must-Haves</label><textarea name="notes" rows="3" placeholder="Pool heating, kashering, walk to minyan, no bunk beds..." class="field-input" style="background:var(--white);resize:vertical;"></textarea></div>
+          <div class="warn-box" style="margin-bottom:1rem;">By submitting you'll receive our fee structure and deposit instructions. A non-refundable service deposit is required to begin your search.</div>
+          <div id="form-error" class="form-error"></div>
+          <button type="submit" class="form-submit" id="submitBtn">Submit Inquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas-section" id="areas">
+  <div class="section-eyebrow">Orlando Area Guide</div>
+  <h2 class="section-title">Where we <em>place groups</em></h2>
+  <div class="areas-layout">
+    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d88567.5!2d-81.595!3d28.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div>
+      <div class="area-item"><div class="area-num">01</div><div><div class="area-name">Sommereset Hills</div><div class="area-desc">Home to our own listings. Quiet residential community near ChampionsGate with easy Disney access.</div><span class="area-tag">Our Properties</span></div></div>
+      <div class="area-item"><div class="area-num">02</div><div><div class="area-name">Reunion Resort</div><div class="area-desc">Gated resort community with world-class amenities, water park, and golf. Popular for extended Pesach stays.</div><span class="area-tag">Most Popular</span></div></div>
+      <div class="area-item"><div class="area-num">03</div><div><div class="area-name">Windsor Island / Windsor Hills</div><div class="area-desc">Established resort communities close to Disney with large villa inventory and communal pools.</div></div></div>
+      <div class="area-item"><div class="area-num">04</div><div><div class="area-name">Encore Resort</div><div class="area-desc">Upscale gated community with waterpark access. Great for larger groups near attractions.</div></div></div>
+      <div class="area-item"><div class="area-num">05</div><div><div class="area-name">Solterra / Solara Resort</div><div class="area-desc">Modern resort communities in Davenport with clubhouse, pools, and newer construction homes.</div></div></div>
+      <div class="area-item"><div class="area-num">06</div><div><div class="area-name">ChampionsGate</div><div class="area-desc">Golf and resort corridor along I-4 with great access to all major Orlando attractions.</div></div></div>
+      <div class="area-item"><div class="area-num">07</div><div><div class="area-name">Eden Gardens</div><div class="area-desc">Emerging community with newer luxury villas at competitive prices — a hidden gem.</div></div></div>
+      <div class="area-item"><div class="area-num">08</div><div><div class="area-name">Villatel Village</div><div class="area-desc">Community-style resort — adjacent villas can be rented together for very large groups.</div><span class="area-tag">Groups Favorite</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-layout">
+    <div class="faq-sticky">
+      <div class="section-eyebrow">Knowledge Base</div>
+      <h2 class="section-title" style="font-size:2.2rem;margin-bottom:0;">Common <em>questions</em></h2>
+      <p>Everything you need before submitting. Still have questions? Message us directly.</p>
+      <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank" class="btn-primary" style="display:inline-block;margin-top:2rem;">Ask on WhatsApp</a>
+    </div>
+    <div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>How does your service work?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Fill out our inquiry form with your dates, group size, and preferences. Once we receive your inquiry and a service deposit, we begin sourcing properties. We handle all negotiation and coordination — you just approve and book.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What is the service deposit for?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>The deposit is a non-refundable fee covering the time and work involved in researching and coordinating your booking. It's paid before we begin your search and is separate from the actual rental cost. Full details are sent after you submit the form.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Why does the Airbnb total look higher than the nightly rate?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Airbnb automatically adds a guest service fee (~14%) and local taxes on top of the base nightly rate. These are set by Airbnb and completely outside our control. Our cost estimator above shows the full breakdown so there are no surprises.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Is pool heating included?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Pool heating is not included in the base rate. It's available as an add-on ranging from approximately $33–$75/night depending on the size of the home and pool. For a nearly 3-week Pesach stay, the electricity draw is significant and must be covered separately.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What additional services can you arrange?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>We coordinate kitchen kashering, kosher rental items, extra refrigerators or freezers, tables and chairs, pack-n-plays, and catering referrals. These are quoted separately — just note your needs in the inquiry form.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What is the minimum age to rent?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Most resort communities require the primary renter to be 25 or older. If you're between 21–24, mention it in your inquiry and we'll advise on available options.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Can you find homes near a minyan or kosher store?</h4><span class="faq-toggle">+</span></div><div class="faq-a"><p>Yes — a priority for Pesach and Yom Tov groups. Several communities in the Reunion and ChampionsGate corridors have organized minyanim during Yom Tov season. Specify this in your inquiry and we'll make it a search requirement.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-eyebrow" style="color:var(--red);">Get In Touch</div>
+  <h2 class="section-title">Ready to start? <em>Let's talk.</em></h2>
+  <p class="contact-sub">Fill out the inquiry form, or reach us directly via WhatsApp or email. We respond within 24 hours.</p>
+  <div class="contact-grid">
+    <a href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank" class="contact-card"><div class="contact-card-icon">💬</div><div class="contact-card-label">WhatsApp</div><div class="contact-card-val">Message Directly</div></a>
+    <a href="/cdn-cgi/l/email-protection#fa93949c95ba92959591898e889f9f8e999b8a938e9b96d4999597" class="contact-card"><div class="contact-card-icon">✉️</div><div class="contact-card-label">Email</div><div class="contact-card-val"><span class="__cf_email__" data-cfemail="462f282029062e29292d3532342323322527362f32272a6825292b">[email&#160;protected]</span></div></a>
+    <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="contact-card"><div class="contact-card-icon">📋</div><div class="contact-card-label">Google Form</div><div class="contact-card-val">Full Intake Form</div></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">HOOK <span>STREET</span> SERVICES</div>
+  <div class="footer-copy">© 2026 Hook Street Capital LLC · hookstreetcapital.com</div>
+  <div class="footer-links">
+    <a href="https://www.airbnb.com/rooms/797124679730479939" target="_blank">Listing 9332</a>
+    <a href="https://www.airbnb.com/rooms/888630410488333881" target="_blank">Listing 9312</a>
+    <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">Inquiry Form</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─────────────────────────────────────────────
+// STEP 1 OF 4: Fill in these 4 values after setup
+// ─────────────────────────────────────────────
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // from emailjs.com
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // from emailjs.com
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // from emailjs.com
+const SHEETS_URL          = "YOUR_APPS_SCRIPT_URL"; // from Google Apps Script
+const SETUP_DONE          = false; // change to TRUE when all 4 above are filled
+// ─────────────────────────────────────────────
+
+if (EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") emailjs.init(EMAILJS_PUBLIC_KEY);
+if (SETUP_DONE) { const b = document.getElementById('setup-notice'); if(b) b.style.display='none'; }
+
+// CALCULATOR
+let addons = {};
+function calcNights() {
+  const ci = document.getElementById('checkin').value;
+  const co = document.getElementById('checkout').value;
+  if (ci && co) {
+    const n = Math.round((new Date(co)-new Date(ci))/86400000);
+    document.getElementById('nights-display').innerHTML = n>0?`${n} <span>nights</span>`:`0 <span>nights</span>`;
+  }
+  updateSummary();
+}
+function toggleAddon(el,key,price){
+  el.classList.toggle('active');
+  if(el.classList.contains('active')) addons[key]=price; else delete addons[key];
+  updateSummary();
+}
+function updateSummary(){
+  const ci=document.getElementById('checkin').value;
+  const co=document.getElementById('checkout').value;
+  const nightly=parseFloat(document.getElementById('nightly').value)||0;
+  let nights=0; if(ci&&co) nights=Math.max(0,Math.round((new Date(co)-new Date(ci))/86400000));
+  const subtotal=nightly*nights;
+  const poolCost=addons['pool']?50*nights:0;
+  const base=subtotal+poolCost;
+  const fee=base*0.14, tax=base*0.13, total=base+fee+tax;
+  const fmt=v=>'$'+v.toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('sum-base').textContent=nightly?`${fmt(nightly)}/night`:'—';
+  document.getElementById('sum-nights').textContent=nights;
+  document.getElementById('sum-subtotal').textContent=fmt(subtotal);
+  document.getElementById('sum-fee').textContent=fmt(fee);
+  document.getElementById('sum-tax').textContent=fmt(tax);
+  document.getElementById('sum-total').textContent=fmt(total);
+  const pl=document.getElementById('pool-line');
+  if(addons['pool']&&nights>0){pl.style.display='flex';document.getElementById('sum-pool').textContent=fmt(poolCost);}
+  else pl.style.display='none';
+}
+
+// FAQ
+function toggleFaq(el){ el.parentElement.classList.toggle('open'); }
+
+// FORM
+async function submitInquiry(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const errDiv=document.getElementById('form-error');
+  const form=e.target;
+  errDiv.className='form-error';
+  const data={
+    name:form.name.value, email:form.email.value,
+    phone:form.phone.value||'Not provided',
+    bedrooms:form.bedrooms.value, checkin:form.checkin.value,
+    checkout:form.checkout.value, adults:form.adults.value,
+    children:form.children.value||'0', area:form.area.value,
+    budget:form.budget.value||'Not specified',
+    notes:form.notes.value||'None',
+    submitted_at:new Date().toLocaleString()
+  };
+  if(data.checkin&&data.checkout)
+    data.nights=Math.round((new Date(data.checkout)-new Date(data.checkin))/86400000);
+
+  btn.disabled=true; btn.textContent='Sending...';
+
+  if(!SETUP_DONE){
+    window.open('https://forms.gle/oTazMyd14HFsteg9A','_blank');
+    document.getElementById('form-success').classList.add('show');
+    form.style.display='none'; return;
+  }
+  try{
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_email:'info@hookstreetcapital.com',
+      from_name:data.name, from_email:data.email,
+      phone:data.phone, checkin:data.checkin, checkout:data.checkout,
+      nights:data.nights, bedrooms:data.bedrooms, adults:data.adults,
+      children:data.children, area:data.area, budget:data.budget,
+      notes:data.notes, submitted_at:data.submitted_at
+    });
+    if(SHEETS_URL!=="YOUR_APPS_SCRIPT_URL"){
+      await fetch(SHEETS_URL,{method:'POST',mode:'no-cors',
+        headers:{'Content-

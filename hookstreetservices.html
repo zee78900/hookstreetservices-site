@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sommereset Hills Villas | Hook Street Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --dark: #0E0D0B;
+    --dark-2: #1A1814;
+    --dark-3: #252320;
+    --mid: #3A3832;
+    --text: #E8E4DC;
+    --text-muted: #8A8680;
+    --white: #FAF8F4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(14,13,11,0.95), transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; letter-spacing: 0.12em;
+    color: var(--gold); text-decoration: none; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    padding: 9px 24px; border: 1px solid var(--gold);
+    color: var(--gold) !important; font-weight: 500;
+    transition: background 0.3s, color 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(135deg, #1a1410 0%, #0e0d0b 40%, #1a160e 100%);
+  }
+  .hero-bg::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,169,110,0.08) 0%, transparent 70%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(rgba(201,169,110,0.5) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(201,169,110,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index: 1; text-align: center;
+    max-width: 860px; padding: 0 30px;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; display: block;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--white); margin-bottom: 28px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 0.9rem; color: var(--text-muted); max-width: 520px; margin: 0 auto 48px;
+    letter-spacing: 0.03em;
+  }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 36px; background: var(--gold); color: var(--dark);
+    font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary {
+    padding: 13px 36px; border: 1px solid rgba(201,169,110,0.5);
+    color: var(--gold); font-family: 'Jost', sans-serif;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; background: transparent;
+    transition: border-color 0.3s, color 0.3s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--white); }
+  .hero-stats {
+    position: absolute; bottom: 50px; left: 0; right: 0;
+    display: flex; justify-content: center; gap: 60px; z-index: 1;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.2rem;
+    color: var(--gold); display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 6px; display: block;
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 40px; }
+  .section-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-desc { color: var(--text-muted); max-width: 560px; font-size: 0.92rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .divider {
+    width: 48px; height: 1px; background: var(--gold); margin: 20px 0 40px;
+  }
+
+  /* PROPERTIES */
+  #properties { background: var(--dark-2); }
+  .properties-header { text-align: center; margin-bottom: 64px; }
+  .properties-header .section-desc { margin: 0 auto; }
+  .properties-header .divider { margin: 20px auto 0; }
+  .property-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .property-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    background: var(--dark-3);
+  }
+  .property-img {
+    width: 100%; height: 420px; object-fit: cover;
+    transition: transform 0.6s ease; display: block;
+    background: linear-gradient(135deg, var(--dark-3), var(--mid));
+  }
+  .property-card:hover .property-img { transform: scale(1.03); }
+  .property-img-placeholder {
+    width: 100%; height: 420px;
+    background: linear-gradient(135deg, #252320 0%, #3A3832 50%, #252320 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 5rem;
+    color: rgba(201,169,110,0.15);
+  }
+  .property-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 36px 32px;
+    background: linear-gradient(to top, rgba(14,13,11,0.96) 0%, rgba(14,13,11,0.7) 60%, transparent 100%);
+  }
+  .property-badge {
+    display: inline-block; padding: 4px 12px;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .property-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+    font-weight: 300; color: var(--white); margin-bottom: 8px;
+  }
+  .property-meta {
+    font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .property-meta span { display: flex; align-items: center; gap: 6px; }
+  .property-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .property-actions a {
+    padding: 10px 22px; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-airbnb {
+    background: var(--gold); color: var(--dark);
+  }
+  .btn-airbnb:hover { background: var(--gold-light); }
+  .btn-inquire {
+    border: 1px solid rgba(201,169,110,0.4); color: var(--gold);
+  }
+  .btn-inquire:hover { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+  .property-note {
+    font-size: 0.68rem; color: var(--text-muted); margin-top: 8px; font-style: italic;
+  }
+  .property-network {
+    grid-column: 1 / -1;
+    padding: 48px 56px;
+    background: var(--dark-3);
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    flex-wrap: wrap;
+  }
+  .network-text { flex: 1; min-width: 260px; }
+  .network-text .section-eyebrow { margin-bottom: 10px; }
+  .network-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+    font-weight: 300; color: var(--white); margin-bottom: 12px;
+  }
+  .network-desc { color: var(--text-muted); font-size: 0.88rem; max-width: 480px; }
+  .network-communities {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+  }
+  .community-tag {
+    padding: 6px 14px; border: 1px solid rgba(201,169,110,0.2);
+    color: var(--text-muted); font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* CALCULATOR */
+  #calculator { background: var(--dark); }
+  .calc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .calc-info .section-desc { margin-bottom: 32px; }
+  .rates-note {
+    padding: 20px 24px; border-left: 2px solid var(--gold);
+    background: rgba(201,169,110,0.06); margin-bottom: 24px;
+    font-size: 0.85rem; color: var(--text-muted);
+  }
+  .rates-note strong { color: var(--gold); }
+  .calc-card {
+    background: var(--dark-2); padding: 40px;
+    border: 1px solid rgba(201,169,110,0.1);
+  }
+  .calc-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+    color: var(--white); margin-bottom: 28px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .form-group label {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .form-group input, .form-group select {
+    background: var(--dark-3); border: 1px solid rgba(201,169,110,0.15);
+    color: var(--text); padding: 12px 16px; font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; font-weight: 300; outline: none;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+    color-scheme: dark;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--gold);
+  }
+  .form-group select option { background: var(--dark-3); color: var(--text); }
+  .calc-result {
+    margin-top: 24px; padding: 24px;
+    background: var(--dark-3); border: 1px solid rgba(201,169,110,0.15);
+    display: none;
+  }
+  .calc-result.visible { display: block; }
+  .result-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.85rem; color: var(--text-muted); padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row.total {
+    color: var(--white); font-weight: 500; font-size: 1rem; padding-top: 12px;
+  }
+  .result-row.total span:last-child { color: var(--gold); }
+  .result-disclaimer {
+    font-size: 0.7rem; color: var(--text-muted); margin-top: 12px;
+    font-style: italic;
+  }
+  .calc-actions { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+
+  /* RESORTS */
+  #resorts { background: var(--dark-2); }
+  .resorts-header { text-align: center; margin-bottom: 60px; }
+  .resorts-header .divider { margin: 20px auto 0; }
+  .resort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .resort-card {
+    padding: 32px 28px;
+    background: var(--dark-3); border: 1px solid rgba(201,169,110,0.08);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .resort-card:hover { border-color: rgba(201,169,110,0.3); transform: translateY(-4px); }
+  .resort-icon {
+    font-size: 1.8rem; margin-bottom: 16px;
+  }
+  .resort-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .resort-dist { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 14px; }
+  .resort-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+  .resort-amenities { display: flex; flex-wrap: wrap; gap: 8px; }
+  .amenity-chip {
+    padding: 4px 10px; font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; border: 1px solid rgba(201,169,110,0.18);
+    color: var(--text-muted);
+  }
+
+  /* SERVICES */
+  #services { background: var(--dark); }
+  .services-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .services-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .service-item {
+    padding: 24px 20px;
+    border-top: 1px solid rgba(201,169,110,0.2);
+  }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.8rem;
+    color: var(--gold); opacity: 0.6; margin-bottom: 10px;
+  }
+  .service-name {
+    font-size: 0.88rem; font-weight: 500; color: var(--white); margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .service-desc { font-size: 0.78rem; color: var(--text-muted); }
+  .transport-highlight {
+    margin-top: 28px; padding: 20px 24px;
+    background: rgba(201,169,110,0.06); border-left: 2px solid var(--gold);
+  }
+  .transport-highlight p { font-size: 0.83rem; color: var(--text-muted); }
+  .transport-highlight strong { color: var(--gold); }
+
+  /* FAQ */
+  #faq { background: var(--dark-2); }
+  .faq-wrap { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
+  .faq-list { display: flex; flex-direction: column; gap: 2px; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .faq-question {
+    padding: 22px 0; display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer; gap: 20px;
+    font-size: 0.9rem; color: var(--text); font-weight: 400;
+    user-select: none;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-icon {
+    width: 24px; height: 24px; min-width: 24px;
+    border: 1px solid rgba(201,169,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1.1rem; transition: transform 0.3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-answer { max-height: 400px; }
+  .faq-answer p {
+    padding: 0 0 20px 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;
+  }
+  .faq-answer a { color: var(--gold); text-decoration: none; }
+  .faq-answer a:hover { text-decoration: underline; }
+
+  /* CONTACT */
+  #contact { background: var(--dark); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+  .contact-info { padding-top: 8px; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
+  .contact-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    border: 1px solid rgba(201,169,110,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1rem;
+  }
+  .contact-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .contact-value { font-size: 0.9rem; color: var(--text); }
+  .contact-value a { color: var(--gold); text-decoration: none; }
+  .contact-form-card {
+    background: var(--dark-2); padding: 48px;
+    border: 1px solid rgba(201,169,110,0.1);
+  }
+  .form-success {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .form-success.visible { display: block; }
+  .form-success-icon { font-size: 2.5rem; margin-bottom: 16px; }
+  .form-success h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .form-success p { color: var(--text-muted); font-size: 0.88rem; }
+  .form-note {
+    font-size: 0.75rem; color: var(--text-muted); margin-top: 14px;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark-2); padding: 60px 40px 40px;
+    border-top: 1px solid rgba(201,169,110,0.1);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 40px; flex-wrap: wrap; margin-bottom: 40px;
+    padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand .nav-brand { display: block; margin-bottom: 12px; }
+  .footer-tagline { font-size: 0.8rem; color: var(--text-muted); max-width: 260px; }
+  .footer-links { display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 0.78rem; color: var(--text-muted); text-decoration: none;
+    transition: color 0.3s; letter-spacing: 0.05em;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+  }
+  .footer-copy { font-size: 0.72rem; color: var(--text-muted); }
+  .footer-airbnb-links { display: flex; gap: 20px; }
+  .footer-airbnb-links a { font-size: 0.72rem; color: var(--gold); text-decoration: none; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    section { padding: 72px 20px; }
+    .property-grid { grid-template-columns: 1fr; }
+    .property-network { grid-column: 1; }
+    .calc-wrap, .services-wrap, .faq-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .resort-grid { grid-template-columns: 1fr 1fr; }
+    .services-list { grid-template-columns: 1fr; }
+    .hero-stats { gap: 30px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; }
+  }
+  @media (max-width: 600px) {
+    .resort-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.8rem; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in-view { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Hook Street Services</a>
+  <div class="nav-links">
+    <a href="#properties">Properties</a>
+    <a href="#calculator">Estimate</a>
+    <a href="#resorts">Communities</a>
+    <a href="#services">Services</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">ChampionsGate · Kissimmee · Near Disney</span>
+    <h1 class="hero-title">Private Luxury<br><em>Group Villas.</em></h1>
+    <p class="hero-sub">Our two flagship Disney-area villas — and access to vacation homes across every major resort community in the area. Whatever your group size or budget, we find the right fit.</p>
+    <div class="hero-actions">
+      <a href="#properties" class="btn-primary">View Properties</a>
+      <a href="#calculator" class="btn-secondary">Estimate My Trip</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">4.9★</span>
+      <span class="stat-label">Avg Rating</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">25+</span>
+      <span class="stat-label">Yrs Experience</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">200+</span>
+      <span class="stat-label">Villa Network</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="container">
+    <div class="properties-header reveal">
+      <p class="section-eyebrow">Our Flagship Listings</p>
+      <h2 class="section-title">Sommereset Hills <em>Villas</em></h2>
+      <p class="section-desc">Two luxury group villas in the heart of ChampionsGate — available to book directly on Airbnb or by reaching out to us for custom arrangements.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="property-grid">
+      <!-- 9332 -->
+      <div class="property-card reveal">
+        <div class="property-img-placeholder">⌂</div>
+        <div class="property-overlay">
+          <span class="property-badge">Flagship Villa</span>
+          <div class="property-name">9332 Sommereset Hills</div>
+          <div class="property-meta">
+            <span>🛏 Large Group Villa</span>
+            <span>⭐ 4.9 Rating</span>
+            <span>📍 ChampionsGate</span>
+          </div>
+          <div class="property-actions">
+            <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank" class="btn-airbnb property-actions">Check Availability on Airbnb</a>
+            <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-inquire property-actions">Send Inquiry</a>
+          </div>
+          <p class="property-note">Availability &amp; booking managed on Airbnb · Questions? Use the inquiry form</p>
+        </div>
+      </div>
+
+      <!-- 9312 -->
+      <div class="property-card reveal">
+        <div class="property-img-placeholder">⌂</div>
+        <div class="property-overlay">
+          <span class="property-badge">Flagship Villa</span>
+          <div class="property-name">9312 Sommereset Hills</div>
+          <div class="property-meta">
+            <span>🛏 Large Group Villa</span>
+            <span>⭐ 4.9 Rating</span>
+            <span>📍 ChampionsGate</span>
+          </div>
+          <div class="property-actions">
+            <a href="https://www.airbnb.com/rooms/888630410488333881?unique_share_id=19226b7c-972f-4e40-860b-5b36987e4255&viralityEntryPoint=1&s=76" target="_blank" class="btn-airbnb property-actions">Check Availability on Airbnb</a>
+            <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-inquire property-actions">Send Inquiry</a>
+          </div>
+          <p class="property-note">Availability &amp; booking managed on Airbnb · Questions? Use the inquiry form</p>
+        </div>
+      </div>
+
+      <!-- Network -->
+      <div class="property-network reveal">
+        <div class="network-text">
+          <p class="section-eyebrow">Beyond Our Flagships</p>
+          <div class="network-title">200+ Villas Across Every Major Resort Community</div>
+          <p class="network-desc">Can't find the right fit? We have access to vacation homes across ChampionsGate, Reunion, Eden Gardens, Windsor Hills, Emerald Island, Solara, and more — covering every group size and budget.</p>
+          <div class="network-communities">
+            <span class="community-tag">ChampionsGate</span>
+            <span class="community-tag">Reunion Resort</span>
+            <span class="community-tag">Eden Gardens</span>
+            <span class="community-tag">Windsor Hills</span>
+            <span class="community-tag">Emerald Island</span>
+            <span class="community-tag">Solara</span>
+            <span class="community-tag">Solterra</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; min-width: 240px;">
+          <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-primary" style="text-align:center;">Request a Villa</a>
+          <a href="#contact" class="btn-secondary" style="text-align:center;">Ask a Question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="container">
+    <div class="calc-wrap">
+      <div class="calc-info reveal">
+        <p class="section-eyebrow">Trip Estimate</p>
+        <h2 class="section-title">Plan Your <em>Stay</em></h2>
+        <div class="divider"></div>
+        <p class="section-desc">Get a ballpark estimate for your trip. Final pricing is confirmed on your Airbnb listing page — rates may vary by season and availability.</p>
+        <div class="rates-note" style="margin-top: 32px;">
+          <strong>How pricing works:</strong> Our nightly rates start from <strong>$350/night</strong> and are set per reservation on Airbnb, where you'll also see current availability, exact pricing, and any applicable fees. This calculator gives you a starting estimate only.
+        </div>
+      </div>
+      <div class="calc-card reveal">
+        <div class="calc-title">Estimate Your Trip</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Check-In Date</label>
+            <input type="date" id="checkin" />
+          </div>
+          <div class="form-group">
+            <label>Check-Out Date</label>
+            <input type="date" id="checkout" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <select id="guests">
+            <option value="">Select guests</option>
+            <option value="2">1–4 guests</option>
+            <option value="6">5–8 guests</option>
+            <option value="10">9–12 guests</option>
+            <option value="14">13–16 guests</option>
+            <option value="18">17–20 guests</option>
+            <option value="22">21+ guests</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Which Villa?</label>
+          <select id="villa-select">
+            <option value="">Select a property</option>
+            <option value="9332">9332 Sommereset Hills</option>
+            <option value="9312">9312 Sommereset Hills</option>
+            <option value="other">Other / Not Sure Yet</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="calculateTrip()" style="width:100%; margin-top: 8px;">Calculate Estimate</button>
+
+        <div class="calc-result" id="calc-result">
+          <div class="result-row">
+            <span id="nights-label">Nights</span>
+            <span id="nights-count">—</span>
+          </div>
+          <div class="result-row">
+            <span>Nightly Rate (starting from)</span>
+            <span>$350 / night</span>
+          </div>
+          <div class="result-row">
+            <span>Subtotal (est.)</span>
+            <span id="subtotal">—</span>
+          </div>
+          <div class="result-row">
+            <span>Cleaning Fee (est.)</span>
+            <span>~$250</span>
+          </div>
+          <div class="result-row total">
+            <span>Estimated Total</span>
+            <span id="total-estimate">—</span>
+          </div>
+          <p class="result-disclaimer">* This is a starting estimate only. Confirm exact pricing and availability on Airbnb before booking.</p>
+        </div>
+
+        <div class="calc-actions" id="calc-actions" style="display:none;">
+          <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank" class="btn-primary" style="text-align:center;" id="airbnb-link-9332">View 9332 on Airbnb</a>
+          <a href="https://www.airbnb.com/rooms/888630410488333881?unique_share_id=19226b7c-972f-4e40-860b-5b36987e4255&viralityEntryPoint=1&s=76" target="_blank" class="btn-primary" style="text-align:center;" id="airbnb-link-9312">View 9312 on Airbnb</a>
+          <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-secondary" style="text-align:center;">Have questions? Send an Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESORT COMMUNITIES -->
+<section id="resorts">
+  <div class="container">
+    <div class="resorts-header reveal">
+      <p class="section-eyebrow">Resort Communities</p>
+      <h2 class="section-title">World-Class <em>Amenities</em> Await</h2>
+      <p class="section-desc" style="margin: 0 auto;">Our villas are located in premier resort communities — each offering exceptional club amenities, just minutes from the theme parks.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="resort-grid">
+      <div class="resort-card reveal">
+        <div class="resort-icon">🏌️</div>
+        <div class="resort-name">ChampionsGate</div>
+        <div class="resort-dist">~15–20 min to Disney · Traffic may vary</div>
+        <p class="resort-desc">An award-winning golf resort community featuring the Oasis Clubhouse — an elaborate waterpark and recreation complex open to villa guests.</p>
+        <div class="resort-amenities">
+          <span class="amenity-chip">Waterpark</span>
+          <span class="amenity-chip">Lazy River</span>
+          <span class="amenity-chip">Pool Slides</span>
+          <span class="amenity-chip">Golf</span>
+          <span class="amenity-chip">Tennis</span>
+          <span class="amenity-chip">Basketball</span>
+          <span class="amenity-chip">Playground</span>
+          <span class="amenity-chip">Clubhouse</span>
+        </div>
+      </div>
+      <div class="resort-card reveal">
+        <div class="resort-icon">🏊</div>
+        <div class="resort-name">Reunion Resort</div>
+        <div class="resort-dist">~20–25 min to Disney · Traffic may vary</div>
+        <p class="resort-desc">A sprawling resort community with multiple pool complexes, a full-service spa, multiple restaurants, and three championship golf courses.</p>
+        <div class="resort-amenities">
+          <span class="amenity-chip">Multi-Pool Complex</span>
+          <span class="amenity-chip">Lazy River</span>
+          <span class="amenity-chip">Water Slides</span>
+          <span class="amenity-chip">Golf (×3)</span>
+          <span class="amenity-chip">Tennis</span>
+          <span class="amenity-chip">Spa</span>
+          <span class="amenity-chip">Clubhouse</span>
+        </div>
+      </div>
+      <div class="resort-card reveal">
+        <div class="resort-icon">🌿</div>
+        <div class="resort-name">Eden Gardens</div>
+        <div class="resort-dist">~15–25 min to Disney · Traffic may vary</div>
+        <p class="resort-desc">A lush, tranquil resort community offering beautiful pool areas, playground spaces, and a relaxed atmosphere perfect for family retreats.</p>
+        <div class="resort-amenities">
+          <span class="amenity-chip">Pool</span>
+          <span class="amenity-chip">Playground</span>
+          <span class="amenity-chip">Clubhouse</span>
+          <span class="amenity-chip">Family-Friendly</span>
+        </div>
+      </div>
+      <div class="resort-card reveal">
+        <div class="resort-icon">🎡</div>
+        <div class="resort-name">Windsor Hills</div>
+        <div class="resort-dist">~15 min to Disney · Traffic may vary</div>
+        <p class="resort-desc">One of the closest resort communities to Disney, Windsor Hills features a beautiful clubhouse, resort pool, and water slide.</p>
+        <div class="resort-amenities">
+          <span class="amenity-chip">Resort Pool</span>
+          <span class="amenity-chip">Water Slide</span>
+          <span class="amenity-chip">Tennis</span>
+          <span class="amenity-chip">Basketball</span>
+          <span class="amenity-chip">Playground</span>
+          <span class="amenity-chip">Clubhouse</span>
+        </div>
+      </div>
+      <div class="resort-card reveal">
+        <div class="resort-icon">🌊</div>
+        <div class="resort-name">Solara Resort</div>
+        <div class="resort-dist">~20 min to Disney · Traffic may vary</div>
+        <p class="resort-desc">A modern resort community with a stunning clubhouse featuring an outdoor amphitheater, resort-style pool, splash pad, and fitness center.</p>
+        <div class="resort-amenities">
+          <span class="amenity-chip">Resort Pool</span>
+          <span class="amenity-chip">Splash Pad</span>
+          <span class="amenity-chip">Amphitheater</span>
+          <span class="amenity-chip">Gym</span>
+          <span class="amenity-chip">Clubhouse</span>
+        </div>
+      </div>
+      <div class="resort-card reveal">
+        <div class="resort-icon">🏡</div>
+        <div class="resort-name">More Communities</div>
+        <div class="resort-dist">All within 15–25 min of Disney</div>
+        <p class="resort-desc">We also have properties in Emerald Island, Solterra, Bella Vida, and other communities. Tell us your preferences and we'll find the right fit.</p>
+        <div class="resort-amenities">
+          <span class="amenity-chip">Emerald Island</span>
+          <span class="amenity-chip">Solterra</span>
+          <span class="amenity-chip">Bella Vida</span>
+          <span class="amenity-chip">And More</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 48px;" class="reveal">
+      <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 20px;">
+        Note: Drive times to Walt Disney World and other parks are approximately 15–25 minutes depending on the community, and may be longer during peak traffic times.
+      </p>
+      <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-primary">Request a Villa in a Specific Community</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-wrap">
+      <div class="reveal">
+        <p class="section-eyebrow">What We Offer</p>
+        <h2 class="section-title">More Than a <em>Villa</em></h2>
+        <div class="divider"></div>
+        <p class="section-desc">We go beyond the keys — offering transportation, provisioning, and concierge services to make your stay completely seamless.</p>
+        <div class="transport-highlight">
+          <p><strong>Airport Transfers Available:</strong> We provide private transportation from <strong>Orlando International (MCO)</strong>, <strong>Orlando Sanford (SFB)</strong>, <strong>JFK</strong>, <strong>LaGuardia (LGA)</strong>, and <strong>Newark (EWR)</strong>. Group-sized vehicles available. Contact us for scheduling and rates.</p>
+        </div>
+        <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank" class="btn-primary" style="margin-top: 28px; display: inline-block;">Request a Service</a>
+      </div>
+      <div class="services-list">
+        <div class="service-item reveal">
+          <div class="service-num">01</div>
+          <div class="service-name">Airport Transfers</div>
+          <p class="service-desc">Door-to-door transport from all Orlando and New York area airports in group-appropriate vehicles.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">02</div>
+          <div class="service-name">Grocery & Provisioning</div>
+          <p class="service-desc">Villa pre-stocked with groceries, beverages, and essentials before your arrival.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">03</div>
+          <div class="service-name">Theme Park Planning</div>
+          <p class="service-desc">Itinerary guidance, park tickets, and FastPass strategy for Disney, Universal, and more.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">04</div>
+          <div class="service-name">Private Chef</div>
+          <p class="service-desc">In-villa catering and private chef services available for special occasions and larger groups.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">05</div>
+          <div class="service-name">Event Setup</div>
+          <p class="service-desc">Birthday, anniversary, or celebration decor and coordination for memorable in-villa moments.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">06</div>
+          <div class="service-name">Concierge Support</div>
+          <p class="service-desc">Dedicated point of contact available throughout your stay for any needs that arise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-wrap">
+      <div class="reveal">
+        <p class="section-eyebrow">Questions</p>
+        <h2 class="section-title">Frequently<br><em>Asked</em></h2>
+        <div class="divider"></div>
+        <p class="section-desc">Everything you need to know before your trip. Don't see your question? <a href="#contact" style="color: var(--gold);">Reach out directly.</a></p>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How do I check availability and book?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>The easiest way to check real-time availability and complete a booking is through our Airbnb listings — <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank">9332 Sommereset Hills</a> and <a href="https://www.airbnb.com/rooms/888630410488333881?unique_share_id=19226b7c-972f-4e40-860b-5b36987e4255&viralityEntryPoint=1&s=76" target="_blank">9312 Sommereset Hills</a>. If you're interested in another property from our network or have a custom request, <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">submit an inquiry</a> and we'll get back to you promptly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What's included with the villa rental?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>All villas include fully equipped kitchens, linens and towels, resort amenity access (pools, lazy river, slides, fitness centers, playgrounds, etc.), and parking. Specific inclusions vary by property — please review the listing for full details. Add-on services like grocery provisioning, airport transfers, and private chef are available on request.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Can I request a villa in a specific resort community?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely. We have properties across ChampionsGate, Reunion, Eden Gardens, Windsor Hills, Solara, Emerald Island, Solterra, and more. Submit a request through our <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">inquiry form</a> and tell us your preferred community, group size, and dates and we'll find the best match.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How far are the villas from Disney and other parks?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>Most of our resort communities are approximately 15–25 minutes from Walt Disney World, Universal Studios, and LEGOLAND. Drive times can be longer during peak traffic periods — we recommend building in a buffer, especially for morning rope-drop visits. Our concierge team can advise on the best routes and timing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Do you offer airport transportation?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>Yes — we provide private transportation from Orlando International (MCO), Orlando Sanford (SFB), JFK, LaGuardia (LGA), and Newark (EWR). Group-sized vehicles are available. Contact us in advance to schedule a pickup and get a quote.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What is your cancellation policy?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>Cancellation policies are managed through the booking platform. For reservations made via Airbnb, the policy is displayed on the listing before you confirm your booking. For custom or direct bookings, our team will provide the applicable terms at time of reservation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Is the contact form the right place for booking questions?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <p>For availability and pricing on our flagship Airbnb listings, head directly to the listing pages where you can see live availability. Use the <a href="#contact">contact form</a> or <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">inquiry form</a> for custom requests, service add-ons, questions about our villa network, or anything else you'd like to discuss before committing to a booking.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <p class="section-eyebrow">Get in Touch</p>
+        <h2 class="section-title">We're Here<br>to <em>Help</em></h2>
+        <div class="divider"></div>
+        <p class="section-desc" style="margin-bottom: 40px;">Custom requests, service add-ons, villa network inquiries — reach out and we'll respond within a few hours.</p>
+
+        <div class="contact-detail">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:info@hookstreetservices.com">info@hookstreetservices.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🏠</div>
+          <div>
+            <div class="contact-label">Check Availability</div>
+            <div class="contact-value">
+              <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank" style="display: block; margin-bottom: 4px;">9332 Sommereset Hills →</a>
+              <a href="https://www.airbnb.com/rooms/888630410488333881?unique_share_id=19226b7c-972f-4e40-860b-5b36987e4255&viralityEntryPoint=1&s=76" target="_blank">9312 Sommereset Hills →</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✈</div>
+          <div>
+            <div class="contact-label">Airports We Serve</div>
+            <div class="contact-value" style="font-size: 0.82rem; line-height: 1.8; color: var(--text-muted);">
+              MCO · SFB (Orlando Area)<br>JFK · LGA · EWR (New York Area)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal">
+        <div id="form-success" class="form-success">
+          <div class="form-success-icon">✓</div>
+          <h3>Message Sent</h3>
+          <p>Thank you — we'll be in touch within a few hours.</p>
+        </div>
+        <!-- 
+          DEVELOPER NOTE: Replace "your@email.com" in the form action with your actual email.
+          FormSubmit.co sends form submissions to that email address for free with no backend needed.
+          First submission triggers a one-time confirmation email to activate.
+        -->
+        <form id="contact-form" action="https://formsubmit.co/info@hookstreetservices.com" method="POST" onsubmit="handleFormSubmit(event)">
+          <input type="hidden" name="_subject" value="New inquiry from hookstreetservices.com">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://hookstreetservices.com/#contact">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" name="first_name" required placeholder="Jane">
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" name="last_name" required placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" required placeholder="jane@example.com">
+          </div>
+          <div class="form-group">
+            <label>Phone (optional)</label>
+            <input type="tel" name="phone" placeholder="+1 (555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label>What can we help with?</label>
+            <select name="inquiry_type">
+              <option value="">Select a topic</option>
+              <option value="villa_request">Request a Villa from Our Network</option>
+              <option value="services">Transportation or Add-On Services</option>
+              <option value="group_booking">Large Group Booking</option>
+              <option value="general">General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea name="message" required rows="4" style="background: var(--dark-3); border: 1px solid rgba(201,169,110,0.15); color: var(--text); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 300; outline: none; resize: vertical; width: 100%; transition: border-color 0.3s;" placeholder="Tell us about your group size, dates, preferred community, or any other details..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 8px; border: none;">Send Message</button>
+          <p class="form-note">By submitting this form you agree to be contacted regarding your inquiry. For real-time availability and booking, visit our <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank" style="color: var(--gold);">Airbnb listings</a> directly.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-brand">Hook Street Services</a>
+        <p class="footer-tagline">Luxury group villas near Walt Disney World — ChampionsGate, Kissimmee, FL.</p>
+      </div>
+      <div>
+        <p style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;">Listings</p>
+        <div class="footer-links">
+          <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank">9332 Sommereset Hills on Airbnb</a>
+          <a href="https://www.airbnb.com/rooms/888630410488333881?unique_share_id=19226b7c-972f-4e40-860b-5b36987e4255&viralityEntryPoint=1&s=76" target="_blank">9312 Sommereset Hills on Airbnb</a>
+          <a href="https://forms.gle/oTazMyd14HFsteg9A" target="_blank">Request a Villa / Submit Inquiry</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;">Navigate</p>
+        <div class="footer-links">
+          <a href="#properties">Properties</a>
+          <a href="#calculator">Trip Estimate</a>
+          <a href="#resorts">Communities</a>
+          <a href="#services">Services</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px;">Airports Served</p>
+        <div class="footer-links">
+          <a href="#services">Orlando MCO</a>
+          <a href="#services">Orlando SFB</a>
+          <a href="#services">New York JFK</a>
+          <a href="#services">New York LGA</a>
+          <a href="#services">Newark EWR</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Hook Street Services. All rights reserved.</p>
+      <div class="footer-airbnb-links">
+        <a href="https://www.airbnb.com/rooms/797124679730479939?unique_share_id=2d23d58a-5119-4a03-a6ed-487eed7b0092&viralityEntryPoint=1&s=76" target="_blank">View 9332 on Airbnb</a>
+        <a href="https://www.airbnb.com/rooms/888630410488333881?unique_share_id=19226b7c-972f-4e40-860b-5b36987e4255&viralityEntryPoint=1&s=76" target="_blank">View 9312 on Airbnb</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // CALCULATOR
+  function calculateTrip() {
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const villaSelect = document.getElementById('villa-select').value;
+    const resultDiv = document.getElementById('calc-result');
+    const actionsDiv = document.getElementById('calc-actions');
+
+    if (!checkin || !checkout) {
+      alert('Please select check-in and check-out dates.');
+      return;
+    }
+
+    const inDate = new Date(checkin);
+    const outDate = new Date(checkout);
+    const nights = Math.round((outDate - inDate) / (1000 * 60 * 60 * 24));
+
+    if (nights <= 0) {
+      alert('Check-out must be after check-in.');
+      return;
+    }
+
+    const baseRate = 350;
+    const subtotal = nights * baseRate;
+    const cleaning = 250;
+    const total = subtotal + cleaning;
+
+    document.getElementById('nights-label').textContent = `${nights} Night${nights !== 1 ? 's' : ''}`;
+    document.getElementById('nights-count').textContent = `${nights} night${nights !== 1 ? 's' : ''}`;
+    document.getElementById('subtotal').textContent = `$${subtotal.toLocaleString()}`;
+    document.getElementById('total-estimate').textContent = `$${total.toLocaleString()}+`;
+
+    resultDiv.classList.add('visible');
+    actionsDiv.style.display = 'flex';
+    actionsDiv.style.flexDirection = 'column';
+    actionsDiv.style.gap = '10px';
+    actionsDiv.style.marginTop = '20px';
+
+    // Show relevant Airbnb links based on selection
+    const link9332 = document.getElementById('airbnb-link-9332');
+    const link9312 = document.getElementById('airbnb-link-9312');
+    if (villaSelect === '9332') {
+      link9332.style.display = 'block';
+      link9312.style.display = 'none';
+    } else if (villaSelect === '9312') {
+      link9332.style.display = 'none';
+      link9312.style.display = 'block';
+    } else {
+      link9332.style.display = 'block';
+      link9312.style.display = 'block';
+    }
+  }
+
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+  document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+  });
+
+  // FAQ
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // FORM SUBMISSION
+  function handleFormSubmit(e) {
+    // Let FormSubmit handle the actual submission
+    // This just shows a success state if JS intercepts it
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    
+    // For demonstration — actual form posts to FormSubmit
+    // Uncomment below to enable AJAX submission instead of page redirect:
+    /*
+    e.preventDefault();
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(() => {
+      form.style.display = 'none';
+      success.classList.add('visible');
+    });
+    */
+  }
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
