@@ -1,1 +1,8 @@
 .claude/
+
+# Invoices / PDFs — store in Drive, not in site repo
+*.pdf
+
+# Bookings folder
+"Hook Street Bookings & Rentals/"
+Hook\ Street\ Bookings*
