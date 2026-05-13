@@ -35,10 +35,21 @@ The branded graphic: "The most powerful thing you can say to AI: Wait — I'm no
 Positioning: Hook Street Services as a systems-first, AI-integrated operations firm.
 Services: Helping businesses integrate AI tools into their day-to-day operations — not just as gimmicks but as actual workflow infrastructure.
 
-### 6. Community Technology (LevText / Malca Yenta direction)
+### 6. Community Technology (LevSMS / Malca Yenta direction)
 SMS-based community information systems for observant Jewish communities.
 No app, no login, works on kosher phones.
 Potential white-label service offering.
+
+### 7. Youth Financial Literacy / Youth Money Map
+Practical money literacy for bar/bat mitzvah age students, teens, and parents.
+Initial format: two-session 1:1 pilot or small cohort, supported by a parent-controlled Google Sheet.
+Services: money-in/money-out map, saving/giving/spending goals, basic decision habits, twice-yearly check-in option.
+Target: parents who want financial literacy and accountability without granting account access.
+
+### 8. Revenue Loop Sprint
+Small-business offer for owners who do not need expense cuts as much as they need more leads, better follow-up, and visible sales activity.
+Services: lead source map, referral prompts, follow-up tracker, weekly scorecard, simple offer packaging.
+Target: commission-driven or service businesses where one closed deal can pay for the sprint.
 
 ## Brand Identity (from current site)
 - Colors: Navy (#0d1b2e) + Gold (#c9a055) + Cream
@@ -50,7 +61,8 @@ Potential white-label service offering.
 - `images/social/wait-not-done-ai.png` — "The most powerful thing you can say to AI: Wait — I'm not done yet." (Hook Street Services branded)
 
 ## Next Build Priorities
-1. Add services section to hookstreet-v8.html beyond just villa rentals
-2. Add AI/consulting positioning to hero or about section
-3. Create social media content series around the AI graphic
-4. Wire info@hookstreetservices.com → sam@hookstreetcapital.com via domain alias
+1. Publish `systems.html` as the test page for Business Systems, Revenue Loop Sprint, and Youth Money Map.
+2. Use the page as a shareable pilot link before building a course, portal, or full intake app.
+3. Create a simple intake form for systems pilots: business type, money pressure, current tools, target result, budget range.
+4. Create social media content series around the AI graphic.
+5. Wire info@hookstreetservices.com → sam@hookstreetcapital.com via domain alias.
