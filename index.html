@@ -275,6 +275,7 @@ footer{background:var(--navy);padding:40px 20px 24px;border-top:1px solid rgba(2
       <li><a href="#properties">Villas</a></li>
       <li><a href="#communities">Communities</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#advisory">Advisory</a></li>
       <li><a href="systems.html">Business Systems</a></li>
       <li><a href="#calculator">Estimate</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -703,6 +704,76 @@ footer{background:var(--navy);padding:40px 20px 24px;border-top:1px solid rgba(2
       <div class="faq-item"><button class="faq-q" onclick="openFaq(this)">What if I need something smaller than 8 bedrooms?<span class="arr">▾</span></button><div class="faq-a"><div class="faq-a-inner">We have access to homes across ChampionsGate, Solterra, Encore at Reunion, Windsor Island, Windsor at Westside, Solara, and other communities. Fill out the inquiry form with your dates, group size, and budget — we'll come back with options.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="openFaq(this)">What is the minimum age to rent?<span class="arr">▾</span></button><div class="faq-a"><div class="faq-a-inner">Most resort communities require the primary renter to be 25 or older. If you're between 21–24, mention it in your inquiry and we'll advise on available options.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="openFaq(this)">What is your cancellation policy?<span class="arr">▾</span></button><div class="faq-a"><div class="faq-a-inner">For reservations made via Airbnb, the cancellation policy is displayed on the listing page before you confirm. For direct bookings, our team provides the applicable terms at time of reservation.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORY & SYSTEMS — six audiences, problem-first -->
+<style>
+  #advisory .aud-intro{max-width:680px;margin:0 auto 14px;text-align:center;color:var(--sub);font-size:.9rem;line-height:1.75;font-weight:300;}
+  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;}
+  @media(max-width:860px){.aud-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.aud-grid{grid-template-columns:1fr;}}
+  .aud-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:26px 24px;
+    box-shadow:var(--sh);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;}
+  .aud-card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg);}
+  .aud-tag{font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .aud-problem{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;line-height:1.3;color:var(--text);margin-bottom:12px;}
+  .aud-pitch{font-size:.86rem;color:var(--sub);line-height:1.7;font-weight:300;flex:1;}
+  .aud-cta{margin-top:16px;font-size:.8rem;font-weight:600;color:var(--navy);text-decoration:none;letter-spacing:.01em;}
+  .aud-cta:hover{color:var(--gold);}
+</style>
+<section class="sec sec-alt" id="advisory">
+  <div class="sec-inner">
+    <div class="sec-hd">
+      <p class="eyebrow">Advisory &amp; Systems</p>
+      <h2 class="ttl">Make the numbers and the operation <em>legible.</em></h2>
+      <p class="aud-intro">A decade of independent real-estate underwriting and multi-site operations — packaged for hire. You pay for the work and the deliverable, not a hoped-for outcome. Find the one that fits what you're carrying.</p>
+    </div>
+    <div class="aud-grid">
+
+      <div class="aud-card">
+        <div class="aud-tag">Buyers · Sponsors · Operators</div>
+        <div class="aud-problem">Need to know what a deal is really worth before you bid?</div>
+        <p class="aud-pitch">Send the deal — you get an independent value range and a clear bid recommendation in days, not weeks. A real model and a clean snapshot package, not a black box.</p>
+        <a class="aud-cta" href="#contact">Send a deal →</a>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-tag">Owner-Operators · Small Teams</div>
+        <div class="aud-problem">Is every decision, follow-up, and payment stuck in your head?</div>
+        <p class="aud-pitch">We build the operating system — working sheets, a single command inbox, and a follow-up cadence with owners and dates — so the business runs without depending on anyone's memory.</p>
+        <a class="aud-cta" href="systems.html">See the build →</a>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-tag">Nonprofits · Community Orgs</div>
+        <div class="aud-problem">Is the mission outpacing the back office?</div>
+        <p class="aud-pitch">We install the operational backbone — intake, vendor coordination, and visible follow-through — so your team executes the mission instead of firefighting the admin.</p>
+        <a class="aud-cta" href="#contact">Start a conversation →</a>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-tag">Short-Term Rental Owners</div>
+        <div class="aud-problem">Is your rental running you instead of for you?</div>
+        <p class="aud-pitch">We set up the pricing, vendor, and guest-communication systems that let you self-manage cleanly — the operations of two flagship villas, turned into a system you can run.</p>
+        <a class="aud-cta" href="#contact">Talk systems →</a>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-tag">Group &amp; Family Travel</div>
+        <div class="aud-problem">Planning a big trip near Disney with a large group?</div>
+        <p class="aud-pitch">Stay in a private 8-bedroom villa that's kosher-ready and concierge-managed — airport transfers, provisioning, and theme-park planning handled, so the only thing you plan is the fun.</p>
+        <a class="aud-cta" href="#properties">See the villas →</a>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-tag">Parents · Youth Money Map</div>
+        <div class="aud-problem">Want your kids to actually understand money?</div>
+        <p class="aud-pitch">A simple, parent-controlled financial-literacy pilot built around real habits — saving, giving, and spending — so they learn to handle money without being handed account access.</p>
+        <a class="aud-cta" href="systems.html">Learn more →</a>
+      </div>
+
     </div>
   </div>
 </section>
