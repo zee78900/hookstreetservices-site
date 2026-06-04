@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>RE Deal Snapshot | Hook Street Services</title>
+<meta name="description" content="A 24-hour independent underwriting read on a real-estate deal you're considering. Institutional-grade, flat fee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1b2e;--navy2:#152338;--gold:#c9a055;--gold2:#e8d5a3;--cream:#faf8f5;--white:#fff;--sand:#f3ede4;--border:#e4e0d8;--border2:#ede9e2;--text:#1a1612;--sub:#5a5450;--muted:#9b9490;--ok:#0f766e;--sh:0 2px 16px rgba(13,27,46,.08);--r:12px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.6;font-size:15px;font-variant-numeric:tabular-nums}
+.wrap{max-width:740px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left)) calc(48px + env(safe-area-inset-bottom))}
+.topbar{max-width:740px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.topbar a.logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--navy);text-decoration:none}
+.topbar a.logo span{color:var(--gold);font-style:italic}
+.topbar a.back{font-size:.8rem;color:var(--sub);text-decoration:none}
+header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-bottom:3px solid var(--gold);border-radius:14px;padding:30px 26px 32px;position:relative;margin-bottom:24px}
+header.hero .bsd{position:absolute;top:18px;right:20px;color:var(--gold2);font-size:13px;font-weight:700;font-family:'Cormorant Garamond',serif}
+header.hero .brand{font:600 11px/1 'DM Sans';color:var(--gold);letter-spacing:.16em;text-transform:uppercase}
+header.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,3rem);font-weight:300;margin:10px 0 8px;letter-spacing:-.5px;line-height:1.05}
+header.hero .sub{font-size:14.5px;color:#cbd5e1;line-height:1.5;max-width:560px}
+.lede{font:300 18px/1.6 'DM Sans';color:var(--text);margin:0 0 8px}
+h2{font:600 11px/1 'DM Sans';color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin:30px 0 12px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin:0 0 12px;font-size:15px;line-height:1.55;box-shadow:var(--sh)}
+.card.gold{border-color:var(--gold);border-width:2px}
+.card h3{margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400}
+.card p{margin:7px 0;color:var(--text)}
+.card .price{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:400;color:var(--navy);letter-spacing:-1px;margin:4px 0 2px}
+.card .tag{font-size:12.5px;color:var(--muted)}
+ul.checks{list-style:none;padding:0;margin:6px 0}
+ul.checks li{padding:7px 0 7px 26px;position:relative;font-size:14.5px;color:var(--text)}
+ul.checks li:before{content:"";position:absolute;left:0;top:12px;width:13px;height:13px;background:var(--ok);border-radius:50%;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='white' d='M6.4 11.2L3.2 8l1.13-1.13L6.4 8.94l5.27-5.27L12.8 4.8z'/></svg>") center/11px no-repeat}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.proof > div{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;box-shadow:var(--sh)}
+.proof .n{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;color:var(--navy);display:block;line-height:1}
+.proof .l{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:6px;display:block}
+@media(max-width:560px){.proof{grid-template-columns:1fr 1fr}.proof>div:nth-child(3){grid-column:span 2}}
+.cta{display:block;text-align:center;background:var(--navy);color:var(--gold2);text-decoration:none;padding:16px 18px;border-radius:var(--r);font:600 16px/1.2 'DM Sans';border:2px solid var(--gold);margin:16px 0 8px}
+.cta.email{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+footer.foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.6}
+footer.foot a{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="logo" href="index.html">Hook Street <span>Services</span></a>
+  <a class="back" href="index.html#advisory">← All services</a>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="bsd">בס״ד</span>
+  <div class="brand">Hook Street Services · Advisory</div>
+  <h1>RE Deal Snapshot</h1>
+  <div class="sub">A 24-hour independent underwriting read on a real-estate deal you're considering. Institutional-grade. Flat fee.</div>
+</header>
+
+<p class="lede">You found a deal. The broker's package looks good. You don't have time to underwrite it from scratch, but you can't write the LOI on gut alone. Send it — by tomorrow you'll know what's load-bearing, what's hidden, and what the return actually looks like once the broker's assumptions get stress-tested.</p>
+
+<h2>What you get back</h2>
+<div class="card">
+  <ul class="checks">
+    <li><b>One-page snapshot</b> — go / maybe / walk, with the three reasons that drove it</li>
+    <li><b>Underwriting waterfall</b> — purchase, debt service, capex, NOI, cash-on-cash, IRR, hold-period breakeven (real numbers, not the broker's)</li>
+    <li><b>Sensitivity table</b> — your return if rents miss 5% / 10%, cap-rate softens 50 / 100 bps, refi rate rises 1 pt</li>
+    <li><b>The three hidden risks</b> — capex you're not pricing, op-ex normalization gaps, market signals the broker glossed</li>
+    <li><b>Comp pull</b> — 3–5 recent comparable transactions where available, with deltas</li>
+    <li><b>Exit math</b> — base / bull / bear hold and refi scenarios</li>
+    <li><b>30-minute review call</b> after delivery to walk you through it</li>
+  </ul>
+</div>
+
+<h2>Who this is for</h2>
+<div class="card">
+  <p><b>Operators &amp; sponsors</b> writing $1M–$25M LOIs who need a second pair of eyes before signing.</p>
+  <p><b>Family offices &amp; LP-side investors</b> evaluating a sponsor's deal who want an independent read on the underwriting.</p>
+  <p><b>Brokers &amp; capital sources</b> who need a quick second opinion before a referral.</p>
+  <p style="color:var(--sub);font-size:13.5px"><b>Not the right fit if:</b> the deal is under $500K, the property isn't identified yet, or you need a formal appraisal (this is underwriting, not appraisal).</p>
+</div>
+
+<h2>Why me</h2>
+<div class="card">
+  <p>A decade-plus of independent real-estate underwriting, multi-site operations, and large-scale event operations — for institutional partners and private operators across multifamily, industrial, and development land in NY, TX, FL, MS, and GA. I've underwritten, financed, and operated on both sides of the table, so I know what a broker's package leaves out.</p>
+  <p>Hook Street Services is the consulting arm of Hook Street Capital. Same operator, fixed price, 24-hour turnaround.</p>
+</div>
+
+<h2>By the numbers</h2>
+<div class="proof">
+  <div><span class="n">$2,500</span><span class="l">Flat fee</span></div>
+  <div><span class="n">24h</span><span class="l">Turnaround</span></div>
+  <div><span class="n">$1M–$25M</span><span class="l">Deal range</span></div>
+</div>
+
+<h2>How it works</h2>
+<div class="card">
+  <p><b>1.</b> Email the deal package (OM, broker's underwriting, rent roll, T-12 if available).</p>
+  <p><b>2.</b> I confirm scope and send a payment link. Work starts the moment payment lands.</p>
+  <p><b>3.</b> Within 24 hours: one-page snapshot + full waterfall + sensitivity table delivered.</p>
+  <p><b>4.</b> We schedule the 30-minute review call within 48 hours.</p>
+</div>
+
+<div class="card gold">
+  <h3>Pricing</h3>
+  <div class="price">$2,500</div>
+  <div class="tag">flat — no hidden fees, no scope creep, deliverables guaranteed</div>
+  <p style="margin-top:12px"><b>Optional add-ons (à la carte):</b><br>
+  <span style="color:var(--sub)">+ deeper diligence pass with analyst extension<br>
+  + quarterly hold-and-watch updates<br>
+  + sponsor / LP slide-deck export</span></p>
+</div>
+
+<a class="cta email" href="mailto:sam@hookstreetcapital.com?subject=Deal%20Snapshot%20request&body=Hi%20Sam%2C%0A%0AI'd%20like%20to%20commission%20a%20Deal%20Snapshot.%20Quick%20context%3A%0A%0ADeal%20type%20(multifamily%2Foffice%2Fretail%2Fmixed%2FSTR%2Fother)%3A%0AAsk%20price%20%2F%20LOI%20stage%3A%0AMarket%3A%0ATimeline%20I'm%20working%20against%3A%0A%0AThanks%2C">Request a Deal Snapshot → email Sam</a>
+<a class="cta" href="STRIPE_PAYMENT_LINK_HERE" id="cta-pay" target="_blank" rel="noopener">Or pay now — $2,500</a>
+<p class="fine">Prefer to talk first? Email is the fastest start — I confirm scope, then send a secure payment link.</p>
+<!-- SAM: the "Pay now" button points at a placeholder. To activate: Stripe Dashboard → Products → "RE Deal Snapshot" $2,500 one-time → Create payment link → paste the URL over STRIPE_PAYMENT_LINK_HERE above. Until then, the email CTA is the working path. -->
+
+<footer class="foot">
+  <p><b>Hook Street Services</b> · sam@hookstreetcapital.com · an imprint of Hook Street Capital LLC</p>
+  <p>Not legal, tax, or investment advice. Real-estate underwriting consulting only. No fiduciary relationship is formed by a Deal Snapshot engagement. Conflict-of-interest disclosures provided in writing for any deal where Hook Street has a direct or indirect interest.</p>
+</footer>
+
+</div>
+</body>
+</html>
