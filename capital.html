@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Business Capital &amp; Receivables | Hook Street Services</title>
+<meta name="description" content="Sell receivables or get your business funded. Send your financials securely — confidential review, fast answer, flat fee not a cut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1b2e;--navy2:#152338;--gold:#c9a055;--gold2:#e8d5a3;--cream:#faf8f5;--white:#fff;--sand:#f3ede4;--border:#e4e0d8;--border2:#ede9e2;--text:#1a1612;--sub:#5a5450;--muted:#9b9490;--ok:#0f766e;--sh:0 2px 16px rgba(13,27,46,.08);--r:12px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.6;font-size:15px;font-variant-numeric:tabular-nums}
+.wrap{max-width:740px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left)) calc(48px + env(safe-area-inset-bottom))}
+.topbar{max-width:740px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.topbar a.logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--navy);text-decoration:none}
+.topbar a.logo span{color:var(--gold);font-style:italic}
+.topbar a.back{font-size:.8rem;color:var(--sub);text-decoration:none}
+header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-bottom:3px solid var(--gold);border-radius:14px;padding:30px 26px 32px;position:relative;margin-bottom:24px}
+header.hero .bsd{position:absolute;top:18px;right:20px;color:var(--gold2);font-size:13px;font-weight:700;font-family:'Cormorant Garamond',serif}
+header.hero .brand{font:600 11px/1 'DM Sans';color:var(--gold);letter-spacing:.16em;text-transform:uppercase}
+header.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,3rem);font-weight:300;margin:10px 0 8px;letter-spacing:-.5px;line-height:1.05}
+header.hero .sub{font-size:14.5px;color:#cbd5e1;line-height:1.5;max-width:560px}
+.lede{font:300 18px/1.6 'DM Sans';color:var(--text);margin:0 0 8px}
+h2{font:600 11px/1 'DM Sans';color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin:30px 0 12px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin:0 0 12px;font-size:15px;line-height:1.55;box-shadow:var(--sh)}
+.card.gold{border-color:var(--gold);border-width:2px}
+.card h3{margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400}
+.card p{margin:7px 0;color:var(--text)}
+ul.checks{list-style:none;padding:0;margin:6px 0}
+ul.checks li{padding:7px 0 7px 26px;position:relative;font-size:14.5px;color:var(--text)}
+ul.checks li:before{content:"";position:absolute;left:0;top:12px;width:13px;height:13px;background:var(--ok);border-radius:50%;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='white' d='M6.4 11.2L3.2 8l1.13-1.13L6.4 8.94l5.27-5.27L12.8 4.8z'/></svg>") center/11px no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='white' d='M6.4 11.2L3.2 8l1.13-1.13L6.4 8.94l5.27-5.27L12.8 4.8z'/></svg>") center/11px no-repeat}
+/* form */
+form#intake{margin:0}
+.field{margin:0 0 14px}
+.field label{display:block;font:600 12px/1 'DM Sans';color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px}
+.field .req{color:var(--gold)}
+.field input,.field select,.field textarea{width:100%;font:400 15px/1.4 'DM Sans';color:var(--text);background:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 13px;-webkit-appearance:none;appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,160,85,.15)}
+.field textarea{min-height:90px;resize:vertical}
+.field select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%235a5450' d='M4 6l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 12px center;background-size:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.drop{border:1.5px dashed var(--gold);border-radius:10px;background:var(--sand);padding:18px;text-align:center;cursor:pointer;transition:background .15s}
+.drop:hover,.drop.over{background:#efe7d8}
+.drop .big{font:500 15px/1.3 'DM Sans';color:var(--navy)}
+.drop .small{font-size:12.5px;color:var(--muted);margin-top:4px}
+.filelist{margin:10px 0 0;font-size:13px;color:var(--sub)}
+.filelist div{padding:4px 0;display:flex;justify-content:space-between;gap:8px}
+.cta{display:block;width:100%;text-align:center;background:var(--navy);color:var(--gold2);text-decoration:none;padding:16px 18px;border-radius:var(--r);font:600 16px/1.2 'DM Sans';border:2px solid var(--gold);margin:8px 0;cursor:pointer}
+.cta:disabled{opacity:.6;cursor:default}
+.secure{display:flex;gap:10px;align-items:flex-start;background:#f0f5f3;border:1px solid #cfe3dd;border-radius:10px;padding:13px 15px;margin:0 0 16px}
+.secure svg{flex:0 0 auto;margin-top:1px}
+.secure p{font-size:13px;color:#0f5148;line-height:1.5;margin:0}
+.status{display:none;border-radius:10px;padding:14px 16px;margin:8px 0;font-size:14.5px;line-height:1.5}
+.status.ok{display:block;background:#e9f5ee;border:1px solid #b6dfc6;color:#0f5132}
+.status.err{display:block;background:#fdecec;border:1px solid #f3c2c2;color:#8a1c1c}
+.fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+footer.foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.6}
+footer.foot a{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="logo" href="index.html">Hook Street <span>Services</span></a>
+  <a class="back" href="index.html#advisory">← All services</a>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="bsd">בס״ד</span>
+  <div class="brand">Hook Street Services · Capital</div>
+  <h1>Business Capital &amp; Receivables</h1>
+  <div class="sub">Sell receivables, factor invoices, or get your business funded. Send your numbers securely — you get a straight answer fast, and the fee is a flat fee, never a cut of your money.</div>
+</header>
+
+<p class="lede">You need capital and you need it clean — no drawn-out application, no surprise take-rate on the back end. Send your financials through the secure form below. They land straight in our private vault, they're reviewed only by Sam, and you'll hear back with a real read: what we can do, how fast, and exactly what it costs.</p>
+
+<h2>What we look at</h2>
+<div class="card">
+  <ul class="checks">
+    <li><b>Accounts-receivable purchase</b> — sell current, collectible receivables for cash now</li>
+    <li><b>Invoice factoring</b> — advance against outstanding invoices as they age</li>
+    <li><b>Business lines &amp; term capital</b> — structured against your real cash flow</li>
+    <li><b>MCA / high-cost debt payoff</b> — replace a punishing advance with something sane</li>
+    <li><b>Straight talk</b> — if it isn't a fit, we tell you that too, and why</li>
+  </ul>
+</div>
+
+<div class="secure">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 8.4-7 9-3.6-.6-7-4-7-9V5l7-3z" fill="#0f766e"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <p><b>Secure &amp; confidential.</b> Your documents upload over an encrypted connection straight into Hook Street's private cloud vault — not email, not a shared folder. They're seen only by Sam and held in strict confidence. Nothing is posted, listed, or shared.</p>
+</div>
+
+<h2>Send your details</h2>
+<div class="card gold">
+  <form id="intake" novalidate>
+    <div class="row">
+      <div class="field"><label>Your name <span class="req">*</span></label><input type="text" name="name" autocomplete="name" required></div>
+      <div class="field"><label>Company</label><input type="text" name="company" autocomplete="organization"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" autocomplete="email" required></div>
+      <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>What are you looking for?</label>
+        <select name="dealType">
+          <option value="">Select…</option>
+          <option>Receivables purchase</option>
+          <option>Invoice factoring</option>
+          <option>Business line of credit</option>
+          <option>Term capital</option>
+          <option>MCA / high-cost debt payoff</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="field"><label>Amount you need / receivables size</label><input type="text" name="amount" placeholder="e.g. $250,000"></div>
+    </div>
+    <div class="field"><label>Anything we should know</label><textarea name="notes" placeholder="Timeline, what the money's for, current situation…"></textarea></div>
+
+    <div class="field">
+      <label>Upload financials (AR aging, bank statements, invoices, P&amp;L)</label>
+      <div class="drop" id="drop">
+        <div class="big">Tap to choose files, or drag them here</div>
+        <div class="small">PDF, Excel, CSV, images · up to 8 files · 20&nbsp;MB each</div>
+      </div>
+      <input type="file" id="files" name="files" multiple style="display:none" accept=".pdf,.xls,.xlsx,.csv,.doc,.docx,.png,.jpg,.jpeg,.heic,.txt">
+      <div class="filelist" id="filelist"></div>
+    </div>
+
+    <div class="status" id="status"></div>
+    <button type="submit" class="cta" id="submit">Send securely →</button>
+    <p class="fine">By sending, you consent to Hook Street reviewing these documents to evaluate a possible engagement. No engagement or obligation is created until confirmed in writing. Not legal, tax, or investment advice.</p>
+  </form>
+</div>
+
+<footer class="foot">
+  <p><b>Hook Street Services</b> · sam@hookstreetcapital.com · an imprint of Hook Street Capital LLC</p>
+  <p>Confidential business-capital review. Flat-fee engagements, disclosed in writing. No fiduciary relationship is formed by submitting this form.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var ENDPOINT = 'https://ops-api.sam-0f0.workers.dev/intake/submit';
+  var MAX_FILES = 8, MAX_BYTES = 20*1024*1024;
+  var drop = document.getElementById('drop'),
+      input = document.getElementById('files'),
+      list = document.getElementById('filelist'),
+      form = document.getElementById('intake'),
+      status = document.getElementById('status'),
+      btn = document.getElementById('submit');
+  var chosen = [];
+
+  function fmt(b){ return b < 1024*1024 ? Math.round(b/1024)+' KB' : (b/1048576).toFixed(1)+' MB'; }
+  function render(){
+    list.innerHTML = chosen.map(function(f,i){
+      return '<div><span>'+f.name.replace(/[<>]/g,'')+'</span><span>'+fmt(f.size)+' · <a href="#" data-i="'+i+'" class="rm" style="color:#8a1c1c">remove</a></span></div>';
+    }).join('');
+    Array.prototype.forEach.call(list.querySelectorAll('.rm'), function(a){
+      a.onclick = function(e){ e.preventDefault(); chosen.splice(+a.getAttribute('data-i'),1); render(); };
+    });
+  }
+  function add(files){
+    for (var i=0;i<files.length;i++){
+      var f = files[i];
+      if (chosen.length >= MAX_FILES){ show('err','Up to '+MAX_FILES+' files. Remove one to add another.'); break; }
+      if (f.size > MAX_BYTES){ show('err','"'+f.name+'" is over 20 MB — please send a smaller file.'); continue; }
+      chosen.push(f);
+    }
+    render();
+  }
+  function show(kind,msg){ status.className='status '+kind; status.innerHTML=msg; }
+
+  drop.onclick = function(){ input.click(); };
+  input.onchange = function(){ add(input.files); input.value=''; };
+  ['dragenter','dragover'].forEach(function(e){ drop.addEventListener(e,function(ev){ ev.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave','drop'].forEach(function(e){ drop.addEventListener(e,function(ev){ ev.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(ev){ if(ev.dataTransfer&&ev.dataTransfer.files) add(ev.dataTransfer.files); });
+
+  form.onsubmit = function(ev){
+    ev.preventDefault();
+    var name = form.name.value.trim(), email = form.email.value.trim();
+    if (!name || !email){ show('err','Please add your name and email so we can reply.'); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('err','That email looks off — mind checking it?'); return; }
+    var fd = new FormData();
+    ['name','company','email','phone','dealType','amount','notes'].forEach(function(k){ fd.append(k, form[k] ? form[k].value : ''); });
+    chosen.forEach(function(f){ fd.append('files', f, f.name); });
+    btn.disabled = true; btn.textContent = 'Sending…'; show('ok','Uploading securely…');
+    fetch(ENDPOINT, { method:'POST', body: fd })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.ok){
+          form.style.display='none';
+          show('ok','<b>✓ Received.</b> Your documents are in Hook Street’s vault and Sam has been notified. You’ll hear back shortly at '+email+'.');
+        } else {
+          throw new Error((d && d.error) || 'submit_failed');
+        }
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent='Send securely →'; show('err','Something went wrong sending that. Please try again, or email sam@hookstreetcapital.com directly.'); });
+  };
+})();
+</script>
+</body>
+</html>
