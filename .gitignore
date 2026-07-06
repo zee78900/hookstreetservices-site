@@ -7,3 +7,10 @@
 "Hook Street Bookings & Rentals/"
 Hook\ Street\ Bookings*
 _staging/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
