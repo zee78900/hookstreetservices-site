@@ -404,7 +404,7 @@ function setView(v){VIEW=v;document.getElementById('v-wall').classList.toggle('o
    ============================================================ */
 var SYNC={on:false,token:null,sheetId:null,
   init:function(){
-    if(!GOOGLE_CLIENT_ID){document.getElementById('signin').textContent='Google sign-in (soon)';document.getElementById('signin').onclick=function(){alert('Google sign-in turns on once the app finishes Google verification. For now your board saves right here on this device — nothing is lost.');};return;}
+    if(!GOOGLE_CLIENT_ID){document.getElementById('signin').textContent='Google sign-in — coming soon';document.getElementById('signin').onclick=function(){alert('Google sign-in is being switched on. For now your board saves right here on this device — nothing is lost, and it will move to your own Google Drive once sign-in goes live.');};var lb=document.getElementById('localbanner');if(lb&&lb.querySelector('span'))lb.querySelector('span').innerHTML='Your board saves on <b>this device</b> for now. <b>Google sign-in</b> — to save it in your own Google Drive — is being switched on shortly.';return;}
     var s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';s.async=true;s.onload=SYNC.ready;document.head.appendChild(s);
   },
   ready:function(){
