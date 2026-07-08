@@ -1,0 +1,14 @@
+{
+  "name": "Scrapboard",
+  "short_name": "Scrapboard",
+  "description": "A cork-board in your pocket that organizes itself. Your notes live in your own Google Drive.",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1c2431",
+  "theme_color": "#1c2431",
+  "icons": [
+    {"src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='34' fill='%231c2431'/%3E%3Crect x='40' y='38' width='52' height='52' rx='4' fill='%23fdec72' transform='rotate(-4 66 64)'/%3E%3Crect x='104' y='46' width='48' height='48' rx='4' fill='%23bcdcef' transform='rotate(5 128 70)'/%3E%3Crect x='52' y='104' width='48' height='48' rx='4' fill='%23f6d2d8' transform='rotate(3 76 128)'/%3E%3Crect x='108' y='108' width='46' height='46' rx='4' fill='%23cfeac9' transform='rotate(-5 131 131)'/%3E%3C/svg%3E", "sizes": "192x192", "type": "image/svg+xml"}
+  ]
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Scrapboard — how to use</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Kalam",system-ui,sans-serif;background:#1c2431;color:#f3e9d2;min-height:100dvh;
+  background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:5px 5px;
+  padding:0 0 40px;-webkit-text-size-adjust:100%}
+.wrap{max-width:480px;margin:0 auto;padding:26px 18px}
+h1{font-family:"Caveat";font-weight:700;font-size:40px;line-height:1;color:#f3e9d2;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+h1 .b{color:#fdec72}
+.tag{font-family:"Caveat";font-size:19px;color:#cdbf9e;margin:4px 0 22px}
+.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:15px 16px;margin:0 0 12px;display:flex;gap:13px;align-items:flex-start}
+.n{font-family:"Caveat";font-weight:700;font-size:30px;color:#fdec72;line-height:1;flex:none;width:26px}
+.step h2{font-size:16px;color:#f3e9d2;margin-bottom:3px}
+.step p{font-family:"Kalam";font-size:13.5px;color:#cdbf9e;line-height:1.55}
+.big{background:#fdec72;color:#2a2620;border-radius:13px;padding:16px;text-align:center;margin:6px 0 20px}
+.big .q{font-family:"Caveat";font-size:26px;line-height:1.1}
+.big .a{font-family:"Kalam";font-size:13px;margin-top:6px}
+.tips{margin-top:20px}
+.tips h3{font-family:"Caveat";font-size:24px;color:#f3e9d2;margin-bottom:8px}
+.tip{font-family:"Kalam";font-size:13.5px;color:#cdbf9e;line-height:1.7;padding-left:20px;position:relative;margin:5px 0}
+.tip:before{content:"·";position:absolute;left:6px;color:#fdec72;font-weight:700;font-size:20px;top:-3px}
+.cta{display:block;text-align:center;background:#2a2620;color:#f3e9d2;text-decoration:none;border-radius:11px;padding:14px;font-family:"Kalam";font-weight:700;font-size:15px;margin-top:24px}
+.priv{font-family:"Kalam";font-size:11.5px;color:#8a8272;text-align:center;margin-top:18px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Scrap<span class="b">board</span></h1>
+  <div class="tag">a cork-board in your pocket that organizes itself</div>
+
+  <div class="big">
+    <div class="q">Open the link → jot → done.</div>
+    <div class="a">That's the whole thing. Here's a little more:</div>
+  </div>
+
+  <div class="step"><div class="n">1</div><div><h2>Open &amp; sign in</h2><p>Tap <b>Sign in with Google</b> — the account you already have. On first sign-in it quietly makes one spreadsheet called <b>My Scrapbook</b> in <b>your</b> Google Drive. We never see it.</p></div></div>
+
+  <div class="step"><div class="n">2</div><div><h2>Pick what it's for</h2><p>Event? Trip? Shopping? Tap a starter — or <b>"just start jotting"</b> for a blank board. You can change it later.</p></div></div>
+
+  <div class="step"><div class="n">3</div><div><h2>Jot a scrap</h2><p>Type a short note (a sticky-note's worth) and hit <b>Pin</b>. It lands on the wall and <b>auto-colors itself by topic</b> — no tagging needed.</p></div></div>
+
+  <div class="step"><div class="n">4</div><div><h2>Find &amp; finish</h2><p>Tap a <b>color chip</b> to show just that topic. Tap a <b>scrap</b> to cross it off (it fades into the Done drawer). Switch <b>Wall ⇄ Heatmap</b> to see what's hot — bigger tiles = more urgent.</p></div></div>
+
+  <div class="tips">
+    <h3>Good to know</h3>
+    <div class="tip">Short beats long — the wall stays readable because scraps are small on purpose.</div>
+    <div class="tip">Wrong color? It'll be tap-to-recolor soon; for now the topic follows the words you use.</div>
+    <div class="tip">It's a real Google Sheet — open it in Sheets anytime; everything stays readable.</div>
+    <div class="tip">No internet? Keep jotting — it saves on your phone and syncs when you're back.</div>
+  </div>
+
+  <a class="cta" href="index.html">← Back to my board</a>
+  <div class="priv">Your notes live in your own Google Drive. We host a page, not your data — with <b>drive.file</b> access we can only ever touch the one sheet this app creates, nothing else in your Drive.</div>
+</div>
+</body>
+</html>

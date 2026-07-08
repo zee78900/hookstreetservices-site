@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Scrapboard — a cork-board in your pocket</title>
+<meta name="description" content="Jot short notes onto a beautiful scrapbook wall. Sign in with Google; your notes live in your own Drive. We hold zero data.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1c2431">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --felt:#1c2431; --felt2:#141b26; --ink:#2a2620; --cream:#f3e9d2; --cream2:#cdbf9e;
+  --yel:#fdec72; --blue:#bcdcef; --mint:#cfeac9; --blush:#f6d2d8; --lav:#ddd2f0; --kraft:#d8be8d;
+  --peach:#f6cfa8; --sage:#d9e4b0; --sky:#cfe0f0; --coral:#f4b8a8; --red:#c0392b;
+}
+body{font-family:"Kalam",system-ui,sans-serif;color:var(--cream);
+  background:var(--felt);
+  background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:5px 5px;
+  min-height:100dvh;padding:0 0 40px;-webkit-text-size-adjust:100%;overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding:0 12px}
+
+/* ── TOP BAR ── */
+.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,var(--felt) 70%,transparent);padding:12px 12px 8px;backdrop-filter:blur(4px)}
+.top-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:10px}
+h1{font-family:"Caveat";font-weight:700;font-size:30px;line-height:1;color:var(--cream);text-shadow:0 1px 2px rgba(0,0,0,.5);white-space:nowrap}
+h1 .b{color:var(--yel)}
+.sub{font-family:"Caveat";font-size:14px;color:var(--cream2);opacity:.9;margin-top:1px}
+.spacer{flex:1}
+.iconbtn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--cream);border-radius:9px;
+  font-family:"Kalam";font-size:13px;font-weight:700;padding:7px 11px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.iconbtn:active{transform:scale(.96)}
+.iconbtn.gold{background:var(--yel);color:var(--ink);border-color:var(--yel)}
+.acct{font-size:12px;color:var(--cream2);display:none;align-items:center;gap:6px}
+.acct .dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+
+/* ── CONTROLS ROW ── */
+.controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:2px 4px 12px}
+.viewtog{display:flex;background:rgba(0,0,0,.28);border-radius:9px;padding:3px;gap:2px}
+.viewtog button{background:none;border:none;color:var(--cream2);font-family:"Kalam";font-weight:700;font-size:13px;padding:6px 12px;border-radius:7px;cursor:pointer}
+.viewtog button.on{background:var(--cream);color:var(--ink)}
+select.sort{background:rgba(0,0,0,.28);color:var(--cream);border:1px solid rgba(255,255,255,.12);border-radius:9px;font-family:"Kalam";font-weight:700;font-size:13px;padding:6px 10px;cursor:pointer}
+
+/* ── JOT ── */
+.jot{background:linear-gradient(180deg,#fffef8,#fdf6e3);border-radius:3px;padding:11px 13px 8px;margin:0 4px 14px;
+  box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative}
+.jot textarea{width:100%;border:none;background:transparent;outline:none;resize:none;font-family:"Caveat";font-size:21px;color:#5a4a12;line-height:27px;min-height:27px;overflow:hidden}
+.jot textarea::placeholder{color:#b3a373}
+.jot-foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.count{font-family:"Kalam";font-size:11px;color:#b3a373}
+.count.warn{color:#c0392b;font-weight:700}
+.pinbtn{background:var(--ink);color:var(--cream);border:none;border-radius:7px;font-family:"Kalam";font-weight:700;font-size:13px;padding:6px 15px;cursor:pointer}
+.pinbtn:active{transform:scale(.95)}
+
+/* ── FILTERS ── */
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:0 4px 14px;align-items:center}
+.chip{font-family:"Kalam";font-size:13px;font-weight:700;border:none;border-radius:16px;padding:6px 13px;cursor:pointer;color:var(--ink);opacity:.5;transition:opacity .12s,transform .12s,box-shadow .12s}
+.chip.on{opacity:1;transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.4)}
+.chip .ct{font-weight:400;opacity:.65;margin-left:4px;font-size:12px}
+.chip.all{background:#efe6d0}
+
+/* ── WALL (masonry) ── */
+#wall{columns:5 170px;column-gap:9px;padding:0 4px}
+@media(max-width:900px){#wall{columns:3 130px}}
+@media(max-width:560px){#wall{columns:2 130px}}
+.scrap{break-inside:avoid;margin:0 0 9px;border-radius:2px;padding:8px 10px 14px;position:relative;cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);font-family:"Caveat";font-size:15px;line-height:18px;color:var(--ink);
+  transition:transform .1s,box-shadow .1s,opacity .25s;transform:rotate(var(--rot,0deg))}
+.scrap:active{transform:scale(.96) rotate(var(--rot,0deg))!important}
+.scrap:hover{box-shadow:0 7px 16px rgba(0,0,0,.45)}
+.scrap .tx{word-break:break-word}
+.scrap .num{font-family:"Kalam";font-size:9px;color:rgba(0,0,0,.3);position:absolute;bottom:3px;left:8px}
+.scrap.done{opacity:.4;filter:grayscale(.55)}
+.scrap.done .tx{text-decoration:line-through;text-decoration-color:var(--red)}
+.scrap.done:after{content:"";position:absolute;right:0;bottom:0;width:20px;height:20px;background:linear-gradient(135deg,transparent 50%,rgba(0,0,0,.16) 50%)}
+.scrap:before{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:26px;height:11px;background:rgba(255,255,255,.35);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.hide{display:none!important}
+
+/* ── HEATMAP (treemap) ── */
+#heat{display:flex;flex-wrap:wrap;gap:4px;padding:0 4px;align-content:flex-start}
+.tile{border-radius:3px;padding:6px 8px;color:var(--ink);font-family:"Caveat";overflow:hidden;position:relative;cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between;
+  animation:breathe var(--bt,6s) ease-in-out infinite;transition:transform .12s}
+.tile:active{transform:scale(.96)}
+.tile .tt{line-height:1.05;font-weight:600}
+.tile .meta{font-family:"Kalam";font-size:9px;opacity:.5;margin-top:3px}
+.tile.done{opacity:.35;filter:grayscale(.5);animation:none}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+.heat-legend{font-family:"Kalam";font-size:11px;color:var(--cream2);text-align:center;margin:12px 4px 0;opacity:.8}
+
+/* ── DONE DRAWER ── */
+.drawer{margin:20px 4px 0}
+.drawer summary{font-family:"Kalam";font-size:13px;color:var(--cream2);cursor:pointer;list-style:none;opacity:.8}
+.drawer summary::-webkit-details-marker{display:none}
+
+/* ── BANNER ── */
+.banner{margin:0 4px 14px;background:rgba(253,236,114,.13);border:1px solid rgba(253,236,114,.35);border-radius:10px;padding:10px 13px;
+  display:flex;align-items:center;gap:10px;font-family:"Kalam";font-size:13px;color:var(--cream)}
+.banner b{color:var(--yel)}
+.banner .x{margin-left:auto;background:none;border:none;color:var(--cream2);font-size:18px;cursor:pointer;line-height:1}
+
+/* ── EMPTY ── */
+.empty{text-align:center;font-family:"Caveat";font-size:22px;color:var(--cream2);opacity:.6;padding:50px 20px}
+
+/* ── ONBOARD MODAL ── */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(10,14,20,.86);display:none;align-items:center;justify-content:center;padding:18px}
+.modal.on{display:flex}
+.sheet{background:linear-gradient(180deg,#222c3a,#1a222e);border:1px solid rgba(255,255,255,.1);border-radius:16px;max-width:440px;width:100%;padding:22px;max-height:88dvh;overflow-y:auto}
+.sheet h2{font-family:"Caveat";font-size:30px;color:var(--cream);margin-bottom:4px}
+.sheet p{font-family:"Kalam";font-size:13px;color:var(--cream2);margin-bottom:16px}
+.tpls{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tpl{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:13px 12px;cursor:pointer;text-align:left}
+.tpl:active{transform:scale(.97)}
+.tpl .e{font-size:22px}
+.tpl .n{font-family:"Kalam";font-weight:700;font-size:14px;color:var(--cream);margin-top:4px}
+.tpl .c{font-family:"Kalam";font-size:11px;color:var(--cream2);opacity:.75;margin-top:2px;line-height:1.3}
+.tpl.blank{grid-column:1/-1;background:var(--yel);border-color:var(--yel)}
+.tpl.blank .n,.tpl.blank .c{color:var(--ink)}
+.foot{max-width:1200px;margin:26px auto 0;font-family:"Kalam";font-size:11px;color:#8a8272;opacity:.85;text-align:center;line-height:1.7;padding:0 12px}
+.foot a{color:var(--cream2)}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <div>
+      <h1 id="board-title">Scrap<span class="b">board</span></h1>
+      <div class="sub" id="board-sub">tap a topic = filter · tap a scrap = done · jot to pin</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="acct" id="acct"><span class="dot"></span><span id="acct-email"></span></div>
+    <button class="iconbtn gold" id="signin">Sign in with Google</button>
+    <a class="iconbtn" href="how-to.html">?</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="banner" id="localbanner">
+    <span>Jotting locally — <b>sign in with Google</b> to save this board to your own Drive (we never see it).</span>
+    <button class="x" onclick="document.getElementById('localbanner').style.display='none'">×</button>
+  </div>
+
+  <div class="jot">
+    <textarea id="jotbox" rows="1" maxlength="180" placeholder="Jot a scrap… (keep it short)"></textarea>
+    <div class="jot-foot"><span class="count" id="count"></span><button class="pinbtn" id="pinbtn">Pin ↵</button></div>
+  </div>
+
+  <div class="controls">
+    <div class="viewtog">
+      <button id="v-wall" class="on" onclick="setView('wall')">▦ Wall</button>
+      <button id="v-heat" onclick="setView('heat')">◱ Heatmap</button>
+    </div>
+    <select class="sort" id="sort" onchange="render()">
+      <option value="new">Newest first</option>
+      <option value="old">Oldest first</option>
+      <option value="priority">Priority</option>
+      <option value="cat">By topic</option>
+    </select>
+  </div>
+
+  <div class="filters" id="filters"></div>
+
+  <div id="wall"></div>
+  <div id="heat" class="hide"></div>
+  <div class="heat-legend hide" id="heatlegend">Bigger = higher priority (recent &amp; open) · color = topic · the wall breathes so today's board feels alive</div>
+
+  <details class="drawer" id="drawer" style="display:none"><summary id="drawer-sum">Done (0)</summary><div id="donewall" style="margin-top:10px"></div></details>
+
+  <div class="foot">
+    Your scraps live in <b>your</b> Google Sheet — we host a page, not your data.
+    &nbsp;·&nbsp; <a href="how-to.html">How to use</a> &nbsp;·&nbsp; a Hook Street product
+  </div>
+</div>
+
+<!-- ONBOARD -->
+<div class="modal" id="onboard">
+  <div class="sheet">
+    <h2>What's this board for?</h2>
+    <p>Pick a starter (you can change everything later) — or just start jotting.</p>
+    <div class="tpls" id="tpls"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   SCRAPBOARD MVP — Option B (hosted PWA + Google Identity + drive.file)
+   Local-first: works fully offline/anonymous. Google sync activates
+   the moment a real OAuth client id is set below (Sam's tap).
+   ============================================================ */
+var GOOGLE_CLIENT_ID = ""; // <-- Sam: paste the OAuth Web client ID here to turn on Google sign-in + Drive sheet
+var PALETTE = {yel:'#fdec72',blue:'#bcdcef',mint:'#cfeac9',blush:'#f6d2d8',lav:'#ddd2f0',kraft:'#d8be8d',peach:'#f6cfa8',sage:'#d9e4b0',sky:'#cfe0f0',coral:'#f4b8a8'};
+
+/* 12 templates: title, categories [{name,color,rx}] */
+var TEMPLATES = {
+  event:{emoji:'🎉',title:'Event',cats:[
+    {name:'Venue',color:'sky',rx:/venue|hall|room|space|book|rent|setup|chairs|tables|tent/i},
+    {name:'Food',color:'yel',rx:/food|cater|menu|cake|drink|dessert|kosher|meal|dish/i},
+    {name:'Guests',color:'blush',rx:/guest|invite|rsvp|list|seat|table|kids|count/i},
+    {name:'To-buy',color:'mint',rx:/buy|order|pick up|get |need |supplies|decor|balloon|flowers/i},
+    {name:'Money',color:'peach',rx:/pay|deposit|cost|budget|invoice|\$|quote|price/i},
+    {name:'Day-of',color:'coral',rx:/day.?of|schedule|timeline|arrive|photographer|music|dj/i}]},
+  trip:{emoji:'✈️',title:'Trip',cats:[
+    {name:'Book',color:'sky',rx:/book|flight|hotel|car|reserve|ticket/i},
+    {name:'Itinerary',color:'lav',rx:/day|visit|tour|see|itinerary|plan|schedule/i},
+    {name:'Eat',color:'yel',rx:/eat|restaurant|food|dinner|lunch|reservation/i},
+    {name:'Pack',color:'mint',rx:/pack|bring|charger|adapter|clothes|meds/i},
+    {name:'Money',color:'peach',rx:/pay|cash|budget|\$|exchange|tip/i}]},
+  packing:{emoji:'🧳',title:'Packing list',cats:[
+    {name:'Clothes',color:'blush',rx:/shirt|pants|shoes|jacket|clothes|socks|dress/i},
+    {name:'Toiletries',color:'sky',rx:/tooth|shampoo|soap|razor|toiletr|meds|deodor/i},
+    {name:'Docs',color:'yel',rx:/passport|id|ticket|doc|card|license/i},
+    {name:'Kids',color:'mint',rx:/kid|baby|diaper|toy|stroller|snack/i},
+    {name:'Don\'t-forget',color:'coral',rx:/charger|adapter|forget|keys|glasses/i}]},
+  shopping:{emoji:'🛒',title:'Shopping',cats:[
+    {name:'Grocery',color:'sage',rx:/milk|egg|bread|produce|grocery|fruit|veg|meat|chicken/i},
+    {name:'Household',color:'sky',rx:/paper|towel|soap|clean|trash|bulb|battery/i},
+    {name:'Pharmacy',color:'blush',rx:/pharm|medicine|vitamin|band|prescription/i},
+    {name:'Later',color:'kraft',rx:/later|someday|maybe|eventually/i}]},
+  project:{emoji:'✅',title:'Project punch-list',cats:[
+    {name:'Now',color:'coral',rx:/now|today|urgent|asap|first/i},
+    {name:'Next',color:'yel',rx:/next|soon|this week|then/i},
+    {name:'Blocked',color:'blush',rx:/block|wait|stuck|depend|pending/i},
+    {name:'Someday',color:'kraft',rx:/someday|later|maybe|idea|nice to/i}]}
+};
+var GENERIC = [{name:'A',color:'yel',rx:/x^/},{name:'B',color:'blue',rx:/x^/},{name:'C',color:'mint',rx:/x^/},{name:'D',color:'blush',rx:/x^/}];
+
+/* ── STATE ── */
+var LS='scrapboard_v1';
+var state = load() || null;
+function load(){try{return JSON.parse(localStorage.getItem(LS))}catch(e){return null}}
+function save(){localStorage.setItem(LS,JSON.stringify(state));if(SYNC.on)SYNC.push();}
+function uid(){return 's'+Math.random().toString(36).slice(2,9)}
+function now(){return Date.now()}
+
+var VIEW='wall', activeFilter='all';
+
+/* ── ONBOARDING ── */
+function openOnboard(){
+  var box=document.getElementById('tpls');box.innerHTML='';
+  Object.keys(TEMPLATES).forEach(function(k){
+    var t=TEMPLATES[k];var d=document.createElement('div');d.className='tpl';
+    d.innerHTML='<div class="e">'+t.emoji+'</div><div class="n">'+t.title+'</div><div class="c">'+t.cats.map(function(c){return c.name}).join(' · ')+'</div>';
+    d.onclick=function(){startBoard(k)};box.appendChild(d);
+  });
+  var b=document.createElement('div');b.className='tpl blank';
+  b.innerHTML='<div class="n">✎ Just start jotting</div><div class="c">blank board, topics auto-appear as you go</div>';
+  b.onclick=function(){startBoard(null)};box.appendChild(b);
+  document.getElementById('onboard').classList.add('on');
+}
+function startBoard(tplKey){
+  var tpl=tplKey?TEMPLATES[tplKey]:{title:'My Scrapboard',cats:GENERIC.slice()};
+  state={title:tpl.title,tpl:tplKey||'blank',cats:tpl.cats.map(function(c){return{name:c.name,color:c.color,rx:c.rx.source,flags:c.rx.flags}}),scraps:[],sheetId:null};
+  document.getElementById('onboard').classList.remove('on');
+  applyBoardMeta();save();render();
+  document.getElementById('jotbox').focus();
+}
+function applyBoardMeta(){
+  document.getElementById('board-title').innerHTML=state.title.replace(/board/i,'<span class="b">board</span>');
+}
+function cats(){return state.cats.map(function(c){return{name:c.name,color:c.color,rx:new RegExp(c.rx,c.flags||'i')}})}
+function topicOf(text){var cs=cats();for(var i=0;i<cs.length;i++){if(cs[i].rx.test(text))return cs[i];}return{name:'Other',color:'kraft'};}
+
+/* ── JOT ── */
+var jb=document.getElementById('jotbox'), cnt=document.getElementById('count');
+function autosize(){jb.style.height='auto';jb.style.height=jb.scrollHeight+'px';}
+jb.addEventListener('input',function(){autosize();var n=jb.value.length;cnt.textContent=n>140?(180-n)+' left':'';cnt.className='count'+(n>165?' warn':'');});
+jb.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pin();}});
+document.getElementById('pinbtn').onclick=pin;
+function pin(){
+  var t=jb.value.trim();if(!t)return;
+  var tp=topicOf(t);
+  state.scraps.unshift({id:uid(),text:t,cat:tp.name,color:tp.color,status:'open',created:now(),done_at:null});
+  jb.value='';autosize();cnt.textContent='';
+  save();render();
+}
+
+/* ── PRIORITY (for heatmap sizing + sort) ── */
+function priority(s){
+  if(s.status==='done')return 1;
+  var ageH=(now()-s.created)/3.6e6;         // hours old
+  var recency=Math.max(0,48-ageH)/48;        // newer = higher (0..1 over 2 days)
+  return 1 + recency*5 + (s.text.length>120?0.5:0); // 1..6.5
+}
+
+/* ── RENDER ── */
+function openScraps(){return state.scraps.filter(function(s){return s.status!=='done'})}
+function sorted(list){
+  var m=document.getElementById('sort').value;var a=list.slice();
+  if(m==='new')a.sort(function(x,y){return y.created-x.created});
+  else if(m==='old')a.sort(function(x,y){return x.created-y.created});
+  else if(m==='priority')a.sort(function(x,y){return priority(y)-priority(x)});
+  else if(m==='cat')a.sort(function(x,y){return (x.cat||'').localeCompare(y.cat||'')||y.created-x.created});
+  return a;
+}
+function render(){
+  if(!state){openOnboard();return;}
+  applyBoardMeta();
+  var open=openScraps(), done=state.scraps.filter(function(s){return s.status==='done'});
+  // filters
+  var counts={};open.forEach(function(s){counts[s.color]=(counts[s.color]||0)+1});
+  var fbar=document.getElementById('filters');fbar.innerHTML='';
+  fbar.appendChild(mkchip('all','All',open.length,'efe6d0'));
+  var seen={};cats().forEach(function(c){if(counts[c.color]&&!seen[c.color]){seen[c.color]=1;fbar.appendChild(mkchip(c.color,c.name,counts[c.color],PALETTE[c.color]));}});
+  if(counts.kraft&&!seen.kraft)fbar.appendChild(mkchip('kraft','Other',counts.kraft,PALETTE.kraft));
+  // views
+  var shown=sorted(open).filter(function(s){return activeFilter==='all'||s.color===activeFilter});
+  var wall=document.getElementById('wall'), heat=document.getElementById('heat');
+  if(VIEW==='wall'){
+    wall.classList.remove('hide');heat.classList.add('hide');document.getElementById('heatlegend').classList.add('hide');
+    wall.innerHTML=shown.length?'':'<div class="empty">nothing here yet — jot a scrap ↑</div>';
+    shown.forEach(function(s,i){wall.appendChild(scrapEl(s,i+1))});
+  }else{
+    heat.classList.remove('hide');wall.classList.add('hide');document.getElementById('heatlegend').classList.remove('hide');
+    renderHeat(shown,heat);
+  }
+  // done drawer
+  var dr=document.getElementById('drawer');
+  if(done.length){dr.style.display='';document.getElementById('drawer-sum').textContent='Done ('+done.length+')';
+    var dw=document.getElementById('donewall');dw.innerHTML='';dw.style.columns='5 170px';dw.style.columnGap='9px';
+    done.slice(0,60).forEach(function(s){dw.appendChild(scrapEl(s,0))});}
+  else dr.style.display='none';
+}
+function mkchip(key,label,ct,bg){var b=document.createElement('button');b.className='chip'+(key===activeFilter?' on':'')+(key==='all'?' all':'');
+  if(key!=='all')b.style.background=bg;b.innerHTML=label+'<span class="ct">'+ct+'</span>';
+  b.onclick=function(){activeFilter=key;render()};return b;}
+function scrapEl(s,n){
+  var d=document.createElement('div');d.className='scrap'+(s.status==='done'?' done':'');
+  d.style.background=PALETTE[s.color]||PALETTE.kraft;d.style.setProperty('--rot',((s.id.charCodeAt(1)%5)-2)*0.5+'deg');
+  d.innerHTML='<div class="tx"></div>'+(n?'<span class="num">'+n+'</span>':'');
+  d.querySelector('.tx').textContent=s.text;
+  d.onclick=function(){toggleDone(s.id)};return d;
+}
+function renderHeat(list,el){
+  el.innerHTML=list.length?'':'<div class="empty">nothing to map yet</div>';
+  var max=Math.max.apply(null,list.map(priority).concat([1]));
+  list.forEach(function(s){
+    var p=priority(s), area=40+ (p/max)*150;   // side length in px
+    var t=document.createElement('div');t.className='tile'+(s.status==='done'?' done':'');
+    t.style.background=PALETTE[s.color]||PALETTE.kraft;
+    t.style.width=area+'px';t.style.height=area+'px';
+    t.style.fontSize=Math.max(11,Math.min(20,area/8))+'px';
+    t.style.setProperty('--bt',(4+ (s.id.charCodeAt(2)%5))+'s');
+    var ageD=Math.floor((now()-s.created)/8.64e7);
+    t.innerHTML='<div class="tt"></div><div class="meta">'+s.cat+(ageD>0?' · '+ageD+'d':' · today')+'</div>';
+    t.querySelector('.tt').textContent=s.text.length>60&&area<120?s.text.slice(0,55)+'…':s.text;
+    t.onclick=function(){toggleDone(s.id)};el.appendChild(t);
+  });
+}
+function toggleDone(id){
+  var s=state.scraps.filter(function(x){return x.id===id})[0];if(!s)return;
+  s.status=s.status==='done'?'open':'done';s.done_at=s.status==='done'?now():null;
+  save();render();
+}
+function setView(v){VIEW=v;document.getElementById('v-wall').classList.toggle('on',v==='wall');document.getElementById('v-heat').classList.toggle('on',v==='heat');render();}
+
+/* ============================================================
+   GOOGLE SYNC (Option B) — gated on GOOGLE_CLIENT_ID
+   drive.file scope: app only ever touches the one sheet it creates.
+   ============================================================ */
+var SYNC={on:false,token:null,sheetId:null,
+  init:function(){
+    if(!GOOGLE_CLIENT_ID){document.getElementById('signin').textContent='Google sign-in (soon)';document.getElementById('signin').onclick=function(){alert('Google sign-in turns on once the app finishes Google verification. For now your board saves right here on this device — nothing is lost.');};return;}
+    var s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';s.async=true;s.onload=SYNC.ready;document.head.appendChild(s);
+  },
+  ready:function(){
+    SYNC.client=google.accounts.oauth2.initTokenClient({
+      client_id:GOOGLE_CLIENT_ID,
+      scope:'https://www.googleapis.com/auth/drive.file openid email profile',
+      callback:SYNC.onToken});
+    document.getElementById('signin').onclick=function(){SYNC.client.requestAccessToken()};
+  },
+  onToken:function(resp){
+    if(resp.error)return;SYNC.token=resp.access_token;SYNC.on=true;
+    document.getElementById('signin').style.display='none';
+    document.getElementById('localbanner').style.display='none';
+    document.getElementById('acct').style.display='inline-flex';
+    SYNC.ensureSheet();
+  },
+  api:function(url,opt){opt=opt||{};opt.headers=Object.assign({'Authorization':'Bearer '+SYNC.token,'Content-Type':'application/json'},opt.headers||{});return fetch(url,opt).then(function(r){return r.json()});},
+  ensureSheet:function(){
+    if(state&&state.sheetId){SYNC.sheetId=state.sheetId;return SYNC.pull();}
+    // create "My Scrapbook" in the user's Drive
+    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets',{method:'POST',body:JSON.stringify({properties:{title:'My Scrapbook — '+(state?state.title:'board')},sheets:[{properties:{title:'SCRAPS'}},{properties:{title:'CONFIG'}}]})})
+      .then(function(r){if(!r.spreadsheetId)return;SYNC.sheetId=r.spreadsheetId;state.sheetId=r.spreadsheetId;
+        SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+r.spreadsheetId+'/values/SCRAPS!A1:G1?valueInputOption=RAW',{method:'PUT',body:JSON.stringify({values:[['id','text','category','color','status','created','done_at']]})});
+        save();});
+  },
+  push:function(){ if(!SYNC.on||!SYNC.sheetId)return;
+    var rows=[['id','text','category','color','status','created','done_at']].concat(state.scraps.map(function(s){return[s.id,s.text,s.cat,s.color,s.status,String(s.created),s.done_at?String(s.done_at):'']}));
+    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+SYNC.sheetId+'/values/SCRAPS!A1:G'+rows.length+'?valueInputOption=RAW',{method:'PUT',body:JSON.stringify({values:rows})}); },
+  pull:function(){ if(!SYNC.sheetId)return;
+    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+SYNC.sheetId+'/values/SCRAPS!A2:G').then(function(r){
+      if(!r.values)return;state.scraps=r.values.map(function(v){return{id:v[0],text:v[1],cat:v[2],color:v[3],status:v[4],created:+v[5],done_at:v[6]?+v[6]:null}});save();render();}); }
+};
+
+/* ── BOOT ── */
+if(state){applyBoardMeta();render();}else{openOnboard();}
+SYNC.init();
+</script>
+</body>
+</html>
