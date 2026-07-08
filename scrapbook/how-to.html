@@ -40,7 +40,7 @@ h1 .b{color:#fdec72}
     <div class="a">That's the whole thing. Here's a little more:</div>
   </div>
 
-  <div class="step"><div class="n">1</div><div><h2>Open &amp; sign in</h2><p>Tap <b>Sign in with Google</b> — the account you already have. On first sign-in it quietly makes one spreadsheet called <b>My Scrapbook</b> in <b>your</b> Google Drive. We never see it.</p></div></div>
+  <div class="step"><div class="n">1</div><div><h2 id="s1h">Open &amp; start jotting</h2><p id="s1p">Open the link and start — your board saves <b>privately on this phone</b>, no account needed. <b>Google sign-in is coming:</b> once it's on, one tap makes a spreadsheet called <b>My Scrapbook</b> in <b>your</b> Google Drive and your board lives there. We never see it.</p></div></div>
 
   <div class="step"><div class="n">2</div><div><h2>Pick what it's for</h2><p>Event? Trip? Shopping? Tap a starter — or <b>"just start jotting"</b> for a blank board. You can change it later.</p></div></div>
 
@@ -52,12 +52,27 @@ h1 .b{color:#fdec72}
     <h3>Good to know</h3>
     <div class="tip">Short beats long — the wall stays readable because scraps are small on purpose.</div>
     <div class="tip">Wrong color? It'll be tap-to-recolor soon; for now the topic follows the words you use.</div>
-    <div class="tip">It's a real Google Sheet — open it in Sheets anytime; everything stays readable.</div>
+    <div class="tip" id="tipSheet">Saves privately on your phone for now — <b>Google sign-in is coming</b>, and then your board becomes a real Google Sheet you can open in Sheets anytime.</div>
     <div class="tip">No internet? Keep jotting — it saves on your phone and syncs when you're back.</div>
   </div>
 
   <a class="cta" href="index.html">← Back to my board</a>
-  <div class="priv">Your notes live in your own Google Drive. We host a page, not your data — with <b>drive.file</b> access we can only ever touch the one sheet this app creates, nothing else in your Drive.</div>
+  <div class="priv" id="priv">Your notes save privately on your phone for now. <b>Google sign-in is coming</b> — then your board lives in a real Google Sheet in your own Google Drive. We host a page, not your data: with <b>drive.file</b> access we could only ever touch the one sheet this app creates, nothing else in your Drive.</div>
 </div>
+<script>
+/* State-aware copy: a truly signed-in user has a Drive sheet id persisted by the app.
+   Until Google sign-in is switched on (or before this user signs in), show the
+   local-only story instead of promising a Google Sheet that doesn't exist yet. */
+(function(){
+  var signedIn=false;
+  try{var st=JSON.parse(localStorage.getItem('scrapboard_v1'));if(st&&st.sheetId)signedIn=true;}catch(e){}
+  if(signedIn){
+    var h=document.getElementById('s1h'); if(h)h.textContent='Open & sign in';
+    var p=document.getElementById('s1p'); if(p)p.innerHTML='Tap <b>Sign in with Google</b> — the account you already have. On first sign-in it quietly makes one spreadsheet called <b>My Scrapbook</b> in <b>your</b> Google Drive. We never see it.';
+    var t=document.getElementById('tipSheet'); if(t)t.textContent="It's a real Google Sheet — open it in Sheets anytime; everything stays readable.";
+    var pr=document.getElementById('priv'); if(pr)pr.innerHTML='Your notes live in your own Google Drive. We host a page, not your data — with <b>drive.file</b> access we can only ever touch the one sheet this app creates, nothing else in your Drive.';
+  }
+})();
+</script>
 </body>
 </html>

@@ -177,7 +177,7 @@ select.sort{background:rgba(0,0,0,.28);color:var(--cream);border:1px solid rgba(
   <details class="drawer" id="drawer" style="display:none"><summary id="drawer-sum">Done (0)</summary><div id="donewall" style="margin-top:10px"></div></details>
 
   <div class="foot">
-    Your scraps live in <b>your</b> Google Sheet — we host a page, not your data.
+    <span id="footcopy">Saved privately on this device. <b>Google sign-in is coming</b> — then your board lives in a real Google Sheet in your own Drive.</span>
     &nbsp;·&nbsp; <a href="how-to.html">How to use</a> &nbsp;·&nbsp; a Hook Street product
   </div>
 </div>
@@ -419,6 +419,7 @@ var SYNC={on:false,token:null,sheetId:null,
     document.getElementById('signin').style.display='none';
     document.getElementById('localbanner').style.display='none';
     document.getElementById('acct').style.display='inline-flex';
+    setFootCopy(true);
     SYNC.ensureSheet();
   },
   api:function(url,opt){opt=opt||{};opt.headers=Object.assign({'Authorization':'Bearer '+SYNC.token,'Content-Type':'application/json'},opt.headers||{});return fetch(url,opt).then(function(r){return r.json()});},
@@ -463,6 +464,10 @@ function demoBoard(){
   ];
   return {title:'Ari’s Bar Mitzvah',tpl:'event',demo:true,nodone:false,cats:cs.map(function(c){return{name:c.name,color:c.color,rx:c.rx.source,flags:c.rx.flags}}),scraps:scraps,sheetId:null};
 }
+/* ── STATE-AWARE FOOTER COPY ── signed-in => real Google Sheet; else local-only + coming-soon */
+function setFootCopy(signedIn){var f=document.getElementById('footcopy');if(!f)return;
+  f.innerHTML=signedIn?'Your scraps live in <b>your</b> Google Sheet — we host a page, not your data.'
+    :'Saved privately on this device. <b>Google sign-in is coming</b> — then your board lives in a real Google Sheet in your own Drive.';}
 /* ── BOOT ── */
 var isDemo = /[?&]demo=1/.test(location.search) || location.hash==='#demo';
 if(isDemo){
@@ -471,6 +476,7 @@ if(isDemo){
   document.getElementById('demobanner').style.display='flex';
   applyBoardMeta();render();
 }else if(state){applyBoardMeta();render();}else{openOnboard();}
+setFootCopy(!!(state&&state.sheetId));
 SYNC.init();
 </script>
 </body>
