@@ -145,6 +145,11 @@ select.sort{background:rgba(0,0,0,.28);color:var(--cream);border:1px solid rgba(
     <button class="x" onclick="document.getElementById('localbanner').style.display='none'">×</button>
   </div>
 
+  <div class="banner" id="demobanner" style="display:none;background:rgba(207,224,240,.14);border-color:rgba(207,224,240,.4);">
+    <span>🎬 <b>Sample board</b> — this is a live demo. Tap around: filter, sort, flip to the heatmap. Then make your own ↓</span>
+    <a href="index.html" class="iconbtn gold" style="text-decoration:none;margin-left:auto;">Start my own board →</a>
+  </div>
+
   <div class="jot">
     <textarea id="jotbox" rows="1" maxlength="180" placeholder="Jot a scrap… (keep it short)"></textarea>
     <div class="jot-foot"><span class="count" id="count"></span><button class="pinbtn" id="pinbtn">Pin ↵</button></div>
@@ -267,7 +272,7 @@ var GENERIC = [{name:'A',color:'yel',rx:/x^/},{name:'B',color:'blue',rx:/x^/},{n
 var LS='scrapboard_v1';
 var state = load() || null;
 function load(){try{return JSON.parse(localStorage.getItem(LS))}catch(e){return null}}
-function save(){localStorage.setItem(LS,JSON.stringify(state));if(SYNC.on)SYNC.push();}
+function save(){if(state&&state.demo)return;localStorage.setItem(LS,JSON.stringify(state));if(SYNC.on)SYNC.push();}
 function uid(){return 's'+Math.random().toString(36).slice(2,9)}
 function now(){return Date.now()}
 
@@ -433,8 +438,39 @@ var SYNC={on:false,token:null,sheetId:null,
       if(!r.values)return;state.scraps=r.values.map(function(v){return{id:v[0],text:v[1],cat:v[2],color:v[3],status:v[4],created:+v[5],done_at:v[6]?+v[6]:null}});save();render();}); }
 };
 
+/* ── DEMO MODE (no sign-in) — ?demo=1 or #demo · pre-filled sample board ── */
+function demoBoard(){
+  var h=3600000, d=86400000, t=Date.now();
+  var cs=TEMPLATES.event.cats;
+  function col(text){for(var i=0;i<cs.length;i++){if(cs[i].rx.test(text))return cs[i];}return{name:'Other',color:'kraft'};}
+  function mk(text,ago,done){var c=col(text);return{id:uid(),text:text,cat:c.name,color:c.color,status:done?'done':'open',created:t-ago,done_at:done?t-ago+h:null};}
+  var scraps=[
+    mk('Confirm the hall for Sunday 11am', 2*h, false),
+    mk('Ask the shul about extra parking', 5*h, false),
+    mk('Call caterer — fish or chicken for the mains?', 3*h, false),
+    mk('Order the cake — blue & silver', 26*h, false),
+    mk('Kiddush club: one more bottle of scotch', 1.2*d, false),
+    mk('Chase down the Steins’ RSVP', 4*h, false),
+    mk('Seat Bubby up front, away from the speakers', 1*d, false),
+    mk('Count the kids for the kids’ table', 2*d, true),
+    mk('Balloons — blue & silver, 3 bunches', 6*h, false),
+    mk('Kippahs printed with Ari’s name', 1.5*d, false),
+    mk('Extension cords + tape for the band', 20*h, false),
+    mk('Pay the DJ deposit $500', 3*d, true),
+    mk('Photographer balance — $600 due day-of', 8*h, false),
+    mk('Photographer arrives 10:30 for family shots', 5*h, false),
+    mk('Ari’s speech — keep it under 4 minutes', 30*h, false)
+  ];
+  return {title:'Ari’s Bar Mitzvah',tpl:'event',demo:true,nodone:false,cats:cs.map(function(c){return{name:c.name,color:c.color,rx:c.rx.source,flags:c.rx.flags}}),scraps:scraps,sheetId:null};
+}
 /* ── BOOT ── */
-if(state){applyBoardMeta();render();}else{openOnboard();}
+var isDemo = /[?&]demo=1/.test(location.search) || location.hash==='#demo';
+if(isDemo){
+  state=demoBoard();
+  document.getElementById('localbanner').style.display='none';
+  document.getElementById('demobanner').style.display='flex';
+  applyBoardMeta();render();
+}else if(state){applyBoardMeta();render();}else{openOnboard();}
 SYNC.init();
 </script>
 </body>
