@@ -225,7 +225,41 @@ var TEMPLATES = {
     {name:'Now',color:'coral',rx:/now|today|urgent|asap|first/i},
     {name:'Next',color:'yel',rx:/next|soon|this week|then/i},
     {name:'Blocked',color:'blush',rx:/block|wait|stuck|depend|pending/i},
-    {name:'Someday',color:'kraft',rx:/someday|later|maybe|idea|nice to/i}]}
+    {name:'Someday',color:'kraft',rx:/someday|later|maybe|idea|nice to/i}]},
+  gift:{emoji:'🎁',title:'Gift list',cats:[
+    {name:'Person',color:'sky',rx:/for |mom|dad|kid|friend|grandma|grandpa|sister|brother|name/i},
+    {name:'Idea',color:'yel',rx:/idea|maybe|thinking|consider|option|could/i},
+    {name:'Bought',color:'mint',rx:/bought|got|ordered|purchased|done|have/i},
+    {name:'Wrapped',color:'blush',rx:/wrap|card|ready|gave|sent/i}]},
+  guest:{emoji:'📋',title:'Guest list',cats:[
+    {name:'Invited',color:'yel',rx:/invit|asked|sent|reach/i},
+    {name:'Confirmed',color:'mint',rx:/confirm|yes|coming|attending|in\b/i},
+    {name:'Declined',color:'blush',rx:/declin|\bno\b|can'?t|cannot|regret|out\b/i},
+    {name:'Table',color:'lav',rx:/table|seat|assign|group|row/i}]},
+  menu:{emoji:'🍽️',title:'Menu plan',cats:[
+    {name:'Courses',color:'yel',rx:/appetizer|main|dessert|soup|salad|course|dish|entree|side/i},
+    {name:'Shopping',color:'sage',rx:/buy|grocery|store|need|order|ingredient|get /i},
+    {name:'Prep-ahead',color:'mint',rx:/prep|make ahead|freeze|marinate|night before|day before|defrost/i},
+    {name:'Day-of',color:'coral',rx:/day.?of|serve|heat|plate|reheat|timing|garnish/i}]},
+  moving:{emoji:'📦',title:'Moving',cats:[
+    {name:'Pack',color:'mint',rx:/pack|box|wrap|label|bubble/i},
+    {name:'Utilities',color:'yel',rx:/utility|electric|gas|water|internet|wifi|transfer|connect|cancel/i},
+    {name:'Address',color:'sky',rx:/address|change|forward|update|mail|dmv|bank|license/i},
+    {name:'New-house',color:'lav',rx:/new|paint|repair|clean|measure|install|key/i},
+    {name:'Sell-toss',color:'kraft',rx:/sell|toss|donate|trash|giveaway|dump|goodwill/i}]},
+  baby:{emoji:'👶',title:'Baby',cats:[
+    {name:'Gear',color:'sky',rx:/stroller|crib|car ?seat|gear|bottle|monitor|diaper|clothes/i},
+    {name:'Names',color:'blush',rx:/name|call|middle/i},
+    {name:'Freezer-meals',color:'sage',rx:/meal|freeze|cook|dinner|food|batch/i},
+    {name:'Hospital-bag',color:'yel',rx:/hospital|bag|pack|bring|labor/i},
+    {name:'Thank-yous',color:'lav',rx:/thank|card|gift|note/i}]},
+  classnotes:{emoji:'📚',title:'Class notes',cats:[
+    {name:'Homework',color:'yel',rx:/homework|\bhw\b|assignment|due|read|problem|essay/i},
+    {name:'Exam',color:'coral',rx:/exam|test|quiz|study|review|midterm|final/i},
+    {name:'Ideas',color:'mint',rx:/idea|thought|maybe|topic|question for me/i},
+    {name:'Ask-teacher',color:'blush',rx:/ask|question|teacher|professor|email|office hours|clarify/i}]},
+  gratitude:{emoji:'🙏',title:'Gratitude',nodone:true,cats:[
+    {name:'Grateful',color:'peach',rx:/./}]}
 };
 var GENERIC = [{name:'A',color:'yel',rx:/x^/},{name:'B',color:'blue',rx:/x^/},{name:'C',color:'mint',rx:/x^/},{name:'D',color:'blush',rx:/x^/}];
 
@@ -254,7 +288,7 @@ function openOnboard(){
 }
 function startBoard(tplKey){
   var tpl=tplKey?TEMPLATES[tplKey]:{title:'My Scrapboard',cats:GENERIC.slice()};
-  state={title:tpl.title,tpl:tplKey||'blank',cats:tpl.cats.map(function(c){return{name:c.name,color:c.color,rx:c.rx.source,flags:c.rx.flags}}),scraps:[],sheetId:null};
+  state={title:tpl.title,tpl:tplKey||'blank',nodone:!!tpl.nodone,cats:tpl.cats.map(function(c){return{name:c.name,color:c.color,rx:c.rx.source,flags:c.rx.flags}}),scraps:[],sheetId:null};
   document.getElementById('onboard').classList.remove('on');
   applyBoardMeta();save();render();
   document.getElementById('jotbox').focus();
@@ -352,6 +386,7 @@ function renderHeat(list,el){
   });
 }
 function toggleDone(id){
+  if(state.nodone)return;   // gratitude-style boards: a wall that only grows
   var s=state.scraps.filter(function(x){return x.id===id})[0];if(!s)return;
   s.status=s.status==='done'?'open':'done';s.done_at=s.status==='done'?now():null;
   save();render();
