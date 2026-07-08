@@ -77,7 +77,34 @@ select.sort{background:rgba(0,0,0,.28);color:var(--cream);border:1px solid rgba(
 .scrap.done .tx{text-decoration:line-through;text-decoration-color:var(--red)}
 .scrap.done:after{content:"";position:absolute;right:0;bottom:0;width:20px;height:20px;background:linear-gradient(135deg,transparent 50%,rgba(0,0,0,.16) 50%)}
 .scrap:before{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:26px;height:11px;background:rgba(255,255,255,.35);border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.scrap .tx{padding-right:20px}
+/* recolor dot — the discoverable affordance (long-press also works) */
+.scrap .cdot{position:absolute;top:4px;right:4px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.08);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.scrap .cdot i{display:block;width:13px;height:13px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.65),0 1px 2px rgba(0,0,0,.35)}
+.scrap .cdot:active{transform:scale(.85)}
 .hide{display:none!important}
+
+/* ── COLOR PICKER (thumb-friendly bottom sheet) ── */
+.cmodal{position:fixed;inset:0;z-index:70;background:rgba(10,14,20,.72);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
+.cmodal.on{display:flex}
+.csheet{background:linear-gradient(180deg,#222c3a,#1a222e);border:1px solid rgba(255,255,255,.1);
+  border-top-left-radius:20px;border-top-right-radius:20px;max-width:480px;width:100%;
+  padding:14px 16px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -10px 34px rgba(0,0,0,.55)}
+.csheet .grip{width:38px;height:4px;border-radius:3px;background:rgba(255,255,255,.22);margin:0 auto 12px}
+.ctitle{font-family:"Caveat";font-size:25px;color:var(--cream);text-align:center;margin:0 0 12px}
+.cprev{font-family:"Caveat";font-size:18px;color:var(--ink);border-radius:3px;padding:9px 12px;margin-bottom:14px;
+  max-height:74px;overflow:hidden;box-shadow:0 3px 9px rgba(0,0,0,.4);word-break:break-word}
+.cgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.cswatch{aspect-ratio:1;min-height:52px;border-radius:50%;cursor:pointer;position:relative;
+  border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 7px rgba(0,0,0,.4)}
+.cswatch:active{transform:scale(.9)}
+.cswatch.sel{border-color:#fff}
+.cswatch.sel:after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--ink);font-family:"Kalam";font-weight:700;font-size:22px}
+.cclose{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--cream);
+  border-radius:12px;font-family:"Kalam";font-weight:700;font-size:15px;padding:13px;cursor:pointer}
+.cclose:active{transform:scale(.98)}
 
 /* ── HEATMAP (treemap) ── */
 #heat{display:flex;flex-wrap:wrap;gap:4px;padding:0 4px;align-content:flex-start}
@@ -129,7 +156,7 @@ select.sort{background:rgba(0,0,0,.28);color:var(--cream);border:1px solid rgba(
   <div class="top-in">
     <div>
       <h1 id="board-title">Scrap<span class="b">board</span></h1>
-      <div class="sub" id="board-sub">tap a topic = filter · tap a scrap = done · jot to pin</div>
+      <div class="sub" id="board-sub">tap a scrap = done · hold (or ●) = recolor · jot to pin</div>
     </div>
     <div class="spacer"></div>
     <div class="acct" id="acct"><span class="dot"></span><span id="acct-email"></span></div>
@@ -179,6 +206,17 @@ select.sort{background:rgba(0,0,0,.28);color:var(--cream);border:1px solid rgba(
   <div class="foot">
     <span id="footcopy">Saved privately on this device. <b>Google sign-in is coming</b> — then your board lives in a real Google Sheet in your own Drive.</span>
     &nbsp;·&nbsp; <a href="how-to.html">How to use</a> &nbsp;·&nbsp; a Hook Street product
+  </div>
+</div>
+
+<!-- COLOR PICKER -->
+<div class="cmodal" id="cmodal">
+  <div class="csheet">
+    <div class="grip"></div>
+    <div class="ctitle">Pick a color</div>
+    <div class="cprev" id="cprev"></div>
+    <div class="cgrid" id="cgrid"></div>
+    <button class="cclose" id="cclose">Cancel</button>
   </div>
 </div>
 
@@ -370,9 +408,39 @@ function mkchip(key,label,ct,bg){var b=document.createElement('button');b.classN
 function scrapEl(s,n){
   var d=document.createElement('div');d.className='scrap'+(s.status==='done'?' done':'');
   d.style.background=PALETTE[s.color]||PALETTE.kraft;d.style.setProperty('--rot',((s.id.charCodeAt(1)%5)-2)*0.5+'deg');
-  d.innerHTML='<div class="tx"></div>'+(n?'<span class="num">'+n+'</span>':'');
+  d.innerHTML='<div class="tx"></div><span class="cdot" title="Recolor"><i></i></span>'+(n?'<span class="num">'+n+'</span>':'');
   d.querySelector('.tx').textContent=s.text;
-  d.onclick=function(){toggleDone(s.id)};return d;
+  d.querySelector('.cdot i').style.background=PALETTE[s.color]||PALETTE.kraft;
+  d.querySelector('.cdot').addEventListener('click',function(e){e.stopPropagation();openPalette(s.id);});
+  // long-press anywhere on the scrap also pops the palette
+  var lpTimer=null,lp=false,sx=0,sy=0;
+  d.addEventListener('pointerdown',function(e){lp=false;sx=e.clientX;sy=e.clientY;
+    lpTimer=setTimeout(function(){lp=true;if(navigator.vibrate)navigator.vibrate(12);openPalette(s.id);},480);});
+  d.addEventListener('pointermove',function(e){if(Math.abs(e.clientX-sx)+Math.abs(e.clientY-sy)>8)clearTimeout(lpTimer);});
+  d.addEventListener('pointerup',function(){clearTimeout(lpTimer);});
+  d.addEventListener('pointercancel',function(){clearTimeout(lpTimer);});
+  d.onclick=function(){if(lp){lp=false;return;}toggleDone(s.id);};
+  return d;
+}
+/* ── TAP-TO-RECOLOR ── manual recolor always wins & is remembered (localStorage now, sheet col H when signed-in) */
+var recolorId=null;
+function openPalette(id){
+  var s=state.scraps.filter(function(x){return x.id===id})[0];if(!s)return;
+  recolorId=id;
+  var prev=document.getElementById('cprev');prev.textContent=s.text;prev.style.background=PALETTE[s.color]||PALETTE.kraft;
+  var g=document.getElementById('cgrid');g.innerHTML='';
+  Object.keys(PALETTE).forEach(function(k){
+    var b=document.createElement('div');b.className='cswatch'+(k===s.color?' sel':'');
+    b.style.background=PALETTE[k];b.setAttribute('aria-label',k);
+    b.addEventListener('click',function(){setColor(id,k)});g.appendChild(b);
+  });
+  document.getElementById('cmodal').classList.add('on');
+}
+function closePalette(){document.getElementById('cmodal').classList.remove('on');recolorId=null;}
+function setColor(id,color){
+  var s=state.scraps.filter(function(x){return x.id===id})[0];if(!s)return;
+  s.color=color;s.manual=true;               // manual wins; auto-color no longer touches it
+  save();render();closePalette();
 }
 function renderHeat(list,el){
   el.innerHTML=list.length?'':'<div class="empty">nothing to map yet</div>';
@@ -428,15 +496,15 @@ var SYNC={on:false,token:null,sheetId:null,
     // create "My Scrapbook" in the user's Drive
     SYNC.api('https://sheets.googleapis.com/v4/spreadsheets',{method:'POST',body:JSON.stringify({properties:{title:'My Scrapbook — '+(state?state.title:'board')},sheets:[{properties:{title:'SCRAPS'}},{properties:{title:'CONFIG'}}]})})
       .then(function(r){if(!r.spreadsheetId)return;SYNC.sheetId=r.spreadsheetId;state.sheetId=r.spreadsheetId;
-        SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+r.spreadsheetId+'/values/SCRAPS!A1:G1?valueInputOption=RAW',{method:'PUT',body:JSON.stringify({values:[['id','text','category','color','status','created','done_at']]})});
+        SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+r.spreadsheetId+'/values/SCRAPS!A1:H1?valueInputOption=RAW',{method:'PUT',body:JSON.stringify({values:[['id','text','category','color','status','created','done_at','manual']]})});
         save();});
   },
   push:function(){ if(!SYNC.on||!SYNC.sheetId)return;
-    var rows=[['id','text','category','color','status','created','done_at']].concat(state.scraps.map(function(s){return[s.id,s.text,s.cat,s.color,s.status,String(s.created),s.done_at?String(s.done_at):'']}));
-    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+SYNC.sheetId+'/values/SCRAPS!A1:G'+rows.length+'?valueInputOption=RAW',{method:'PUT',body:JSON.stringify({values:rows})}); },
+    var rows=[['id','text','category','color','status','created','done_at','manual']].concat(state.scraps.map(function(s){return[s.id,s.text,s.cat,s.color,s.status,String(s.created),s.done_at?String(s.done_at):'',s.manual?'1':'']}));
+    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+SYNC.sheetId+'/values/SCRAPS!A1:H'+rows.length+'?valueInputOption=RAW',{method:'PUT',body:JSON.stringify({values:rows})}); },
   pull:function(){ if(!SYNC.sheetId)return;
-    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+SYNC.sheetId+'/values/SCRAPS!A2:G').then(function(r){
-      if(!r.values)return;state.scraps=r.values.map(function(v){return{id:v[0],text:v[1],cat:v[2],color:v[3],status:v[4],created:+v[5],done_at:v[6]?+v[6]:null}});save();render();}); }
+    SYNC.api('https://sheets.googleapis.com/v4/spreadsheets/'+SYNC.sheetId+'/values/SCRAPS!A2:H').then(function(r){
+      if(!r.values)return;state.scraps=r.values.map(function(v){return{id:v[0],text:v[1],cat:v[2],color:v[3],status:v[4],created:+v[5],done_at:v[6]?+v[6]:null,manual:v[7]==='1'}});save();render();}); }
 };
 
 /* ── DEMO MODE (no sign-in) — ?demo=1 or #demo · pre-filled sample board ── */
@@ -477,6 +545,8 @@ if(isDemo){
   applyBoardMeta();render();
 }else if(state){applyBoardMeta();render();}else{openOnboard();}
 setFootCopy(!!(state&&state.sheetId));
+document.getElementById('cclose').onclick=closePalette;
+document.getElementById('cmodal').addEventListener('click',function(e){if(e.target===this)closePalette();});
 SYNC.init();
 </script>
 </body>
