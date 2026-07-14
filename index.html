@@ -40,6 +40,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:va
 
 /* HERO, founder-led, compact (dvh, not a 100vh billboard) */
 .hero{min-height:72dvh;background:linear-gradient(150deg,var(--navy),var(--navy2));display:flex;align-items:flex-end;padding:110px 20px 46px;border-bottom:3px solid var(--gold);}
+/* portrait/tall screens: a bottom-anchored 72dvh hero reads as a wall of dead space (Sam iPad 7/13) — let it size to content */
+@media(orientation:portrait){.hero{min-height:auto;align-items:flex-start;padding:96px 20px 40px;}}
 .hero-inner{max-width:1080px;margin:0 auto;width:100%;}
 .hero .eyebrow{color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;}
 .hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,5.5vw,3.8rem);line-height:1.1;color:#fff;margin:12px 0 10px;max-width:720px;}
@@ -226,7 +228,7 @@ footer{background:var(--navy);padding:34px 20px 22px;border-top:1px solid rgba(2
       <div>
         <p style="font-size:.92rem;color:var(--sub);font-weight:300;">Every engagement is me, not a team you'll never meet. Started in NYC real-estate operations, went independent buying distressed notes, became the underwriter institutional groups leaned on until COVID, then built and ran my own operations. The through-line: I sell the work I control, scoped, priced, and delivered in writing.</p>
         <div class="cta-row" style="max-width:520px;">
-          <a class="btn btn-gold" href="mailto:sam@hookstreetcapital.com?subject=Hook%20Street%20inquiry">✉️ sam@hookstreetcapital.com</a>
+          <a class="btn btn-gold" style="overflow-wrap:anywhere;" href="mailto:sam@hookstreetcapital.com?subject=Hook%20Street%20inquiry">✉️ Email Sam</a>
           <a class="btn btn-line" href="https://wa.me/message/7BAOGV7WPEEAI1" target="_blank">💬 WhatsApp</a>
           <a class="btn btn-line" href="tel:+19177807382">📞 (917) 780-7382</a>
         </div>
