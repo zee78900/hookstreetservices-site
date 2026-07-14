@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>VARIANT B · Sample Deal Snapshot | Hook Street Services</title>
+<meta name="description" content="A worked example of the Hook Street Deal Snapshot, one-page verdict, re-underwritten waterfall, sensitivity table, glossed risks, exit math. Illustrative numbers.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{max-width:100%;overflow-x:hidden;}
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1b2e;--navy2:#152338;--gold:#c9a055;--gold2:#e8d5a3;--cream:#faf8f5;--ink:#1a1612;--sub:#5a5450;--muted:#9b9490;--border:#e4e0d8;--green:#15803d;--amber:#b45309;--red:#b91c1c;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums;}
+.mockbar{position:sticky;top:0;z-index:50;background:#b45309;color:#fff;font-size:12px;font-weight:700;letter-spacing:.05em;text-align:center;padding:7px 12px;}
+.wrap{max-width:640px;margin:0 auto;padding:14px 14px 40px;position:relative;}
+.watermark{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;overflow:hidden;}
+.watermark span{transform:rotate(-28deg);font:800 64px 'DM Sans';color:rgba(180,83,9,.07);letter-spacing:.1em;white-space:nowrap;}
+.page{position:relative;z-index:2;background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 4px 24px rgba(13,27,46,.09);}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--navy);padding-bottom:12px;margin-bottom:14px;}
+.hd .brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);}
+.hd .brand em{color:var(--gold);font-style:italic;}
+.hd .meta{font-size:10.5px;color:var(--muted);text-align:right;line-height:1.5;}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.5rem;margin-bottom:2px;}
+.sub{font-size:12px;color:var(--sub);margin-bottom:12px;}
+.verdict{display:flex;align-items:center;gap:14px;background:rgba(201,160,85,.13);border-left:3px solid var(--gold);border-radius:10px;padding:12px 15px;margin-bottom:14px;}
+.verdict .light{font-size:1.7rem;}
+.verdict b{font-size:1.05rem;color:var(--amber);}
+.verdict p{font-size:12.5px;color:var(--sub);margin-top:2px;}
+h2{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:16px 0 7px;}
+table{border-collapse:collapse;width:100%;font-size:12.5px;}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:right;}
+th:first-child,td:first-child{text-align:left;}
+th{background:#f3ede4;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);}
+.neg{color:var(--red);}
+.pos{color:var(--green);}
+.risks li{margin:6px 0 6px 0;padding-left:22px;position:relative;font-size:13px;list-style:none;}
+.risks li::before{content:'⚠';position:absolute;left:0;color:var(--amber);}
+.footnote{margin-top:16px;padding-top:10px;border-top:1px solid var(--border);font-size:10.5px;color:var(--muted);line-height:1.6;}
+.d4{margin:14px 0 0;background:#fff;border:1.5px dashed var(--gold);border-radius:10px;padding:12px 14px;font-size:12.5px;position:relative;z-index:2;}
+.d4 b{color:var(--amber);}
+
+/* VARIANT B — clean broker-grade: white memo, navy headings, restrained accents */
+:root{--cream:#eef1f5;--ink:#111827;--sub:#4b5563;--muted:#7b8494;--border:#dfe4ea;--gold:#0d1b2e;--gold2:#0d1b2e;--amber:#b45309;}
+body{background:var(--cream);font-size:14px;}
+.page{border-radius:6px;border-color:#d4dae2;box-shadow:0 2px 14px rgba(17,24,39,.08);}
+.hd{border-bottom:3px double #0d1b2e;}
+.hd .brand em{color:#0d1b2e;}
+h1{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:-.01em;}
+h2{color:#0d1b2e;border-bottom:1px solid var(--border);padding-bottom:3px;}
+.verdict{background:#fff;border:1px solid #d4dae2;border-left:4px solid #b45309;border-radius:6px;}
+.verdict b{color:#111827;}
+th{background:#f1f4f8;color:#374151;}
+tr:nth-child(even) td{background:#f8fafc;}
+.mockbar{background:#0d1b2e;}
+.watermark span{color:rgba(17,24,39,.05);}
+.d4{border:1px solid #d4dae2;border-left:4px solid #0d1b2e;border-radius:6px;}
+.d4 b{color:#0d1b2e;}
+</style>
+</head>
+<body>
+<div class="mockbar">WORKED EXAMPLE, illustrative numbers, not a real deal · this is the exact format you receive · <a href="index.html#snapshot" style="color:#fff;">← back to Hook Street</a></div>
+<div class="watermark"><span>ILLUSTRATIVE</span></div>
+<div class="wrap">
+
+<div class="page">
+  <div class="hd">
+    <div>
+      <div class="brand">Hook Street <em>· Deal Snapshot</em></div>
+    </div>
+    <div class="meta">Prepared for: [CLIENT]<br>Delivered: [DATE]. 22h after receipt<br>Engagement: $2,500 flat</div>
+  </div>
+
+  <h1>“Maplewood Crossing”. 96-unit multifamily, [SUNBELT METRO]</h1>
+  <div class="sub">Ask $11.4M · broker pro-forma cap 6.1% · T-12, rent roll, and OM received [DATE]</div>
+
+  <div class="verdict">
+    <span class="light">🟡</span>
+    <div>
+      <b>MAYBE, at $10.6M, not $11.4M</b>
+      <p>The deal works only if you buy the real T-12, not the pro-forma. Three reasons below drove this; bid guidance on the call.</p>
+    </div>
+  </div>
+
+  <h2>The waterfall, broker vs. re-underwritten</h2>
+  <table>
+    <tr><th></th><th>Broker pro-forma</th><th>Hook Street re-underwrite</th><th>Δ</th></tr>
+    <tr><td>Effective gross income</td><td>$1,388,000</td><td>$1,304,000</td><td class="neg">−6.1%</td></tr>
+    <tr><td>OpEx (normalized)</td><td>$512,000</td><td>$561,000</td><td class="neg">+9.6%</td></tr>
+    <tr><td>NOI</td><td>$876,000</td><td>$743,000</td><td class="neg">−15.2%</td></tr>
+    <tr><td>Entry cap @ ask</td><td>7.7%</td><td>6.5%</td><td class="neg">−120 bps</td></tr>
+    <tr><td>Yr-1 cash-on-cash</td><td>9.2%</td><td>5.8%</td><td class="neg">−340 bps</td></tr>
+    <tr><td>5-yr IRR (base)</td><td>18.4%</td><td>13.1%</td><td class="neg">−530 bps</td></tr>
+  </table>
+
+  <h2>Sensitivity, your return if the world wobbles</h2>
+  <table>
+    <tr><th>Scenario</th><th>NOI</th><th>5-yr IRR</th><th>Deal still works?</th></tr>
+    <tr><td>Rents miss 5%</td><td>$696,000</td><td>10.9%</td><td class="pos">Barely, at $10.6M basis</td></tr>
+    <tr><td>Rents miss 10%</td><td>$648,000</td><td>8.2%</td><td class="neg">No</td></tr>
+    <tr><td>Exit cap +50 bps</td><td>, </td><td>10.4%</td><td class="pos">At $10.6M basis</td></tr>
+    <tr><td>Refi rate +1 pt</td><td>, </td><td>11.3%</td><td class="pos">Thin</td></tr>
+  </table>
+
+  <h2>The three risks the package glosses</h2>
+  <ul class="risks">
+    <li><b>Roof &amp; HVAC capex is real and unpriced:</b> 60% of units on original 2004 systems; $410K reserve needed that the pro-forma carries at $96K.</li>
+    <li><b>Other-income line is inflated:</b> $71K of “utility reimbursement growth” assumes a RUBS conversion the current leases don’t permit until turnover.</li>
+    <li><b>Concessions are hiding in the rent roll:</b> 14 of the last 20 leases carry one month free, economic rents run ~4% under face.</li>
+  </ul>
+
+  <h2>Exit math</h2>
+  <table>
+    <tr><th>Case</th><th>Exit cap</th><th>Yr-5 value</th><th>Net to equity</th></tr>
+    <tr><td>Bear</td><td>6.75%</td><td>$11.9M</td><td>1.31×</td></tr>
+    <tr><td>Base</td><td>6.25%</td><td>$12.9M</td><td>1.62×</td></tr>
+    <tr><td>Bull</td><td>5.75%</td><td>$14.0M</td><td>1.94×</td></tr>
+  </table>
+
+  <div class="footnote">
+    Comps: 3 closed trades within 2.4 mi, 2024–26, $108–121K/unit (deal ask = $118.8K/unit). Full comp sheet + model workbook accompany this page. · 30-minute walkthrough call included. · Independent underwriting consulting; not an appraisal; not investment advice. Hook Street Services, an imprint of Hook Street Capital LLC.
+  </div>
+</div>
+
+
+
+</div>
+</body>
+</html>
