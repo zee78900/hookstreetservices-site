@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Sample Deal Snapshot | Hook Street Services</title>
 <meta name="description" content="A worked example of the Hook Street Deal Snapshot, one-page verdict, re-underwritten waterfall, sensitivity table, glossed risks, exit math. Illustrative numbers.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+html,body{max-width:100%;overflow-x:hidden;}
+
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--navy:#0d1b2e;--navy2:#152338;--gold:#c9a055;--gold2:#e8d5a3;--cream:#faf8f5;--ink:#1a1612;--sub:#5a5450;--muted:#9b9490;--border:#e4e0d8;--green:#15803d;--amber:#b45309;--red:#b91c1c;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums;}
 .mockbar{position:sticky;top:0;z-index:50;background:#b45309;color:#fff;font-size:12px;font-weight:700;letter-spacing:.05em;text-align:center;padding:7px 12px;}
 .wrap{max-width:640px;margin:0 auto;padding:14px 14px 40px;position:relative;}
-.watermark{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;}
+.watermark{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;overflow:hidden;}
 .watermark span{transform:rotate(-28deg);font:800 64px 'DM Sans';color:rgba(180,83,9,.07);letter-spacing:.1em;white-space:nowrap;}
 .page{position:relative;z-index:2;background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 4px 24px rgba(13,27,46,.09);}
 .hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--navy);padding-bottom:12px;margin-bottom:14px;}
