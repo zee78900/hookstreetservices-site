@@ -109,7 +109,7 @@ footer{background:var(--navy);padding:34px 20px 22px;border-top:1px solid rgba(2
 
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="#">Hook Street <span>Services</span></a>
+    <a class="nav-logo" href="/">Hook Street <span>Services</span></a>
     <ul class="nav-links">
       <li><a href="deal-snapshot.html">Deal Snapshot</a></li>
       <li><a href="ai-call.html">The AI Talk</a></li>
@@ -228,7 +228,7 @@ function togMenu(){document.getElementById('mnav').classList.toggle('open');}
   var h=location.hash;
   if(!h)return;
   var villa=['#properties','#communities','#services','#calculator','#faq','#how','#why'];
-  if(villa.indexOf(h)!==-1){location.replace('villas/'+h);}
+  if(villa.indexOf(h)!==-1){location.replace('https://sommersethillsvillas.com/');}
   else if(h==='#advisory'){location.replace('#snapshot');}
 })();
 </script>
