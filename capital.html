@@ -80,7 +80,7 @@ footer.foot a{color:var(--navy)}
   <div class="sub">Sell receivables, factor invoices, or get your business funded. Send your numbers securely, you get a straight answer fast, and the fee is a flat fee, never a cut of your money.</div>
 </header>
 
-<p class="lede">You need capital and you need it clean, no drawn-out application, no surprise take-rate on the back end. Send your financials through the secure form below. They land straight in our private vault, they're reviewed only by Sam, and you'll hear back with a real read: what we can do, how fast, and exactly what it costs.</p>
+<p class="lede">You need capital and you need it clean, no drawn-out application, no surprise take-rate on the back end. Send your financials through the secure form below. They're handled securely and confidentially, reviewed only by Sam, and you'll hear back with a real read: what we can do, how fast, and exactly what it costs.</p>
 
 <h2>What we look at</h2>
 <div class="card">
@@ -137,11 +137,13 @@ footer.foot a{color:var(--navy)}
 
     <div class="status" id="status"></div>
     <button type="submit" class="cta" id="submit">Send securely →</button>
+    <p class="fine">Your data is handled per our <a href="privacy.html">privacy policy</a>.</p>
     <p class="fine">By sending, you consent to Hook Street reviewing these documents to evaluate a possible engagement. No engagement or obligation is created until confirmed in writing. Not legal, tax, or investment advice.</p>
   </form>
 </div>
 
 <footer class="foot">
+  <p><a href="deal-snapshot.html">Deal Snapshot</a> · <a href="ai-call.html">The AI Talk</a> · <a href="capital.html">Capital</a> · <a href="systems.html">Systems</a> · <a href="https://sommersethillsvillas.com">Villas</a> · <a href="privacy.html">Privacy</a></p>
   <p><b>Hook Street Services</b> · sam@hookstreetcapital.com · an imprint of Hook Street Capital LLC</p>
   <p>Confidential business-capital review. Flat-fee engagements, disclosed in writing. No fiduciary relationship is formed by submitting this form.</p>
 </footer>
@@ -200,7 +202,7 @@ footer.foot a{color:var(--navy)}
       .then(function(d){
         if (d && d.ok){
           form.style.display='none';
-          show('ok','<b>✓ Received.</b> Your documents are in Hook Street’s vault and Sam has been notified. You’ll hear back shortly at '+email+'.');
+          show('ok','<b>✓ Received.</b> Your documents are handled securely and confidentially, and Sam has been notified. You’ll hear back shortly at '+email+'.');
         } else {
           throw new Error((d && d.error) || 'submit_failed');
         }
