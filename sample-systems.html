@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Sample Operating Map | Hook Street Services</title>
+<meta name="description" content="A worked example of the Hook Street Operating Map: every recurring loop in a small business mapped, the break points named, the three highest-leverage fixes ranked, and a two-week install plan. Illustrative, fictional business.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{max-width:100%;overflow-x:hidden;}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1b2e;--gold:#c9a055;--paper:#eef1f5;--ink:#111827;--sub:#4b5563;--muted:#7b8494;--border:#dfe4ea;--rule:#d4dae2;--green:#15803d;--amber:#b45309;--red:#b91c1c;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums;}
+.mockbar{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:.05em;text-align:center;padding:7px 12px;}
+.wrap{max-width:680px;margin:0 auto;padding:14px 14px 40px;position:relative;}
+.watermark{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;overflow:hidden;}
+.watermark span{transform:rotate(-28deg);font:800 64px 'DM Sans';color:rgba(17,24,39,.05);letter-spacing:.1em;white-space:nowrap;}
+.page{position:relative;z-index:2;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:20px;box-shadow:0 2px 14px rgba(17,24,39,.08);}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px double var(--navy);padding-bottom:12px;margin-bottom:14px;gap:12px;}
+.hd .brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);}
+.hd .brand em{color:var(--gold);font-style:italic;}
+.hd .meta{font-size:10.5px;color:var(--muted);text-align:right;line-height:1.5;}
+h1{font-weight:700;font-size:1.25rem;letter-spacing:-.01em;margin-bottom:2px;}
+.sub{font-size:12px;color:var(--sub);margin-bottom:12px;}
+.verdict{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--rule);border-left:4px solid var(--amber);border-radius:6px;padding:12px 15px;margin-bottom:14px;}
+.verdict .light{font-size:1.7rem;}
+.verdict b{font-size:1.05rem;color:var(--ink);}
+.verdict p{font-size:12.5px;color:var(--sub);margin-top:2px;}
+h2{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--border);padding-bottom:3px;margin:16px 0 7px;}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:540px;}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top;}
+th{background:#f1f4f8;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:#374151;}
+tr:nth-child(even) td{background:#f8fafc;}
+td.ok{color:var(--green);font-weight:600;white-space:nowrap;}
+td.warn{color:var(--amber);font-weight:600;white-space:nowrap;}
+td.bad{color:var(--red);font-weight:600;white-space:nowrap;}
+.legend{font-size:11px;color:var(--muted);margin-top:6px;}
+.risks li{margin:6px 0 6px 0;padding-left:22px;position:relative;font-size:13px;list-style:none;}
+.risks li::before{content:'\26A0';position:absolute;left:0;color:var(--amber);}
+.wins li{margin:6px 0 6px 0;padding-left:22px;position:relative;font-size:13px;list-style:none;}
+.wins li::before{content:'\2713';position:absolute;left:0;color:var(--green);font-weight:800;}
+.footnote{margin-top:16px;padding-top:10px;border-top:1px solid var(--border);font-size:10.5px;color:var(--muted);line-height:1.6;}
+.cta{display:block;position:relative;z-index:2;margin:14px auto 0;max-width:680px;text-align:center;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:13.5px;padding:13px 16px;border-radius:6px;}
+.cta em{color:var(--gold);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="mockbar">WORKED EXAMPLE, illustrative, not a real business &middot; this is the exact format you receive &middot; <a href="systems.html#offers" style="color:#fff;">&larr; back to Systems</a></div>
+<div class="watermark"><span>ILLUSTRATIVE</span></div>
+<div class="wrap">
+
+<div class="page">
+  <div class="hd">
+    <div>
+      <div class="brand">Hook Street <em>&middot; Operating Map</em></div>
+    </div>
+    <div class="meta">Prepared for: Illustrative engagement<br>Delivered: end of week one<br>Engagement: Operating Map Sprint (pilot)</div>
+  </div>
+
+  <h1>&ldquo;Anyville Stays&rdquo;: three short-term-rental homes, one owner, no staff</h1>
+  <div class="sub">3 properties in a vacation corridor &middot; roughly 120 stays a year &middot; one cleaner, one handyman, pool and lawn vendors &middot; the whole operation runs from the owner&rsquo;s phone</div>
+
+  <div class="verdict">
+    <span class="light">&#x1F7E1;</span>
+    <div>
+      <b>A sound business held together by one person&rsquo;s memory</b>
+      <p>Ten recurring loops keep this business alive. Seven live in the owner&rsquo;s head or in text threads. The map below shows every loop, where each one breaks, and the three fixes worth doing first.</p>
+    </div>
+  </div>
+
+  <h2>Every recurring loop, mapped</h2>
+  <div class="tbl">
+  <table>
+    <tr><th>Loop</th><th>Runs</th><th>Owner today</th><th>Lives in</th><th>Status</th></tr>
+    <tr><td>Booking calendar sync (2 platforms)</td><td>Continuous</td><td>The platforms</td><td>Airbnb-Vrbo sync</td><td class="ok">&#x1F7E2; Works</td></tr>
+    <tr><td>Guest messaging (check-in, mid-stay, checkout)</td><td>Daily</td><td>Owner</td><td>Two platform inboxes + texts</td><td class="warn">&#x1F7E0; Slips on turnover days</td></tr>
+    <tr><td>Cleaning dispatch + turnover confirmation</td><td>Every checkout</td><td>Owner, by text</td><td>One long text thread</td><td class="bad">&#x1F534; No confirm step</td></tr>
+    <tr><td>Damage + extra-fee claims</td><td>Per incident</td><td>Owner</td><td>Camera-roll screenshots</td><td class="bad">&#x1F534; Filing windows missed</td></tr>
+    <tr><td>Payout reconciliation (2 platforms, 3 homes)</td><td>Monthly</td><td>Nobody</td><td>Unread statements</td><td class="bad">&#x1F534; Never runs</td></tr>
+    <tr><td>Pool, lawn, pest vendors</td><td>Weekly to monthly</td><td>Owner</td><td>Memory + missed calls</td><td class="warn">&#x1F7E0; Reactive only</td></tr>
+    <tr><td>Utilities, HOA, insurance</td><td>Monthly</td><td>Partial autopay</td><td>3 cards, 2 banks</td><td class="warn">&#x1F7E0; Mixed routing</td></tr>
+    <tr><td>Pricing + minimum-stay updates</td><td>Weekly, intended</td><td>Owner</td><td>Whenever there is a quiet hour</td><td class="warn">&#x1F7E0; Ad hoc</td></tr>
+    <tr><td>Supply restock (linens, consumables)</td><td>Per clean</td><td>Cleaner texts photos</td><td>Same text thread</td><td class="warn">&#x1F7E0; No par list</td></tr>
+    <tr><td>Review replies + rebooking nudge</td><td>Per stay</td><td>Nobody</td><td>Nowhere</td><td class="bad">&#x1F534; Does not exist</td></tr>
+  </table>
+  </div>
+  <p class="legend">&#x1F7E2; healthy &middot; &#x1F7E0; runs, but only through the owner &middot; &#x1F534; broken or missing</p>
+
+  <h2>Where the money leaks</h2>
+  <ul class="risks">
+    <li><b>Missed claim windows:</b> two damage incidents last quarter were photographed but never filed; the platform&rsquo;s filing window closed at 14 days. Illustrative cost: roughly $700 walked away.</li>
+    <li><b>Unreconciled payouts:</b> nobody checks that payouts match bookings. A first-pass reconciliation on a business like this typically surfaces cleaning-fee mismatches and unclaimed resolution credits in the low hundreds per month.</li>
+    <li><b>Vendor drift:</b> the pool service billed 13 visits across a 12-week stretch. Nobody caught it, because no one owns that loop.</li>
+  </ul>
+
+  <h2>The three fixes, ranked by leverage</h2>
+  <div class="tbl">
+  <table>
+    <tr><th>#</th><th>Fix</th><th>What it replaces</th><th>Effort</th><th>What changes</th></tr>
+    <tr><td>1</td><td><b>The monthly money loop.</b> One reconciliation tab; a 30-minute ritual matching payouts to bookings and flagging claims before their window closes.</td><td>Unread statements, missed claims, invisible fee errors</td><td>2 hrs to build, 30 min a month</td><td>Every payout checked. Every claim filed inside the window.</td></tr>
+    <tr><td>2</td><td><b>Turnover confirmation.</b> Checkout triggers the cleaner dispatch; the cleaner replies with one photo when the home is guest-ready.</td><td>&ldquo;Is the house ready?&rdquo; texts at 3pm on turnover day</td><td>1 hr to set up</td><td>The owner stops chasing. A late turnover is visible by noon, not at check-in.</td></tr>
+    <tr><td>3</td><td><b>One command sheet.</b> Every open item, guest, vendor, repair, or claim, as one row with an owner, a next action, and a date.</td><td>Six active text threads plus the owner&rsquo;s memory</td><td>Built in week one</td><td>The business stops living in one person&rsquo;s head.</td></tr>
+  </table>
+  </div>
+
+  <h2>The two-week install</h2>
+  <div class="tbl">
+  <table>
+    <tr><th>Days</th><th>What happens</th><th>Done when</th></tr>
+    <tr><td>1-2</td><td>Intake call. Map every loop; the table above is the output.</td><td>Owner confirms the map matches reality.</td></tr>
+    <tr><td>3-5</td><td>Build the command sheet and the reconciliation tab. Load every open item.</td><td>Every open item is a row with an owner and a date.</td></tr>
+    <tr><td>6-7</td><td>First reconciliation run, together, on last month&rsquo;s statements.</td><td>Findings listed with dollar amounts.</td></tr>
+    <tr><td>8-10</td><td>Turnover-confirmation flow goes live on the next checkout.</td><td>First photo-confirmed clean.</td></tr>
+    <tr><td>11-13</td><td>Owner runs the weekly ritual solo. Tune what sticks, drop what does not.</td><td>Owner closes items without help.</td></tr>
+    <tr><td>14</td><td>Check-in call. Keep, kill, or adjust each piece.</td><td>The map runs without the builder.</td></tr>
+  </table>
+  </div>
+
+  <h2>What the owner stops doing</h2>
+  <ul class="wins">
+    <li>Re-reading a six-month text thread to find what the cleaner said about the dryer.</li>
+    <li>Wondering whether a payout actually matched the booking.</li>
+    <li>Being the only person on earth who knows a repair is pending.</li>
+  </ul>
+
+  <div class="footnote">
+    &ldquo;Anyville Stays&rdquo; is a fictional business and every number on this page is illustrative. The format is the real deliverable: the loop map, the leak list, the three ranked fixes, and the two-week install plan are exactly what an Operating Map Sprint produces for your business. &middot; Independent operations consulting; not accounting, legal, or tax advice. Hook Street Services, an imprint of Hook Street Capital LLC.
+  </div>
+</div>
+
+<a class="cta" href="systems.html#offers">Want this map for your business? <em>Operating Map Sprint, pilot pricing, two weeks &rarr;</em></a>
+
+</div>
+</body>
+</html>
