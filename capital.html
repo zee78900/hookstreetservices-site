@@ -77,7 +77,7 @@ footer.foot a{color:var(--navy)}
   <span class="bsd">בס״ד</span>
   <div class="brand">Hook Street Services · Capital Readiness</div>
   <h1>Capital Readiness &amp; Receivables Review</h1>
-  <div class="sub">Before you accept expensive money, get an independent read on your receivables, cash flow, and financing readiness. Confidential, flat fee. Hook Street does not lend or arrange financing, we review and prepare.</div>
+  <div class="sub">Before you accept expensive money, get an independent read on your receivables, cash flow, and financing readiness. Confidential, flat fee. Hook Street does not lend or arrange financing; we review and prepare.</div>
 </header>
 
 <p class="lede">Before you sign for receivables financing, factoring, or a credit line, know what your numbers actually support. Send your financials through the secure form below. They're handled securely and confidentially, reviewed only by Sam, and you get a written read: what appears financeable, where the risks are, and what to ask before you talk to a lender or factor.</p>
@@ -138,11 +138,11 @@ footer.foot a{color:var(--navy)}
       <div class="filelist" id="filelist"></div>
     </div>
 
-    <div class="status" id="status"></div>
     <button type="submit" class="cta" id="submit">Send securely →</button>
     <p class="fine">Your data is handled per our <a href="privacy.html">privacy policy</a>.</p>
     <p class="fine">By sending, you consent to Hook Street reviewing these documents to evaluate a possible engagement. No engagement or obligation is created until confirmed in writing. Not legal, tax, or investment advice.</p>
   </form>
+  <div class="status" id="status"></div>
 </div>
 
 <footer class="foot">
@@ -178,7 +178,7 @@ footer.foot a{color:var(--navy)}
     for (var i=0;i<files.length;i++){
       var f = files[i];
       if (chosen.length >= MAX_FILES){ show('err','Up to '+MAX_FILES+' files. Remove one to add another.'); break; }
-      if (f.size > MAX_BYTES){ show('err','"'+f.name+'" is over 20 MB, please send a smaller file.'); continue; }
+      if (f.size > MAX_BYTES){ show('err','"'+f.name+'" is over 20 MB; please send a smaller file.'); continue; }
       chosen.push(f);
     }
     render();
