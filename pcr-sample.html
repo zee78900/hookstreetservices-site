@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Sample Owner Brief | Private Capital Review | Hook Street Services</title>
+<meta name="description" content="A fictional worked example of the Private Capital Review owner brief: cash in, cash out, latest reported value with source and date, expected versus actual, flags, and send-ready questions. Illustrative only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{max-width:100%;overflow-x:hidden;}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0d1b2e;--navy2:#152338;--gold:#c9a055;--gold2:#e8d5a3;--gold-ink:#9c7628;
+  --paper:#f6f4ee;--white:#ffffff;--ink:#1a1612;--sub:#544e49;--muted:#847c74;
+  --rule:rgba(13,27,46,.13);--rule-soft:rgba(13,27,46,.07);--rule-gold:rgba(201,160,85,.45);
+  --green:#15803d;--red:#b3261e;--amber:#b45309;--blue:#1d4ed8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:15px;font-variant-numeric:tabular-nums;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;position:relative;z-index:2;}
+em{font-style:italic}
+h2.sec{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.55rem;color:var(--navy);margin:0 0 4px;}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);}
+
+/* sample labeling (matches sample-snapshot.html pattern) */
+.mockbar{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:.05em;text-align:center;padding:7px 12px;}
+.mockbar a{color:#fff;}
+.fict{background:#fff6e6;border-bottom:1px solid #f0d9a8;color:#7a5a12;text-align:center;font-size:.78rem;font-weight:600;padding:8px 14px;}
+.watermark{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;overflow:hidden;}
+.watermark span{transform:rotate(-28deg);font:800 64px 'DM Sans';color:rgba(17,24,39,.05);letter-spacing:.1em;white-space:nowrap;}
+
+/* header band (the only dark element besides the bar and footer) */
+.band{background:linear-gradient(150deg,var(--navy),var(--navy2));border-bottom:3px solid var(--gold);color:#fff;padding:34px 0 30px;position:relative;z-index:2;}
+.band .eyebrow{color:var(--gold2)}
+.band h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.7rem,4.4vw,2.5rem);line-height:1.12;margin:8px 0 12px;}
+.band .meta{display:flex;flex-wrap:wrap;gap:6px 22px;color:rgba(255,255,255,.72);font-size:.82rem;}
+.band .meta b{color:#fff;font-weight:600}
+
+section{padding:30px 0;border-bottom:1px solid var(--rule-soft);}
+.lead{color:var(--sub);font-weight:300;max-width:70ch;margin-top:6px;}
+
+/* boundary box */
+.boundary{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-top:16px;background:var(--white);}
+@media(max-width:620px){.boundary{grid-template-columns:1fr}}
+.boundary>div{padding:16px 18px}
+.boundary .yes{border-right:1px solid var(--rule)}
+@media(max-width:620px){.boundary .yes{border-right:0;border-bottom:1px solid var(--rule)}}
+.boundary h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.boundary .yes h4{color:var(--green)}.boundary .no h4{color:var(--red)}
+.boundary ul{list-style:none;font-size:.83rem;color:var(--sub)}
+.boundary li{padding:3px 0 3px 18px;position:relative}
+.boundary .yes li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.boundary .no li::before{content:"✕";position:absolute;left:0;color:var(--red);font-weight:700}
+
+/* snapshot */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+@media(max-width:720px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--white);border:1px solid var(--rule);border-radius:11px;padding:15px 16px}
+.kpi .v{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--navy);line-height:1}
+.kpi .l{font-size:.72rem;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.05em}
+.note{font-size:.78rem;color:var(--muted);margin-top:12px;font-style:italic}
+
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.83rem;background:var(--white);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+thead th{background:var(--navy);color:#fff;font-weight:600;text-align:left;padding:10px 12px;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase}
+tbody td{padding:10px 12px;border-top:1px solid var(--rule-soft);vertical-align:top}
+tbody td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scrollx{overflow-x:auto}
+
+/* flags */
+.flags{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.flag{display:flex;gap:11px;align-items:flex-start;background:var(--white);border:1px solid var(--rule);border-left-width:4px;border-radius:9px;padding:11px 14px}
+.flag.red{border-left-color:var(--red)}.flag.amber{border-left-color:var(--amber)}.flag.blue{border-left-color:var(--blue)}
+.flag .t{font-weight:600;font-size:.86rem}.flag .d{font-size:.82rem;color:var(--sub)}
+.tag{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:20px;vertical-align:middle}
+.tag.red{background:#fbeae8;color:var(--red)}.tag.amber{background:#fdf0dc;color:var(--amber)}.tag.green{background:#e6f4ec;color:var(--green)}.tag.blue{background:#e7edfd;color:var(--blue)}
+
+/* holding cards */
+.hcard{background:var(--white);border:1px solid var(--rule);border-radius:13px;padding:20px 20px 6px;margin-top:16px}
+.hhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:12px}
+.hhead .nm{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);font-weight:600}
+.hhead .ty{font-size:.76rem;color:var(--muted)}
+.drow{display:grid;grid-template-columns:190px 1fr;gap:0;border-bottom:1px solid var(--rule-soft)}
+@media(max-width:560px){.drow{grid-template-columns:1fr}}
+.drow>div{padding:9px 0}
+.drow .k{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.drow .val{font-size:.9rem}
+.src{font-size:.74rem;color:var(--muted);font-style:italic}
+.q{background:#f7f5ef;border:1px dashed var(--rule);border-radius:8px;padding:10px 13px;margin:12px 0;font-size:.85rem}
+.q b{color:var(--gold-ink)}
+
+/* consolidated questions + missing */
+ol.qs{margin:14px 0 0 0;padding-left:20px}
+ol.qs li{margin:8px 0;font-size:.88rem}
+ol.qs li span{color:var(--muted);font-size:.78rem}
+ul.miss{list-style:none;margin-top:14px;columns:2;column-gap:26px}
+@media(max-width:620px){ul.miss{columns:1}}
+ul.miss li{font-size:.84rem;color:var(--sub);padding:4px 0 4px 18px;position:relative;break-inside:avoid}
+ul.miss li::before{content:"○";position:absolute;left:0;color:var(--amber)}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:14px;font-size:.78rem;color:var(--sub)}
+.legend b{color:var(--ink)}
+
+/* percentage return reads */
+.moneyread{background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--gold);border-radius:12px;padding:18px 20px 16px;margin-top:16px}
+.moneyread h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:13px}
+.mr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:720px){.mr-grid{grid-template-columns:1fr}}
+.mr .big{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--navy);line-height:1.02}
+.mr .cap{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:4px;font-weight:600}
+.mr .sub{font-size:.8rem;color:var(--sub);margin-top:5px;line-height:1.45}
+.mr-note{font-size:.85rem;color:var(--sub);margin-top:15px;border-top:1px solid var(--rule-soft);padding-top:13px;line-height:1.6}
+.mr-note b{color:var(--ink)}
+.rr{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 4px}
+@media(max-width:560px){.rr{grid-template-columns:1fr}}
+.rr .cell{background:#faf8f1;padding:11px 13px}
+.rr .cell .n{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);line-height:1.05}
+.rr .cell .lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:3px;font-weight:600}
+.rr .cell .mini{font-size:.74rem;color:var(--sub);margin-top:3px;line-height:1.4}
+
+/* by-invitation CTA */
+.ctablock{padding:34px 0 8px;text-align:center;}
+.ctablock .fine{font-size:.8rem;color:var(--muted);font-style:italic;margin-top:12px;max-width:56ch;margin-left:auto;margin-right:auto;}
+.cta{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;padding:14px 22px;border-radius:8px;border-bottom:3px solid var(--gold);}
+.cta em{color:var(--gold2);font-style:normal;}
+.cta:hover{background:var(--navy2);}
+
+footer{background:var(--navy);border-top:3px solid var(--gold);color:rgba(255,255,255,.72);padding:28px 0 26px;font-size:.78rem;line-height:1.7;margin-top:26px;position:relative;z-index:2;}
+footer strong{color:#fff}
+footer a{color:var(--gold2);text-decoration:none}
+@media print{.mockbar,.fict{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:12px}}
+</style>
+</head>
+<body>
+
+<div class="mockbar">ILLUSTRATIVE SAMPLE, fictional names and figures · the format Private Capital Review members receive · <a href="index.html#pcr">← back to Hook Street</a></div>
+<div class="fict">Every name, entity, and figure on this page is fictional. It shows the deliverable format only. The Private Capital Review is a limited pilot, by invitation.</div>
+<div class="watermark"><span>ILLUSTRATIVE</span></div>
+
+<div class="band">
+  <div class="wrap">
+    <div class="eyebrow">Hook Street · Private Capital Review</div>
+    <h1>Sample Owner Brief: a five-holding review</h1>
+    <div class="meta">
+      <span>Prepared for: <b>Meridian Family Holdings (fictional)</b></span>
+      <span>As of: <b>2026-07-20</b></span>
+      <span>Holdings in scope: <b>5 of 5</b></span>
+      <span>Prepared by: <b>Sam Treitel, Hook Street</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <span class="eyebrow">What this is</span>
+    <h2 class="sec">A factual, sourced picture of what you own and how it is actually doing.</h2>
+    <p class="lead">This brief reconstructs the current factual position of five private holdings: what was committed and contributed, what has actually come back, what was originally expected and by when, what has really happened, the latest reported value with its source and date, what is still owed or coming, what is missing, and the exact questions to send your sponsors and professionals. Every figure carries its source and as-of date. Where something cannot be sourced, it is marked unknown, not estimated.</p>
+    <div class="boundary">
+      <div class="yes"><h4>This brief does</h4><ul>
+        <li>Organize your own supplied documents</li>
+        <li>Record reported values with source and date</li>
+        <li>Calculate cash in, cash out, and return % on your own reported figures</li>
+        <li>Compare actual events to the original written expectations</li>
+        <li>Flag stale, missing, or at-risk information</li>
+        <li>Prepare factual questions for your professionals</li>
+      </ul></div>
+      <div class="no"><h4>This brief does not</h4><ul>
+        <li>Recommend buying, selling, holding, or allocating</li>
+        <li>Select securities or manage money</li>
+        <li>Give an independent fair-value opinion</li>
+        <li>Raise capital or place investments</li>
+        <li>Charge on assets, performance, or transactions</li>
+        <li>Replace your accountant, attorney, or adviser</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Consolidated capital-efficiency snapshot</span>
+    <h2 class="sec">Across the five holdings</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="v">$1,280,000</div><div class="l">Total committed</div></div>
+      <div class="kpi"><div class="v">$1,235,000</div><div class="l">Capital contributed</div></div>
+      <div class="kpi"><div class="v">$160,650</div><div class="l">Cash returned to date</div></div>
+      <div class="kpi"><div class="v">13.0%</div><div class="l">Cash back / DPI (0.13×)</div></div>
+    </div>
+
+    <div class="moneyread">
+      <h4>What your money did (plain read)</h4>
+      <div class="mr-grid">
+        <div class="mr"><div class="big">13.0%</div><div class="cap">Back in cash · DPI</div><div class="sub">$160,650 returned on $1,235,000 put in (0.13×). About +3.5%/yr in real, received cash.</div></div>
+        <div class="mr"><div class="big">1.26×</div><div class="cap">On paper · reported basis</div><div class="sub">+26% total, counting the $1,394,800 latest reported value. About +7%/yr (blended). Reported, not confirmed.</div></div>
+        <div class="mr"><div class="big">+3.5%/yr</div><div class="cap">Per year, in real cash</div><div class="sub">vs about +7%/yr on the reported-paper basis. The gap is unrealized.</div></div>
+      </div>
+      <div class="mr-note">Here is what your money did: of the $1,235,000 you put in, <b>$160,650 (13%, about +3.5%/yr) has actually come back in cash</b>. Counting the latest reported values, the five holdings are marked at $1,394,800, which would be about <b>1.26× your money (roughly +26% total, +7%/yr blended)</b>. That step up from 13% in cash to 26% on paper is entirely unrealized and unconfirmed: two values are more than a year stale, one is a 409A option-pricing basis (not fair value), and $150,000 of note principal is past due and at risk. In confirmed cash you are at +13%; the rest depends on those marks turning real. These figures are arithmetic on your own reported statements and cash records, <b>not Hook Street's performance and not an independent valuation</b>.</div>
+    </div>
+
+    <div class="scrollx">
+    <table>
+      <thead><tr><th>Holding</th><th>Type</th><th class="num">Contributed</th><th class="num">Cash back</th><th class="num">Latest reported value</th><th>Value as-of</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Cedar Ridge Apartments SPV</td><td>RE partnership</td><td class="num">$250,000</td><td class="num">$46,250</td><td class="num">$242,000</td><td>2024-09-30</td><td><span class="tag amber">Stale</span></td></tr>
+        <tr><td>Northline ABA Therapy</td><td>Operating co.</td><td class="num">$400,000</td><td class="num">$0</td><td class="num">$520,000</td><td>2023-12-31</td><td><span class="tag amber">Stale</span></td></tr>
+        <tr><td>Ashford Credit Opps Fund II</td><td>Private fund</td><td class="num">$255,000</td><td class="num">$71,400</td><td class="num">$268,500</td><td>2025-03-31</td><td><span class="tag green">Current</span></td></tr>
+        <tr><td>Harborview bridge note</td><td>Note / receivable</td><td class="num">$150,000</td><td class="num">$18,000</td><td class="num">$150,000</td><td>2025-02-18</td><td><span class="tag red">Late / at risk</span></td></tr>
+        <tr><td>Custodial brokerage account</td><td>Public account</td><td class="num">$180,000</td><td class="num">$25,000</td><td class="num">$214,300</td><td>2025-06-30</td><td><span class="tag green">Current</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">"Latest reported value" is each source's most recent figure, on its own date and basis. It is not an independent valuation and the column is not a portfolio appraisal. Do not read the $1,394,800 total as a fair value: two figures are stale and one (the 409A) is an option-pricing basis, not a fair-value opinion. There is also a <b>$45,000 uncalled commitment</b> (Ashford) still callable through 2026-06. The return percentages in "What your money did" are arithmetic on these same reported figures and carry the same caveats.</p>
+
+    <div class="flags">
+      <div class="flag red"><div><div class="t">Harborview note is past maturity and unrepaid <span class="tag red">act</span></div><div class="d">$150,000 principal matured 2024-09; no signed extension on file. Principal is at risk until a written amendment and collateral confirmation exist. This is the most time-sensitive item; an attorney question appears below.</div></div></div>
+      <div class="flag amber"><div><div class="t">~$762,000 of reported value is stale <span class="tag amber">verify</span></div><div class="d">Cedar Ridge (last statement 2024-09-30) and Northline (last basis 2023-12-31) have no recent reporting. You are effectively flying blind on these two until fresh statements arrive.</div></div></div>
+      <div class="flag amber"><div><div class="t">Unconfirmed personal guarantee at Northline <span class="tag amber">confirm</span></div><div class="d">A possible personal guarantee on a $200,000 equipment line is referenced but the documents are not in hand. A guarantee is a real obligation; it must be confirmed or ruled out in writing.</div></div></div>
+      <div class="flag blue"><div><div class="t">$45,000 uncalled commitment is a coming liquidity need <span class="tag blue">plan</span></div><div class="d">Ashford Fund II can call the remaining $45,000 through 2026-06. Keep it earmarked; confirm timing with the administrator.</div></div></div>
+      <div class="flag blue"><div><div class="t">Idle-cash sweep rate on the brokerage account <span class="tag blue">check</span></div><div class="d">A factual efficiency check, not a recommendation: confirm the cash sweep in the custodial account is at a competitive rate rather than a default low-yield sweep.</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Holding detail</span>
+    <h2 class="sec">The five holdings, one page each of fact</h2>
+
+    <!-- H1 -->
+    <div class="hcard">
+      <div class="hhead"><span class="nm">Cedar Ridge Apartments SPV</span><span class="ty">Real-estate partnership · 8.0% LP · via Meridian RE Holdings LLC</span></div>
+      <div class="rr">
+        <div class="cell"><div class="n">18.5%</div><div class="lbl">Cash back · DPI</div><div class="mini">$46,250 of $250,000, real cash</div></div>
+        <div class="cell"><div class="n">+15%</div><div class="lbl">Total · reported basis</div><div class="mini">1.15×, incl. $242K value (stale)</div></div>
+        <div class="cell"><div class="n">≈ +4%/yr</div><div class="lbl">Annualized · reported</div><div class="mini">over ~3.5 yrs to 2024-09-30</div></div>
+      </div>
+      <div class="drow"><div class="k">Original commitment</div><div class="val">$250,000 <span class="src">· subscription agreement, 2021-03</span></div></div>
+      <div class="drow"><div class="k">Capital contributed</div><div class="val">$250,000 (fully funded) <span class="src">· wire records, as of 2021-03-15</span></div></div>
+      <div class="drow"><div class="k">Distributions received</div><div class="val">$46,250 <span class="src">· sponsor statements, through 2024-12-31</span></div></div>
+      <div class="drow"><div class="k">Original expectation</div><div class="val">~14% IRR, ~1.8× equity, 5-year hold, refinance distribution in year 3 <span class="src">· original investor memo</span></div></div>
+      <div class="drow"><div class="k">Actual vs expected</div><div class="val">On the cash side, distributions are modest vs plan. The <b>year-3 refinance (expected 2024) is not confirmed to have happened</b>. This is the key open item and it affects the 2026 exit.</div></div>
+      <div class="drow"><div class="k">Latest reported value</div><div class="val">$242,000 capital account <span class="src">· sponsor Q3-2024 statement, as of 2024-09-30</span> <span class="tag amber">Stale</span></div></div>
+      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">8.0% LP interest. The reported $242,000 capital account implies roughly $3.0M of SPV equity (reported basis, as of 2024-09-30, stale). Arithmetic on the sponsor figure, not an independent valuation.</div></div>
+      <div class="drow"><div class="k">Remaining obligations</div><div class="val">None expected (no open capital calls).</div></div>
+      <div class="drow"><div class="k">Upcoming events</div><div class="val">Refinance status; planned 2026 sale.</div></div>
+      <div class="drow"><div class="k">Missing information</div><div class="val">2024 K-1; any 2025 statement; written refinance status.</div></div>
+      <div class="q"><b>Ask the sponsor:</b> Did the planned 2024 refinance close? If not, why, and does it change the 2026 exit assumption? What are current occupancy and trailing NOI?</div>
+    </div>
+
+    <!-- H2 -->
+    <div class="hcard">
+      <div class="hhead"><span class="nm">Northline ABA Therapy Holdings</span><span class="ty">Operating-company interest · 12% common · held directly</span></div>
+      <div class="rr">
+        <div class="cell"><div class="n">0%</div><div class="lbl">Cash back · DPI</div><div class="mini">no distributions yet</div></div>
+        <div class="cell"><div class="n">+30%</div><div class="lbl">On paper · 409A basis</div><div class="mini">1.30×, $520K stake (409A, stale)</div></div>
+        <div class="cell"><div class="n">≈ +18%/yr</div><div class="lbl">Annualized · 409A basis</div><div class="mini">unrealized; ~1.6 yrs to 2023-12-31</div></div>
+      </div>
+      <div class="drow"><div class="k">Original commitment</div><div class="val">$400,000 <span class="src">· stock purchase agreement, 2022-06</span></div></div>
+      <div class="drow"><div class="k">Capital contributed</div><div class="val">$400,000 <span class="src">· closing statement, as of 2022-06-01</span></div></div>
+      <div class="drow"><div class="k">Distributions received</div><div class="val">$0 to date <span class="src">· no distribution notices on file</span></div></div>
+      <div class="drow"><div class="k">Original expectation</div><div class="val">Distributions begin in year 2 (2024), roughly $60,000 to $80,000/yr <span class="src">· original investment thesis</span></div></div>
+      <div class="drow"><div class="k">Actual vs expected</div><div class="val"><b>Year-2 distributions have not begun.</b> Reason is not documented; it could be reinvestment or underperformance. Needs the sponsor's answer, not a guess.</div></div>
+      <div class="drow"><div class="k">Latest reported value</div><div class="val">$520,000 implied for the stake <span class="src">· company 409A valuation, as of 2023-12-31. A 409A is an option-pricing basis, shown as reported; it is not an independent fair-value opinion.</span> <span class="tag amber">Stale</span></div></div>
+      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">12% common. The 409A-implied stake of $520,000 implies about $4.3M for the whole company (409A option-pricing basis, as of 2023-12-31, stale). This is not fair value, and nothing is realized in cash. The strong paper gain rests entirely on a stale, non-fair-value mark.</div></div>
+      <div class="drow"><div class="k">Remaining obligations</div><div class="val"><b>Possible</b> personal guarantee on a ~$200,000 equipment line; <b>UNCONFIRMED</b>, documents not in hand.</div></div>
+      <div class="drow"><div class="k">Upcoming events</div><div class="val">Board-seat election; a possible new capital raise (potentially dilutive).</div></div>
+      <div class="drow"><div class="k">Missing information</div><div class="val">2024 financials; updated cap table; guarantee documents; 2024 K-1.</div></div>
+      <div class="q"><b>Ask the company / your attorney:</b> Are the year-2 distributions delayed, and why? Did the owner sign any personal guarantee? Please provide the document or confirm none exists. Is a dilutive raise planned, and at what terms?</div>
+    </div>
+
+    <!-- H3 -->
+    <div class="hcard">
+      <div class="hhead"><span class="nm">Ashford Credit Opportunities Fund II</span><span class="ty">Private fund · 0.4% LP interest</span></div>
+      <div class="rr">
+        <div class="cell"><div class="n">28.0%</div><div class="lbl">Cash back · DPI</div><div class="mini">$71,400 of $255,000 called</div></div>
+        <div class="cell"><div class="n">+33%</div><div class="lbl">Total · reported basis</div><div class="mini">1.33×, incl. $268.5K NAV (current)</div></div>
+        <div class="cell"><div class="n">≈ +10%/yr</div><div class="lbl">Annualized · reported</div><div class="mini">in line with the 9 to 11% target</div></div>
+      </div>
+      <div class="drow"><div class="k">Original commitment</div><div class="val">$300,000 <span class="src">· subscription agreement</span></div></div>
+      <div class="drow"><div class="k">Capital contributed</div><div class="val">$255,000 (85% called); <b>$45,000 uncalled</b> <span class="src">· capital-call notices, through 2024-11</span></div></div>
+      <div class="drow"><div class="k">Distributions received</div><div class="val">$71,400 <span class="src">· fund admin statements, through 2025-03-31</span></div></div>
+      <div class="drow"><div class="k">Original expectation</div><div class="val">9 to 11% net yield, quarterly income, ~4-year fund life <span class="src">· PPM summary</span></div></div>
+      <div class="drow"><div class="k">Actual vs expected</div><div class="val">Broadly on plan: income is flowing and NAV is currently reported. This is the healthiest of the five on data freshness.</div></div>
+      <div class="drow"><div class="k">Latest reported value</div><div class="val">$268,500 NAV <span class="src">· fund administrator Q1-2025 statement, as of 2025-03-31</span> <span class="tag green">Current</span></div></div>
+      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">0.4% LP interest. The reported $268,500 NAV implies roughly $67M of total fund NAV (fund administrator, as of 2025-03-31, current). $45,000 of the commitment is still uncalled and callable through 2026-06.</div></div>
+      <div class="drow"><div class="k">Remaining obligations</div><div class="val"><b>$45,000 uncalled commitment</b>, callable through 2026-06.</div></div>
+      <div class="drow"><div class="k">Upcoming events</div><div class="val">Q2-2025 statement due; possible capital call.</div></div>
+      <div class="drow"><div class="k">Missing information</div><div class="val">Q2-2025 statement (pending); side letter, if any.</div></div>
+      <div class="q"><b>Ask the fund administrator:</b> What is the expected timing and probability of the remaining $45,000 call? Is the latest distribution reinvested or paid in cash? When does the management-fee step-down begin?</div>
+    </div>
+
+    <!-- H4 -->
+    <div class="hcard">
+      <div class="hhead"><span class="nm">Harborview Development bridge note</span><span class="ty">Note / receivable · senior position</span></div>
+      <div class="rr">
+        <div class="cell"><div class="n">12%</div><div class="lbl">Interest received</div><div class="mini">$18,000, about one year's coupon</div></div>
+        <div class="cell"><div class="n">100%</div><div class="lbl">Principal at risk</div><div class="mini">$150,000 unrepaid, borrower-stated</div></div>
+        <div class="cell"><div class="n">12%/yr</div><div class="lbl">Contracted, then stopped</div><div class="mini">no payments since maturity 2024-09</div></div>
+      </div>
+      <div class="drow"><div class="k">Original principal</div><div class="val">$150,000 <span class="src">· promissory note, 2023-09</span></div></div>
+      <div class="drow"><div class="k">Funded</div><div class="val">$150,000 <span class="src">· wire record, as of 2023-09-10</span></div></div>
+      <div class="drow"><div class="k">Interest received</div><div class="val">$18,000 (two payments) <span class="src">· bank credits, through 2024-09</span></div></div>
+      <div class="drow"><div class="k">Original expectation</div><div class="val">12% interest monthly, 12-month term, principal balloon at maturity (2024-09) <span class="src">· note terms</span></div></div>
+      <div class="drow"><div class="k">Actual vs expected</div><div class="val"><b>Matured 2024-09; principal not repaid.</b> Borrower requested an extension; interest payments stopped. No signed amendment is on file.</div></div>
+      <div class="drow"><div class="k">Latest reported value</div><div class="val">$150,000 principal stated outstanding <span class="src">· borrower email, 2025-02-18 (borrower's statement, not an independent confirmation)</span> <span class="tag red">Late / at risk</span></div></div>
+      <div class="drow"><div class="k">Recovery / valuation view</div><div class="val">Senior creditor, not equity. You have received about 12% in cash (one year of interest); all $150,000 of principal is past due and unconfirmed. The outcome depends on recovery: best case is roughly +12% received to date, and a principal shortfall turns the note negative.</div></div>
+      <div class="drow"><div class="k">Remaining obligations</div><div class="val">None on the owner's side (owner is the lender).</div></div>
+      <div class="drow"><div class="k">Upcoming events</div><div class="val">Extension request pending resolution.</div></div>
+      <div class="drow"><div class="k">Missing information</div><div class="val">Signed extension/amendment; default-rate accrual; collateral &amp; lien confirmation; borrower financials.</div></div>
+      <div class="q"><b>Ask your attorney (priority):</b> Is there any signed extension? What interest accrues at the default rate since 2024-09? Is the collateral position and lien confirmed? Does this warrant formal collection action now?</div>
+    </div>
+
+    <!-- H5 -->
+    <div class="hcard">
+      <div class="hhead"><span class="nm">Custodial brokerage account</span><span class="ty">Public-market account · 100%</span></div>
+      <div class="rr">
+        <div class="cell"><div class="n">13.9%</div><div class="lbl">Cash taken out</div><div class="mini">$25,000 of $180,000 cost</div></div>
+        <div class="cell"><div class="n">+33%</div><div class="lbl">Total · current basis</div><div class="mini">1.33×, incl. $214,300 value (current)</div></div>
+        <div class="cell"><div class="n">≈ +7-8%/yr</div><div class="lbl">Annualized · current</div><div class="mini">over the ~4-yr average hold</div></div>
+      </div>
+      <div class="drow"><div class="k">Cost contributed</div><div class="val">$180,000 (various, 2020 to 2023) <span class="src">· custodian cost-basis report</span></div></div>
+      <div class="drow"><div class="k">Cash withdrawn</div><div class="val">$25,000 <span class="src">· custodian activity, through 2025-06-30</span></div></div>
+      <div class="drow"><div class="k">Original expectation</div><div class="val">Liquidity sleeve and modest income.</div></div>
+      <div class="drow"><div class="k">Actual vs expected</div><div class="val">On plan; fully liquid; reporting is current.</div></div>
+      <div class="drow"><div class="k">Latest reported value</div><div class="val">$214,300 <span class="src">· custodian statement, as of 2025-06-30</span> <span class="tag green">Current</span></div></div>
+      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">100% owned, public-market account. The reported value is live market value ($214,300, current statement), so this is the most reliable figure of the five.</div></div>
+      <div class="drow"><div class="k">Remaining obligations</div><div class="val">None.</div></div>
+      <div class="drow"><div class="k">Missing information</div><div class="val">None; the statement is current.</div></div>
+      <div class="q"><b>Factual efficiency check (not a recommendation):</b> Confirm the account's idle-cash sweep is at a competitive rate rather than a default low-yield sweep.</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Send-ready questions</span>
+    <h2 class="sec">The questions worth asking now</h2>
+    <p class="lead">Consolidated from the holdings above, grouped by who should answer. Send these as written.</p>
+    <ol class="qs">
+      <li><b>Harborview borrower / your attorney:</b> Is there a signed extension on the matured note? What default-rate interest has accrued since 2024-09? Is the collateral and lien confirmed, and is collection action warranted? <span>(most time-sensitive; principal at risk)</span></li>
+      <li><b>Northline company / your attorney:</b> Why have year-2 distributions not begun? Provide the document for any personal guarantee, or confirm none exists. Is a dilutive raise planned? <span>(unconfirmed obligation)</span></li>
+      <li><b>Cedar Ridge sponsor:</b> Did the planned 2024 refinance close? If not, why, and does it change the 2026 exit? Send the 2024 K-1 and the latest statement. <span>(stale + missing)</span></li>
+      <li><b>Ashford fund administrator:</b> Timing and probability of the remaining $45,000 call? Is the latest distribution reinvested or paid? When does the fee step-down begin? <span>(coming liquidity need)</span></li>
+      <li><b>Custodian:</b> What sweep rate is idle cash earning, and is a higher-yield option available in-account? <span>(efficiency check)</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="eyebrow">Missing information: document list</span>
+    <h2 class="sec">What to collect to close the gaps</h2>
+    <ul class="miss">
+      <li>Cedar Ridge: 2024 K-1</li>
+      <li>Cedar Ridge: 2025 statement</li>
+      <li>Cedar Ridge: written refinance status</li>
+      <li>Northline: 2024 financials</li>
+      <li>Northline: updated cap table</li>
+      <li>Northline: guarantee documents (or written confirmation none)</li>
+      <li>Northline: 2024 K-1</li>
+      <li>Ashford: Q2-2025 statement</li>
+      <li>Ashford: side letter (if any)</li>
+      <li>Harborview: signed extension / amendment</li>
+      <li>Harborview: collateral &amp; lien confirmation</li>
+      <li>Harborview: borrower financials</li>
+    </ul>
+    <div class="legend">
+      <span><b>Staleness:</b> <span class="tag green">Current</span> ≤ 6 months · <span class="tag amber">Stale</span> &gt; 6 months · <span class="tag red">Late / at risk</span> past due or impaired</span>
+      <span><b>Source tiers used:</b> executed document &gt; administrator/custodian statement &gt; sponsor statement &gt; counterparty email. Every figure above notes which.</span>
+    </div>
+  </section>
+
+  <div class="ctablock">
+    <a class="cta" href="mailto:info@hookstreetservices.com?subject=Private%20Capital%20Review%20pilot">The Private Capital Review is a limited pilot, by invitation. <em>Request a conversation →</em></a>
+    <p class="fine">This sample shows what members receive; it does not open enrollment. Write to info@hookstreetservices.com and Sam will reply directly.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>Private Capital Review sample owner brief.</strong> All names, entities, and figures are fictional and shown for format demonstration only.<br>
+    Hook Street provides independent analysis and preparation of owner-supplied information. It does not manage money, recommend securities, raise capital, or give valuation opinions. Any third-party relationship or compensation is disclosed in writing before an engagement proceeds. Not legal, tax, or investment advice.<br>
+    <span style="color:rgba(255,255,255,.5)"><a href="index.html">Hook Street Services</a> · info@hookstreetservices.com · an imprint of Hook Street Capital LLC · © 2026</span>
+  </div>
+</footer>
+</body>
+</html>
