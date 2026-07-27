@@ -9,12 +9,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hookstreetservices.com/pcr-sample">
 <meta property="og:title" content="Sample Owner Brief | Private Capital Review | Hook Street Services">
-<meta property="og:description" content="A fictional worked example of the Private Capital Review quarterly owner brief: what changed since last quarter, cash in, cash out, reported values with source and date, reporting-quality grades, and one action per holding. Illustrative only.">
+<meta property="og:description" content="A fictional worked example of the Private Capital Review owner brief: four headline numbers, paper value versus cash actually received, a five-holding summary, what needs attention, and the questions to ask. Illustrative only.">
 <meta property="og:image" content="https://hookstreetservices.com/images/social/wait-not-done-ai.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="A fictional worked example of the Private Capital Review quarterly owner brief: what changed since last quarter, cash in, cash out, reported values with source and date, reporting-quality grades, and one action per holding. Illustrative only.">
+<meta name="description" content="A fictional worked example of the Private Capital Review owner brief: four headline numbers, paper value versus cash actually received, a five-holding summary, what needs attention, and the questions to ask. Illustrative only.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 html,body{max-width:100%;overflow-x:hidden;}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -126,6 +126,15 @@ ul.miss li::before{content:"○";position:absolute;left:0;color:var(--amber)}
 .mr .sub{font-size:.8rem;color:var(--sub);margin-top:5px;line-height:1.45}
 .mr-note{font-size:.85rem;color:var(--sub);margin-top:15px;border-top:1px solid var(--rule-soft);padding-top:13px;line-height:1.6}
 .mr-note b{color:var(--ink)}
+.mr-grid.two{grid-template-columns:1fr 1fr}
+@media(max-width:720px){.mr-grid.two{grid-template-columns:1fr}}
+.mr .big b{font-weight:700}
+
+/* compact bullet lists in prose */
+ul.bul{margin:10px 0 0;padding-left:20px;color:var(--sub);max-width:70ch}
+ul.bul li{margin:5px 0;font-size:.88rem}
+.mr-note ul.bul{margin:9px 0 11px}
+.mr-note ul.bul li{font-size:1em}
 .rr{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 4px}
 @media(max-width:560px){.rr{grid-template-columns:1fr}}
 .rr .cell{background:#faf8f1;padding:11px 13px}
@@ -159,12 +168,12 @@ footer a{color:var(--gold2);text-decoration:none}
 <div class="band">
   <div class="wrap">
     <div class="eyebrow">Hook Street · Private Capital Review</div>
-    <h1>Sample Owner Brief: five holdings, Q2-2026</h1>
+    <h1>Sample Owner Brief: five holdings, Q2 2026</h1>
     <div class="meta">
       <span>Prepared for: <b>Meridian Family Holdings (fictional)</b></span>
-      <span>Period: <b>Q2-2026 (2026-04-01 to 2026-06-30)</b></span>
-      <span>As of: <b>2026-06-30</b> · Prepared: <b>2026-07-20</b></span>
-      <span>Prior brief: <b>Q1-2026 (2026-04-18)</b></span>
+      <span>Period: <b>April 1 to June 30, 2026</b></span>
+      <span>As of: <b>June 30, 2026</b> · Prepared: <b>July 20, 2026</b></span>
+      <span>Prior brief: <b>Q1 2026 (April 18, 2026)</b></span>
       <span>Prepared by: <b>Sam Treitel, Hook Street</b></span>
     </div>
   </div>
@@ -175,10 +184,112 @@ footer a{color:var(--gold2);text-decoration:none}
   <section>
     <span class="eyebrow">What this is</span>
     <h2 class="sec">A factual, sourced picture of what you own and how it is actually doing.</h2>
-    <p class="lead">This is the fourth quarterly brief for this fictional client. Each quarter it reconstructs the factual position of the five holdings: what was committed and contributed, what has actually come back in cash, what was originally promised and by when, the latest reported value with its source and date, what changed since the last brief, what to watch next, and at most one action per holding. Every figure carries its source and as-of date. Where something cannot be sourced, it is marked unknown, not estimated.</p>
+    <p class="lead">This is a sample of the quarterly owner brief, built here on five fictional holdings. Every quarter it rebuilds the same picture from the owner's own documents, and every figure carries its source and its date.</p>
+    <ul class="bul">
+      <li>What was committed, and what was actually funded</li>
+      <li>What has come back in cash, and when</li>
+      <li>What was promised in writing at the start, and by when</li>
+      <li>The latest reported value, with its source and date</li>
+      <li>What changed since the last brief, and what to watch next</li>
+    </ul>
+    <p class="note">Where something cannot be sourced, it is marked unknown. Nothing is estimated.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">The whole picture in four numbers</span>
+    <h2 class="sec">Across the five holdings, as of June 30, 2026</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="v">$1,280,000</div><div class="l">Total committed</div></div>
+      <div class="kpi"><div class="v">$1,250,000</div><div class="l">Capital contributed</div></div>
+      <div class="kpi"><div class="v">$199,900</div><div class="l">Cash returned to date</div></div>
+      <div class="kpi"><div class="v">16.0%</div><div class="l">Cash already back, per dollar put in</div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Paper value versus cash actually received</span>
+    <h2 class="sec">Two numbers, and only one of them has been paid</h2>
+    <div class="moneyread">
+      <h4>What the money actually did</h4>
+      <div class="mr-grid two">
+        <div class="mr">
+          <div class="big"><b>+27%</b> total</div>
+          <div class="cap">Total value reported (1.27x)</div>
+          <div class="sub">Includes reported values that have not been paid out. $199,900 of cash plus $1,387,100 of latest reported values is $1,587,000 of total value on $1,250,000 put in.</div>
+        </div>
+        <div class="mr">
+          <div class="big">+4.1% per year</div>
+          <div class="cap">Actually received</div>
+          <div class="sub">This is the cash that has already come back: $199,900 of the $1,250,000 put in, which is 16.0% of the money, across a weighted hold of about 3.9 years.</div>
+        </div>
+      </div>
+      <div class="mr-note">The step up from 16.0% in real cash to +27% on paper is not cash yet, and the paper is uneven in quality. Of the five reported values:
+        <ul class="bul">
+          <li><b>1 of the 5</b> is a 409A tax valuation, a figure prepared for stock-option paperwork, not what a buyer would pay.</li>
+          <li><b>1 of the 5</b> is loan principal under a signed forbearance deal, meaning the borrower got extra time on new written terms.</li>
+          <li><b>3 of the 5</b> are current statements, from the fund administrator, the sponsor, and the custodian.</li>
+        </ul>
+        Every figure here is arithmetic on the owner's own reported statements and cash records. It is <b>not Hook Street's performance and not an independent valuation</b>.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">The five holdings</span>
+    <h2 class="sec">One line each, with the date on every reported value</h2>
+    <div class="scrollx">
+    <table>
+      <thead><tr><th>Holding</th><th>Type</th><th class="num">Contributed</th><th class="num">Cash back</th><th class="num">Latest reported value</th><th>Value as of</th><th>Status</th><th>Reporting</th></tr></thead>
+      <tbody>
+        <tr><td>Cedar Ridge Apartments SPV</td><td>RE partnership</td><td class="num">$250,000</td><td class="num">$52,500</td><td class="num">$259,000</td><td>March 31, 2026</td><td><span class="tag green">Current</span></td><td><span class="grade b">B</span></td></tr>
+        <tr><td>Northline ABA Therapy</td><td>Operating co.</td><td class="num">$400,000</td><td class="num">$12,000</td><td class="num">$500,000</td><td>December 31, 2025</td><td><span class="tag amber">409A basis</span></td><td><span class="grade c">C</span></td></tr>
+        <tr><td>Ashford Credit Opps Fund II</td><td>Private fund</td><td class="num">$270,000</td><td class="num">$86,400</td><td class="num">$251,100</td><td>March 31, 2026</td><td><span class="tag green">Current</span></td><td><span class="grade a">A</span></td></tr>
+        <tr><td>Harborview bridge note</td><td>Note / receivable</td><td class="num">$150,000</td><td class="num">$24,000</td><td class="num">$150,000</td><td>May 2, 2026</td><td><span class="tag amber">Forbearance</span></td><td><span class="grade c">C</span></td></tr>
+        <tr><td>Custodial brokerage account</td><td>Public account</td><td class="num">$180,000</td><td class="num">$25,000</td><td class="num">$227,000</td><td>June 30, 2026</td><td><span class="tag green">Current</span></td><td><span class="grade a">A</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">"Latest reported value" is each source's most recent figure, on its own date and basis. It is not an independent valuation, and the column total ($1,387,100) is not a portfolio appraisal. Ashford can still ask for <b>$30,000 of committed money it has not yet called</b>, any time through December 2026: contributed $1,250,000 plus that uncalled $30,000 is the $1,280,000 committed.</p>
+    <div class="legend">
+      <span><b>Status tags:</b> <span class="tag green">Current</span> value dated within six months of the as-of date &middot; <span class="tag amber">409A basis / Forbearance</span> value is timely but its basis needs weighing.</span>
+      <span><b>Reporting grades:</b> <span class="grade a">A</span> on time, complete, unprompted &middot; <span class="grade b">B</span> complete but late or prompted &middot; <span class="grade c">C</span> irregular or on request only.</span>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Needs attention</span>
+    <h2 class="sec">Three items this quarter</h2>
+    <div class="flags">
+      <div class="flag amber"><div><div class="t">December 31, 2026 is the biggest date on the calendar <span class="tag amber">act</span></div><div class="d">The Harborview note is being paid under a signed forbearance deal (May 2, 2026), two payments of $3,000 in and both on time, but only the balloon itself, the full $150,000 due in one payment at year-end, ends the risk. Ashford can also still ask for its final $30,000 through December 2026, so both cash events land in the same month.</div></div></div>
+      <div class="flag amber"><div><div class="t">Harborview is second in line, not first <span class="tag amber">verify</span></div><div class="d">The title search completed April 30, 2026 confirms the lien but shows it sits behind a $950,000 first mortgage: if the property ever had to be sold to collect, that $950,000 gets paid before this note sees a dollar. The original loan file described a first-position lien. The downside is thinner than previously assumed.</div></div></div>
+      <div class="flag amber"><div><div class="t">Northline's paper gain rests on a 409A figure <span class="tag amber">weigh</span></div><div class="d">The $500,000 stake value is a 409A valuation dated December 31, 2025, a figure companies get for stock-option paperwork, not what a buyer has offered. Distributions have begun ($12,000, the first ever) but one payment does not establish the planned $60,000 to $80,000 per year.</div></div></div>
+    </div>
+    <p class="note">No holding carries the red "past due / impaired" tag this quarter. Harborview carried it in the Q1 2026 brief and moved to amber when the forbearance was signed.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Send-ready questions</span>
+    <h2 class="sec">Three questions to ask now</h2>
+    <p class="lead">Written to go out as they are, each to the person who can answer it.</p>
+    <ol class="qs">
+      <li><b>Harborview counsel:</b> please confirm receipt of each monthly $3,000 payment as it lands, and confirm exactly how the December 31, 2026 balloon payoff will work, including release of the lien once it is paid. <span>(largest single date on the calendar)</span></li>
+      <li><b>Northline management:</b> please send FY2025 financials and the distribution policy in writing. Is $12,000 per quarter the intended rate, and what determines it? What are the terms of the raise under discussion? <span>(payment pace and the risk of the stake shrinking, both unproven)</span></li>
+      <li><b>Ashford administrator:</b> when do you expect to ask for the final $30,000, and what is the wind-down schedule to the November 2027 fund end? <span>(December cash planning)</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="eyebrow">Full brief available on request</span>
+    <h2 class="sec">This page is the snapshot. The brief itself goes further.</h2>
+    <p class="lead">The quarterly brief members receive adds a page of sourced detail per holding: every contribution and every payment with its date, what was promised in writing at the start against what actually happened, what moved since the prior quarter, a reporting-quality grade for each sponsor, the outstanding document list, and one action per holding. Ask and Sam will walk through it with you.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Scope</span>
+    <h2 class="sec">What this brief does, and what it does not</h2>
     <div class="boundary">
       <div class="yes"><h4>This brief does</h4><ul>
-        <li>Organize your own supplied documents</li>
+        <li>Organize supplied documents</li>
         <li>Record reported values with source and date</li>
         <li>Calculate cash in, cash out, and return % on your own reported figures</li>
         <li>Compare actual events to the original written expectations</li>
@@ -193,211 +304,6 @@ footer a{color:var(--gold2);text-decoration:none}
         <li>Charge on assets, performance, or transactions</li>
         <li>Replace your accountant, attorney, or adviser</li>
       </ul></div>
-    </div>
-  </section>
-
-  <section>
-    <span class="eyebrow">The whole picture in four numbers</span>
-    <h2 class="sec">Across the five holdings, as of 2026-06-30</h2>
-    <div class="kpis">
-      <div class="kpi"><div class="v">$1,280,000</div><div class="l">Total committed</div></div>
-      <div class="kpi"><div class="v">$1,250,000</div><div class="l">Capital contributed</div></div>
-      <div class="kpi"><div class="v">$199,900</div><div class="l">Cash returned to date</div></div>
-      <div class="kpi"><div class="v">16.0%</div><div class="l">Already back in cash (0.16x)</div></div>
-    </div>
-
-    <div class="moneyread">
-      <h4>What your money did (plain read)</h4>
-      <div class="mr-grid">
-        <div class="mr"><div class="big">16.0%</div><div class="cap">Back in cash (DPI)</div><div class="sub">$199,900 returned on $1,250,000 put in (0.16x). DPI just means cash already back, per dollar put in. About +4.1%/yr in real, received cash.</div></div>
-        <div class="mr"><div class="big">1.27x</div><div class="cap">On paper · reported values</div><div class="sub">$199,900 cash + $1,387,100 latest reported values = $1,587,000 of total value on $1,250,000: +27% total.</div></div>
-        <div class="mr"><div class="big">+6.9%/yr</div><div class="cap">Yearly average · on paper</div><div class="sub">vs +4.1%/yr in received cash. The gap between the two is paper only until it is actually paid out.</div></div>
-      </div>
-      <div class="mr-note">Here is what your money did: of the $1,250,000 you put in, <b>$199,900 (16.0%, about +4.1%/yr) has actually come back in cash</b>. Counting the latest reported values, the five holdings stand at $1,587,000 of total value, about <b>1.27x your money (+27% total, roughly +6.9%/yr averaged)</b>. The step up from 16% in cash to 27% on paper is not cash yet, and the paper is uneven in quality: one value comes from a 409A tax valuation (a figure prepared for stock-option paperwork, not what a buyer would pay), one is loan principal under a signed forbearance deal (the borrower got extra time on new written terms), and three are current statements. These figures are arithmetic on your own reported statements and cash records, <b>not Hook Street's performance and not an independent valuation</b>.</div>
-    </div>
-
-    <div class="methods"><b>How the numbers are computed.</b> Cash back = cash actually received ÷ cash put in (the figure fund managers call DPI). Total on paper = (cash received + latest reported value) ÷ cash put in. Per-year figures = total return % ÷ years held: simple division, not compounding, and not an IRR (the fancier yearly-return math funds publish). The blended average counts bigger and longer-held investments more; weighted that way, the five holdings have been held about 3.9 years. Where a fund reports its own IRR, it is shown as the fund's figure and is not recomputed. All arithmetic runs on the owner's reported figures and inherits their bases and as-of dates.</div>
-
-    <div class="scrollx">
-    <table>
-      <thead><tr><th>Holding</th><th>Type</th><th class="num">Contributed</th><th class="num">Cash back</th><th class="num">Latest reported value</th><th>Value as-of</th><th>Status</th><th>Reporting</th></tr></thead>
-      <tbody>
-        <tr><td>Cedar Ridge Apartments SPV</td><td>RE partnership</td><td class="num">$250,000</td><td class="num">$52,500</td><td class="num">$259,000</td><td>2026-03-31</td><td><span class="tag green">Current</span></td><td><span class="grade b">B</span></td></tr>
-        <tr><td>Northline ABA Therapy</td><td>Operating co.</td><td class="num">$400,000</td><td class="num">$12,000</td><td class="num">$500,000</td><td>2025-12-31</td><td><span class="tag amber">409A basis</span></td><td><span class="grade c">C</span></td></tr>
-        <tr><td>Ashford Credit Opps Fund II</td><td>Private fund</td><td class="num">$270,000</td><td class="num">$86,400</td><td class="num">$251,100</td><td>2026-03-31</td><td><span class="tag green">Current</span></td><td><span class="grade a">A</span></td></tr>
-        <tr><td>Harborview bridge note</td><td>Note / receivable</td><td class="num">$150,000</td><td class="num">$24,000</td><td class="num">$150,000</td><td>2026-05-02</td><td><span class="tag amber">Forbearance</span></td><td><span class="grade c">C</span></td></tr>
-        <tr><td>Custodial brokerage account</td><td>Public account</td><td class="num">$180,000</td><td class="num">$25,000</td><td class="num">$227,000</td><td>2026-06-30</td><td><span class="tag green">Current</span></td><td><span class="grade a">A</span></td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p class="note">"Latest reported value" is each source's most recent figure, on its own date and basis. It is not an independent valuation and the column total ($1,387,100) is not a portfolio appraisal: the Northline figure comes from a 409A tax valuation (stock-option paperwork, not a sale price) and the Harborview figure is the loan principal as written in the signed forbearance deal, not an estimate of what would actually be collected. Ashford can still ask for <b>$30,000 of committed money it has not yet called</b>, any time through 2026-12. Contributed $1,250,000 + not-yet-called $30,000 = committed $1,280,000.</p>
-
-    <div class="flags">
-      <div class="flag amber"><div><div class="t">The 2026-12-31 Harborview balloon is the biggest date on the calendar <span class="tag amber">act</span></div><div class="d">The signed forbearance deal (2026-05-02, extra time in exchange for higher monthly payments) is being paid on schedule, two payments of $3,000 in, but only the balloon itself, the full $150,000 due in one payment at year-end, ends the risk. Counsel should confirm each monthly payment on receipt.</div></div></div>
-      <div class="flag amber"><div><div class="t">Harborview is second in line, not first <span class="tag amber">verify</span></div><div class="d">The title search completed 2026-04-30 confirms the lien but shows it sits behind a $950,000 first mortgage: if the property ever had to be sold to collect, that $950,000 gets paid before this note sees a dollar. The original loan file described a first-position lien. The downside is thinner than previously assumed.</div></div></div>
-      <div class="flag amber"><div><div class="t">Northline's paper gain rests on a 409A figure <span class="tag amber">weigh</span></div><div class="d">The $500,000 stake value is a 409A valuation dated 2025-12-31, a figure companies get for stock-option paperwork, not what a buyer has offered. Distributions have begun ($12,000, first ever) but one payment does not establish the planned $60,000 to $80,000 per year.</div></div></div>
-      <div class="flag blue"><div><div class="t">December 2026 stacks two cash events <span class="tag blue">plan</span></div><div class="d">Ashford can still ask for up to $30,000 through 2026-12, and the $150,000 Harborview balloon payoff is due 2026-12-31. Both land in the same month; set cash aside for the Ashford ask and treat the balloon as unconfirmed until received.</div></div></div>
-    </div>
-    <p class="note">No holding carries the red "past due / impaired" tag this quarter. Harborview carried it in the Q1-2026 brief and moved to amber when the forbearance was signed.</p>
-  </section>
-
-  <section>
-    <span class="eyebrow">What changed since last quarter</span>
-    <h2 class="sec">The quarter in five lines</h2>
-    <p class="lead">Everything below moved between the Q1-2026 brief (as of 2026-03-31) and this one. A quiet line is a good line.</p>
-    <div class="scrollx">
-    <table>
-      <thead><tr><th>Holding</th><th>What moved</th><th>Why it matters</th></tr></thead>
-      <tbody>
-        <tr><td>Harborview note</td><td>Signed a forbearance deal (extra time on new written terms) 2026-05-02 after the February demand letter. Payments resumed: $3,000 on 2026-05-15 and 2026-06-15, both on time. Title search shows the note is second in line, behind a $950,000 first mortgage.</td><td>The book's biggest risk now has a signed path and a hard date: the full $150,000 payoff, 2026-12-31. The second-in-line finding changes the downside read.</td></tr>
-        <tr><td>Northline ABA</td><td>First distribution ever: $12,000 on 2026-05-15. Written confirmation received 2026-04-22 that no personal guarantee exists.</td><td>Two open items from the Q1 brief closed. The pace of payments is still unproven against the original plan.</td></tr>
-        <tr><td>Cedar Ridge SPV</td><td>The long-pending refinance closed 2026-02, per the Q1 statement (received 2026-05-18). No capital was returned; the sale target moved to 2027. Q1 distribution $3,750 received in May.</td><td>Removes the two-year-old refinance unknown and replaces it with a new one: the post-refinance debt terms.</td></tr>
-        <tr><td>Ashford Fund II</td><td>$15,000 capital call (the fund asking for part of the committed money) funded 2026-04-15. Management fee stepped down 2026-04-01: from 1.50% of everything committed to 1.25% of just the money actually invested. $6,300 distribution received 2026-05-10.</td><td>On plan. The fund can still ask for the last $30,000 through 2026-12 as it winds toward its 2027-11 end date.</td></tr>
-        <tr><td>Brokerage account</td><td>Value $219,400 to $227,000 (+$7,600, about +3.5% in the quarter). Idle-cash sweep moved 2026-04-08 from a 0.35% default to a 4.10% money-fund sweep.</td><td>Quiet holding. The sweep fix is worth about $675/yr on the ~$18,000 average cash balance. Nothing to do.</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p class="note"><b>Quarter cash summary:</b> received $28,050 ($3,750 Cedar Ridge + $12,000 Northline + $6,300 Ashford + $6,000 Harborview) · paid out $15,000 (Ashford call) · net cash this quarter +$13,050. <b>Closed since the Q1 brief:</b> Cedar Ridge refinance status, Northline guarantee question, Ashford side-letter question, whether any investor got special private terms (administrator confirmed in writing none exists), and the brokerage sweep rate.</p>
-  </section>
-
-  <section>
-    <span class="eyebrow">Holding detail</span>
-    <h2 class="sec">The five holdings, one page each of fact</h2>
-
-    <!-- H1 -->
-    <div class="hcard">
-      <div class="hhead"><span class="nm">Cedar Ridge Apartments SPV</span><span class="ty">Real-estate partnership · 8.0% passive (LP) stake · via Meridian RE Holdings LLC · Reporting <span class="grade b">B</span></span></div>
-      <div class="rr">
-        <div class="cell"><div class="n">21.0%</div><div class="lbl">Back in cash</div><div class="mini">$52,500 of $250,000, real cash</div></div>
-        <div class="cell"><div class="n">1.25x</div><div class="lbl">Total · on paper</div><div class="mini">+24.6%: $52,500 cash + $259,000 capital account</div></div>
-        <div class="cell"><div class="n">≈ +4.6%/yr</div><div class="lbl">Per year · simple</div><div class="mini">24.6% over 5.3 yrs since 2021-03; plain division, not IRR</div></div>
-      </div>
-      <div class="drow"><div class="k">Original commitment</div><div class="val">$250,000 <span class="src">· subscription agreement, 2021-03</span></div></div>
-      <div class="drow"><div class="k">Capital contributed</div><div class="val">$250,000, fully funded <span class="src">· wire records, 2021-03-15</span></div></div>
-      <div class="drow"><div class="k">Distributions received</div><div class="val">$52,500: fourteen quarterly payments of $3,750, first 2023-02, most recent 2026-05 <span class="src">· sponsor statements + bank credits, through 2026-06-30</span></div></div>
-      <div class="drow"><div class="k">Original expectation</div><div class="val">~14% a year (the memo's projected IRR), ~1.8x the money over a 5-year hold, with a cash payout at a year-3 refinance <span class="src">· original investor memo, 2021</span></div></div>
-      <div class="drow"><div class="k">Actual vs expected</div><div class="val">At year 5.3, the reported position is <b>1.25x total vs the 1.8x five-year plan</b>. The refinance planned for 2024 closed 2026-02, two years late, and returned no capital. The exit target moved from 2026 to 2027.</div></div>
-      <div class="drow"><div class="k">Latest reported value</div><div class="val">$259,000 capital account (the sponsor's running ledger of what your stake is worth) <span class="src">· sponsor Q1-2026 statement, as of 2026-03-31, received 2026-05-18</span> <span class="tag green">Current</span></div></div>
-      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">An 8.0% passive stake. The $259,000 capital account implies roughly $3.24M of total partnership equity on the sponsor's own numbers (vs about $3.13M implied at entry). Arithmetic on the sponsor figure, not an independent valuation.</div></div>
-      <div class="drow"><div class="k">Changed this quarter</div><div class="val">Refinance confirmed closed (2026-02). Q1-2026 distribution of $3,750 received in May.</div></div>
-      <div class="drow"><div class="k">Watch next quarter</div><div class="val">The post-refinance debt terms are not on file: rate, maturity, and any rate cap. They decide whether the 2027 exit is realistic.</div></div>
-      <div class="drow"><div class="k">Reporting quality</div><div class="val"><span class="grade b">B</span> Quarterly statements are complete but arrive 45 to 60 days after quarter-end; K-1s arrive on time.</div></div>
-      <div class="q"><b>This quarter's one action:</b> ask the sponsor for the post-refinance loan summary (rate, maturity, any rate cap, and the covenants, meaning the lender's conditions) and whether the 2027 sale target has partner approval.</div>
-    </div>
-
-    <!-- H2 -->
-    <div class="hcard">
-      <div class="hhead"><span class="nm">Northline ABA Therapy Holdings</span><span class="ty">Operating-company interest · 12% of the common stock · held directly · Reporting <span class="grade c">C</span></span></div>
-      <div class="rr">
-        <div class="cell"><div class="n">3.0%</div><div class="lbl">Back in cash</div><div class="mini">first cash ever: $12,000, received 2026-05</div></div>
-        <div class="cell"><div class="n">1.28x</div><div class="lbl">On paper · 409A figure</div><div class="mini">+28%: $12,000 cash + $500,000 implied stake</div></div>
-        <div class="cell"><div class="n">≈ +6.9%/yr</div><div class="lbl">Per year · simple</div><div class="mini">28% over 4.1 yrs; paper only, on the 409A figure</div></div>
-      </div>
-      <div class="drow"><div class="k">Original commitment</div><div class="val">$400,000 <span class="src">· stock purchase agreement, 2022-06</span></div></div>
-      <div class="drow"><div class="k">Capital contributed</div><div class="val">$400,000 <span class="src">· closing statement, 2022-06-01</span></div></div>
-      <div class="drow"><div class="k">Distributions received</div><div class="val">$12,000, the first distribution to date, received 2026-05-15 <span class="src">· bank credit</span></div></div>
-      <div class="drow"><div class="k">Original expectation</div><div class="val">Distributions from 2024 at roughly $60,000 to $80,000/yr <span class="src">· original investment thesis, 2022</span></div></div>
-      <div class="drow"><div class="k">Actual vs expected</div><div class="val"><b>Distributions began two years late.</b> If $12,000 proves to be quarterly, the $48,000/yr pace still sits below the original $60,000 to $80,000 range. One payment does not establish a pace; the written policy is the missing document.</div></div>
-      <div class="drow"><div class="k">Latest reported value</div><div class="val">$500,000 implied for the stake <span class="src">· company 409A valuation, as of 2025-12-31. A 409A is a valuation companies get for stock-option paperwork; it is not what a buyer has offered and not an independent fair-value opinion.</span> <span class="tag amber">409A basis</span></div></div>
-      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">12% of the common stock, unchanged per the ownership table (cap table) inside the 409A report: no new shares have shrunk the stake since purchase. $500,000 for 12% implies about $4.17M for the whole company, vs about $3.33M implied at the 2022 purchase. The paper gain has produced no cash yet and rests on that 409A figure.</div></div>
-      <div class="drow"><div class="k">Changed this quarter</div><div class="val">First distribution received ($12,000, 2026-05-15). The guarantee question closed: written confirmation received 2026-04-22 that no personal guarantee exists on the equipment line.</div></div>
-      <div class="drow"><div class="k">Watch next quarter</div><div class="val">Whether a second distribution arrives around 2026-08, and the terms of the raise management has floated (new investors would shrink the 12% stake).</div></div>
-      <div class="drow"><div class="k">Reporting quality</div><div class="val"><span class="grade c">C</span> No set cadence; financials arrive only on request; the latest full financials are FY2024.</div></div>
-      <div class="q"><b>This quarter's one action:</b> request FY2025 financials and the distribution policy in writing: is $12,000 per quarter the intended rate, and what determines it?</div>
-    </div>
-
-    <!-- H3 -->
-    <div class="hcard">
-      <div class="hhead"><span class="nm">Ashford Credit Opportunities Fund II</span><span class="ty">Private credit fund · 0.4% passive (LP) stake · Reporting <span class="grade a">A</span></span></div>
-      <div class="rr">
-        <div class="cell"><div class="n">32.0%</div><div class="lbl">Back in cash</div><div class="mini">$86,400 of $270,000 called, real cash</div></div>
-        <div class="cell"><div class="n">1.25x</div><div class="lbl">Total · on paper</div><div class="mini">+25%: $86,400 cash + $251,100 fund-stated value</div></div>
-        <div class="cell"><div class="n">≈ +9.3%/yr</div><div class="lbl">Per year · weighted by dollars in</div><div class="mini">the fund's own figure: 9.8%/yr net (its IRR)</div></div>
-      </div>
-      <div class="drow"><div class="k">Original commitment</div><div class="val">$300,000 <span class="src">· subscription agreement, 2022-10</span></div></div>
-      <div class="drow"><div class="k">Capital contributed</div><div class="val">$270,000, called in five installments: 2022-11 $90,000 · 2023-06 $60,000 · 2024-02 $60,000 · 2024-11 $45,000 · 2026-04 $15,000. <b>$30,000 not yet called.</b> <span class="src">· capital-call notices</span></div></div>
-      <div class="drow"><div class="k">Distributions received</div><div class="val">$86,400 in thirteen quarterly cash payments since 2023-05, most recent $6,300 on 2026-05-10 <span class="src">· administrator statements + bank credits, through 2026-06-30</span></div></div>
-      <div class="drow"><div class="k">Original expectation</div><div class="val">9 to 11% a year net of fees, quarterly income, ~4-year fund life <span class="src">· offering-document (PPM) summary, 2022</span></div></div>
-      <div class="drow"><div class="k">Actual vs expected</div><div class="val">On plan. The administrator reports 9.8% a year net since the start (its IRR, the fund's own yearly-return math; shown as reported, not recomputed), inside the 9 to 11% target. Fund life was extended one year to 2027-11 under the extension written into the fund agreement.</div></div>
-      <div class="drow"><div class="k">Latest reported value</div><div class="val">$251,100 NAV (the fund's own stated value for the stake) <span class="src">· fund administrator Q1-2026 statement, as of 2026-03-31, received 2026-04-24</span> <span class="tag green">Current</span></div></div>
-      <div class="drow"><div class="k">Equity / valuation view</div><div class="val">A 0.4% stake; $251,100 implies about $62.8M of stated value for the whole fund. The fund is in its wind-down years, selling positions and returning the cash, so this value should shrink as money comes back; a falling value here is not a loss signal by itself.</div></div>
-      <div class="drow"><div class="k">Changed this quarter</div><div class="val">$15,000 call funded 2026-04-15 (10 business days' notice, on time). Management fee stepped down 2026-04-01: from 1.50% of everything committed to 1.25% of just the money actually invested. $6,300 distribution received.</div></div>
-      <div class="drow"><div class="k">Watch next quarter</div><div class="val">When the fund will ask for the final $30,000 (it can, any time through 2026-12), and the wind-down schedule to 2027-11.</div></div>
-      <div class="drow"><div class="k">Reporting quality</div><div class="val"><span class="grade a">A</span> Administrator statements within 30 days of quarter-end, call notices with 10 business days' lead, K-1 by mid-March.</div></div>
-      <div class="q"><b>This quarter's one action:</b> get the expected final-call timing and the wind-down schedule in writing from the administrator.</div>
-    </div>
-
-    <!-- H4 -->
-    <div class="hcard">
-      <div class="hhead"><span class="nm">Harborview Development bridge note</span><span class="ty">Secured note · second in line behind the first mortgage (confirmed 2026-04-30) · Reporting <span class="grade c">C</span></span></div>
-      <div class="rr">
-        <div class="cell"><div class="n">16.0%</div><div class="lbl">Interest received</div><div class="mini">$24,000 of $150,000 principal, in cash</div></div>
-        <div class="cell"><div class="n">$150,000</div><div class="lbl">Principal outstanding</div><div class="mini">balloon (full payoff in one payment) due 2026-12-31 under the signed deal</div></div>
-        <div class="cell"><div class="n">$3,000/mo</div><div class="lbl">Now being paid</div><div class="mini">24%/yr under the forbearance deal; 2 of 2 payments on time</div></div>
-      </div>
-      <div class="drow"><div class="k">Original principal</div><div class="val">$150,000 <span class="src">· promissory note, 2023-09</span></div></div>
-      <div class="drow"><div class="k">Funded</div><div class="val">$150,000 <span class="src">· wire record, 2023-09-10</span></div></div>
-      <div class="drow"><div class="k">Interest received</div><div class="val">$24,000 total: twelve monthly payments of $1,500 through the 2024-09 maturity (12%/yr), nothing for the following 19 months, then two forbearance payments of $3,000 (2026-05-15 and 2026-06-15) <span class="src">· bank credits</span></div></div>
-      <div class="drow"><div class="k">Original expectation</div><div class="val">12%/yr paid monthly, 12-month term, $150,000 balloon at the 2024-09 maturity <span class="src">· note terms, 2023</span></div></div>
-      <div class="drow"><div class="k">Actual vs expected</div><div class="val">Matured 2024-09 unpaid, then 19 months of silence. Now under a <b>signed forbearance deal (2026-05-02)</b>, a written agreement to hold off on legal action while the borrower pays on new terms: 24%/yr paid monthly ($3,000), the full $150,000 due in one balloon payment 2026-12-31, and the extra interest that built up during the silent months is forgiven only if that balloon pays on time.</div></div>
-      <div class="drow"><div class="k">Latest reported value</div><div class="val">$150,000 principal, as stated in the signed forbearance agreement, 2026-05-02 <span class="src">· signed document (the strongest source tier); not an estimate of what would actually be collected</span> <span class="tag amber">Forbearance</span></div></div>
-      <div class="drow"><div class="k">Recovery / valuation view</div><div class="val">The 2026-04-30 title search confirms the lien but shows it <b>second in line, behind a $950,000 first mortgage</b>: if the property were ever sold to collect, that $950,000 is paid first. The original loan file described a first-position lien. Cash received to date is 16.0% over 2.8 years (about 5.7%/yr). If the deal is paid through the balloon, total interest reaches $42,000 ($18,000 + eight payments of $3,000): 28.0% of principal, about 8.5%/yr simple over 3.3 years. If it fails, recovery depends on what the property is worth beyond that first $950,000.</div></div>
-      <div class="drow"><div class="k">Changed this quarter</div><div class="val">Status moved from red (at risk) to amber: the deal was signed, payments resumed, and the place in the repayment line was clarified (second).</div></div>
-      <div class="drow"><div class="k">Watch next quarter</div><div class="val">The monthly $3,000 payments July through December, then the balloon itself.</div></div>
-      <div class="drow"><div class="k">Reporting quality</div><div class="val"><span class="grade c">C</span> The borrower reports nothing on its own; everything now flows through counsel; payments are verified by bank credit.</div></div>
-      <div class="q"><b>This quarter's one action:</b> calendar 2026-12-31 now and have counsel confirm each monthly payment on receipt.</div>
-    </div>
-
-    <!-- H5 -->
-    <div class="hcard">
-      <div class="hhead"><span class="nm">Custodial brokerage account</span><span class="ty">Public-market account · 100% owned · Reporting <span class="grade a">A</span></span></div>
-      <div class="rr">
-        <div class="cell"><div class="n">13.9%</div><div class="lbl">Cash taken out</div><div class="mini">$25,000 of $180,000 cost, withdrawn</div></div>
-        <div class="cell"><div class="n">1.40x</div><div class="lbl">Total · current value</div><div class="mini">+40.0%: $25,000 cash + $227,000 value</div></div>
-        <div class="cell"><div class="n">≈ +8.9%/yr</div><div class="lbl">Per year · simple</div><div class="mini">40% over the ~4.5-yr weighted hold</div></div>
-      </div>
-      <div class="drow"><div class="k">Cost contributed</div><div class="val">$180,000 across 2020 to 2023 (weighted-average funding date about 2022-01) <span class="src">· custodian cost-basis report</span></div></div>
-      <div class="drow"><div class="k">Cash withdrawn</div><div class="val">$25,000 to date; none this quarter <span class="src">· custodian activity, through 2026-06-30</span></div></div>
-      <div class="drow"><div class="k">Original expectation</div><div class="val">Money kept reachable on short notice, plus modest income.</div></div>
-      <div class="drow"><div class="k">Actual vs expected</div><div class="val">On plan; fully liquid; reporting is current.</div></div>
-      <div class="drow"><div class="k">Latest reported value</div><div class="val">$227,000 <span class="src">· custodian statement, as of 2026-06-30</span> <span class="tag green">Current</span></div></div>
-      <div class="drow"><div class="k">Changed this quarter</div><div class="val">Value $219,400 to $227,000 (+$7,600, about +3.5%). The idle-cash sweep moved 2026-04-08 from a 0.35% default to a 4.10% money-fund sweep: about $675/yr on the ~$18,000 average cash balance.</div></div>
-      <div class="drow"><div class="k">Watch next quarter</div><div class="val">Nothing flagged. This is the most reliable figure of the five: live market value on a current statement.</div></div>
-      <div class="drow"><div class="k">Reporting quality</div><div class="val"><span class="grade a">A</span> Monthly statements, on time, with full downloadable transaction history.</div></div>
-      <div class="q"><b>This quarter's one action:</b> none. The April sweep fix is done and the statement is current.</div>
-    </div>
-  </section>
-
-  <section>
-    <span class="eyebrow">Send-ready questions</span>
-    <h2 class="sec">The questions worth asking now</h2>
-    <p class="lead">One per holding, matching the action items above, grouped by who should answer. Send these as written. Nothing to send for the custodial account this quarter.</p>
-    <ol class="qs">
-      <li><b>Harborview counsel:</b> please confirm receipt of each monthly $3,000 payment as it lands, and confirm exactly how the 2026-12-31 balloon payoff will work, including release of the lien once it is paid. <span>(largest single date on the calendar)</span></li>
-      <li><b>Cedar Ridge sponsor:</b> please send the post-refinance loan summary: rate, maturity, any rate cap, and the covenants (the lender's conditions). Does the 2027 sale target have partner approval? <span>(new unknown created by the February refinance)</span></li>
-      <li><b>Northline management:</b> please send FY2025 financials and the distribution policy in writing. Is $12,000 per quarter the intended rate, and what determines it? What are the terms of the raise under discussion? <span>(payment pace and the risk of the stake shrinking, both unproven)</span></li>
-      <li><b>Ashford administrator:</b> when do you expect to ask for the final $30,000, and what is the wind-down schedule to the 2027-11 fund end? <span>(December cash planning)</span></li>
-    </ol>
-  </section>
-
-  <section>
-    <span class="eyebrow">Missing information: document list</span>
-    <h2 class="sec">What to collect to close the gaps</h2>
-    <p class="lead">Eight items, down from twelve in the Q1-2026 brief. Four closed this quarter: the Cedar Ridge refinance status, the Northline guarantee documents, the Ashford side-letter question, and the brokerage sweep rate.</p>
-    <ul class="miss">
-      <li>Cedar Ridge: post-refinance loan summary (rate, maturity, lender conditions)</li>
-      <li>Cedar Ridge: Q2-2026 statement when issued</li>
-      <li>Northline: FY2025 financials</li>
-      <li>Northline: written distribution policy</li>
-      <li>Northline: terms of any planned raise</li>
-      <li>Ashford: written final-call timing and wind-down schedule</li>
-      <li>Harborview: counsel's confirmation of each monthly payment (rolling)</li>
-      <li>Harborview: payoff statement ahead of the 2026-12-31 balloon</li>
-    </ul>
-    <div class="legend">
-      <span><b>Status tags:</b> <span class="tag green">Current</span> value dated within 6 months of the as-of date · <span class="tag amber">409A basis / Forbearance</span> value is timely but its basis needs weighing · <span class="tag red">Past due / impaired</span> none this quarter (Harborview carried it in Q1).</span>
-      <span><b>Reporting grades:</b> <span class="grade a">A</span> on time, complete, unprompted · <span class="grade b">B</span> complete but late or prompted · <span class="grade c">C</span> irregular, on-request only, or provided only by the other side of the deal.</span>
-      <span><b>Source tiers used:</b> executed document &gt; administrator/custodian statement &gt; sponsor statement &gt; counterparty email. Every figure above notes which.</span>
     </div>
   </section>
 
