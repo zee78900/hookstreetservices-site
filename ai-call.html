@@ -173,7 +173,8 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:38px 0 30
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap" style="position:relative;">
+    <span style="position:absolute;top:-40px;right:22px;color:var(--gold2);font-size:13px;font-weight:700;font-family:'Cormorant Garamond',serif;">בס״ד</span>
     <div class="founding-badge">Founding rate · first 5 talks at $350, then $500</div>
     <div class="eyebrow">Real Intelligence About Artificial Intelligence</div>
     <h1>You pick the topic. <em>I make it simple.</em></h1>
@@ -210,10 +211,11 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:38px 0 30
     <div class="rr"><b>Founding rate: the first 5 talks are $350. After that the rate is $500.</b> Send your topic first if you'd like to check it's a fit, or reserve your spot now.</div>
     <div class="cta-row">
       <a class="btn btn-gold" href="https://buy.stripe.com/9B6dRa6sDcKvecG1iTeQM01">Reserve your spot - $350 →</a>
-      <a class="btn btn-line" href="sms:+19177807382?&body=AI%20talk%20-%20my%20topic%3A%20">Text your topic first</a>
-      <a class="btn btn-line" href="mailto:info@hookstreetservices.com?subject=AI%20talk%20-%20my%20topic&body=My%20topic%3A%20%0A%0AWho%20I%20am%3A%20">Email your topic</a>
+      <!-- sms href fixed 2026-08-26 (review SF-3: "?&body=" silently drops the body on some Android clients) -->
+      <a class="btn btn-line" href="sms:+19177807382?body=AI%20talk%20-%20my%20topic%3A%20">Text your topic first</a>
+      <a class="btn btn-line" href="index.html#start">Send your topic through the site</a>
     </div>
-    <p class="tertiary"><a href="sample-ai-talk.html">See a sample recap, the written brief you get after the call →</a></p>
+    <p class="tertiary"><a href="sample-ai-talk.html">See a sample recap, the written brief you get after the call →</a> &nbsp;·&nbsp; or just email <a href="mailto:info@hookstreetservices.com?subject=AI%20talk%20-%20my%20topic&body=My%20topic%3A%20%0A%0AWho%20I%20am%3A%20">info@hookstreetservices.com</a></p>
 
     <div class="grid4">
       <div class="mini"><div class="stepnum">1</div><h4>Send the topic</h4><p>One or two lines, text or email.</p></div>
@@ -251,10 +253,12 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:38px 0 30
 <footer>
   <div class="foot-inner">
     <div class="foot-links">
+      <a href="bottleneck.html">Bottleneck Review</a><span class="sep">·</span>
       <a href="deal-snapshot.html">Deal Snapshot</a><span class="sep">·</span>
-      <a href="ai-call.html">The AI Talk</a><span class="sep">·</span>
-      <a href="capital.html">Capital</a><span class="sep">·</span>
       <a href="systems.html">Systems</a><span class="sep">·</span>
+      <a href="ai-call.html">The AI Talk</a><span class="sep">·</span>
+      <a href="websites.html">Websites</a><span class="sep">·</span>
+      <a href="capital.html">Capital</a><span class="sep">·</span>
       <a href="https://sommersethillsvillas.com" target="_blank" rel="noopener">Villas</a><span class="sep">·</span>
       <a href="privacy.html">Privacy</a>
     </div>
@@ -264,9 +268,10 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:38px 0 30
 </footer>
 
 <!-- ===================== Mobile sticky CTA bar ===================== -->
+<!-- Primary/secondary swapped 2026-08-26 (review SF-3: the page's own steps say topic first, pay second) -->
 <div class="mbar">
-  <a class="p" href="https://buy.stripe.com/9B6dRa6sDcKvecG1iTeQM01">Reserve - $350</a>
-  <a class="s" href="sms:+19177807382?&body=AI%20talk%20-%20my%20topic%3A%20">Text your topic</a>
+  <a class="p" href="sms:+19177807382?body=AI%20talk%20-%20my%20topic%3A%20">Text your topic</a>
+  <a class="s" href="https://buy.stripe.com/9B6dRa6sDcKvecG1iTeQM01">Reserve - $350</a>
 </div>
 
 <script>
