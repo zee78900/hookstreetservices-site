@@ -9,3 +9,4 @@ Hook\ Street\ Bookings*
 _staging/
 
 .wrangler/
+.private/
