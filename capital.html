@@ -13,9 +13,11 @@
 <meta property="og:image" content="https://hookstreetservices.com/images/social/hss-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Independent review of your receivables, cash flow, and financing readiness before you take on capital. Confidential, flat fee. Hook Street is not a lender.">
-<link rel="alternate" hreflang="en" href="https://hookstreetservices.com/capital.html">
-<link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/capital.html">
-<link rel="alternate" hreflang="x-default" href="https://hookstreetservices.com/capital.html">
+<link rel="canonical" href="https://hookstreetservices.com/capital">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Capital Readiness & Receivables Review | Hook Street Services", "url": "https://hookstreetservices.com/capital", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "Hook Street Services", "url": "https://hookstreetservices.com/"}, "publisher": {"@type": "Organization", "name": "Hook Street Services", "url": "https://hookstreetservices.com/"}, "description": "Independent review of your receivables, cash flow, and financing readiness before you take on capital. Confidential, flat fee. Hook Street is not a lender."}</script>
+<link rel="alternate" hreflang="en" href="https://hookstreetservices.com/capital">
+<link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/capital">
+<link rel="alternate" hreflang="x-default" href="https://hookstreetservices.com/capital">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -116,7 +118,7 @@ footer.foot a{color:var(--navy)}
 
 <h2>Send your details</h2>
 <div class="card gold">
-  <form id="intake" novalidate>
+  <form id="intake" method="post" action="https://ops-api.sam-0f0.workers.dev/intake/submit" enctype="multipart/form-data" novalidate>
     <div class="row">
       <div class="field"><label>Your name <span class="req">*</span></label><input type="text" name="name" autocomplete="name" required></div>
       <div class="field"><label>Company</label><input type="text" name="company" autocomplete="organization"></div>

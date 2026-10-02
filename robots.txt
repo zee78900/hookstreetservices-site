@@ -1,11 +1,8 @@
 # hookstreetservices.com — robots policy (added 2026-08-26, review SF-1)
 # AI answer/search crawlers are explicitly ALLOWED: being citable by AI
 # assistants is part of how this practice is found.
-# TODO-SAM: the live robots.txt is currently Cloudflare-MANAGED and blocks these
-# bots (plus Cloudflare bot management 403s live AI fetches). For this file to
-# take effect: Cloudflare dashboard -> disable the managed robots.txt / "block
-# AI bots" rule for this zone. Keeping ai-train=no there is fine — it's
-# retrieval/search that earns citations.
+# Resolved 2026-10-01: the live robots.txt is served from this file (verified by
+# a direct fetch); the Cloudflare-managed robots.txt no longer overrides it.
 
 User-agent: ClaudeBot
 Allow: /

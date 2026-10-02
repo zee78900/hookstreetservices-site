@@ -1,16 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hookstreetservices.com/</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://hookstreetservices.com/bottleneck</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://hookstreetservices.com/websites</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://hookstreetservices.com/deal-snapshot</loc><lastmod>2026-08-26</lastmod></url>
-  <url><loc>https://hookstreetservices.com/ai-call</loc><lastmod>2026-08-26</lastmod></url>
-  <url><loc>https://hookstreetservices.com/capital</loc><lastmod>2026-07-22</lastmod></url>
-  <url><loc>https://hookstreetservices.com/systems</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://hookstreetservices.com/sample-snapshot</loc><lastmod>2026-07-22</lastmod></url>
-  <url><loc>https://hookstreetservices.com/sample-ai-talk</loc><lastmod>2026-07-22</lastmod></url>
-  <url><loc>https://hookstreetservices.com/sample-systems</loc><lastmod>2026-07-22</lastmod></url>
-  <url><loc>https://hookstreetservices.com/sample-capital</loc><lastmod>2026-07-22</lastmod></url>
-  <url><loc>https://hookstreetservices.com/pcr-sample</loc><lastmod>2026-08-26</lastmod></url>
-  <url><loc>https://hookstreetservices.com/privacy</loc><lastmod>2026-07-22</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://hookstreetservices.com/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/bottleneck</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/bottleneck"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/bottleneck"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/bottleneck</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/bottleneck"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/bottleneck"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/websites</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/websites"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/websites"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/websites</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/websites"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/websites"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/deal-snapshot</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/deal-snapshot"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/deal-snapshot"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/deal-snapshot</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/deal-snapshot"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/deal-snapshot"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/ai-call</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/ai-call"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/ai-call"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/ai-call</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/ai-call"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/ai-call"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/capital</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/capital"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/capital"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/capital</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/capital"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/capital"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/systems</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/systems"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/systems"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/systems</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/systems"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/systems"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/sample-snapshot</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-snapshot"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-snapshot"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/sample-snapshot</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-snapshot"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-snapshot"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/sample-ai-talk</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-ai-talk"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-ai-talk"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/sample-ai-talk</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-ai-talk"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-ai-talk"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/sample-systems</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-systems"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-systems"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/sample-systems</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-systems"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-systems"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/sample-capital</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-capital"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-capital"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/sample-capital</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/sample-capital"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/sample-capital"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/pcr-sample</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/pcr-sample"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/pcr-sample"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/pcr-sample</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/pcr-sample"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/pcr-sample"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/privacy</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/privacy"/>
+  </url>
+  <url>
+    <loc>https://hookstreetservices.com/he/privacy</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hookstreetservices.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://hookstreetservices.com/he/privacy"/>
+  </url>
 </urlset>
